@@ -6,7 +6,8 @@
   "extends": [
     "plugin:react/recommended",
     "airbnb",
-    "airbnb-typescript",
+    "airbnb-base",
+    "airbnb-typescript/base",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
