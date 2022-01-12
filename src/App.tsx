@@ -1,15 +1,14 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ActivityScreen } from './components/ActivityScreen/ActivityScreen';
-import { FeedingScreen } from './components/FeedingScreen/FeedingScreen';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
-import { MainScreen } from './components/MainScreen/MainScreen';
-import { Settings } from './components/Settings/Settings';
-import { SleepScreen } from './components/SleepScreen/SleepScreen';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ActivityScreen } from "./components/ActivityScreen/ActivityScreen";
+import { FeedingScreen } from "./components/FeedingScreen/FeedingScreen";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { MainScreen } from "./components/MainScreen/MainScreen";
+import { Settings } from "./components/Settings/Settings";
+import { SleepScreen } from "./components/SleepScreen/SleepScreen";
 
-const App: React.FC = () => {
-  return (
+const App: React.FC = () => (
     <>
       <Router>
         <Header />
@@ -26,6 +25,5 @@ const App: React.FC = () => {
       <Footer />
     </>
   );
-};
 
 export default App;

@@ -1,8 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 let timerStatus = false;
-//TODO
+function timerSwitch() {
+  if (timerStatus === true) {
+    timerStatus = false;
+  } else {
+    timerStatus = true;
+  }
+}
+//  TODO
 export const Settings: React.FC = () => (
   <div className="screen" id="settings_page">
     <h2>Settings</h2>
@@ -28,7 +35,7 @@ export const Settings: React.FC = () => (
             id="checkbox"
             onChange={() => timerSwitch}
           />
-          <span className="slider round"></span>
+          <span className="slider round" />
         </label>
       </div>
     </div>
@@ -44,10 +51,4 @@ export const Settings: React.FC = () => (
   </div>
 );
 
-function timerSwitch() {
-  if (timerStatus === true) {
-    timerStatus = false;
-  } else {
-    timerStatus = true;
-  }
-}
+

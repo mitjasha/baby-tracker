@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 export const Header: React.FC = () => (
   <header className="header">
@@ -8,8 +8,7 @@ export const Header: React.FC = () => (
         back
       </Link>
     </div>
-    <div></div>
-    <div className="settings">
+      <div className="settings">
       <Link to="/settings" className="settings_cog_btn" id="settings">
         settings
       </Link>
