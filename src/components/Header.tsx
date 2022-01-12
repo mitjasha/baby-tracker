@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-export const Header: React.FC = () => (
+const Header: React.FC = () => (
   <header className="header">
     <div className="back ">
       <Link to="/" className="back_btn" id="back">
         back
       </Link>
     </div>
-    <div></div>
+    <div />
     <div className="settings">
       <Link to="/settings" className="settings_cog_btn" id="settings">
         settings
@@ -16,3 +16,5 @@ export const Header: React.FC = () => (
     </div>
   </header>
 );
+
+export default Header;

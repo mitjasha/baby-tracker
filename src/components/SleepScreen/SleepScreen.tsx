@@ -1,5 +1,5 @@
-import React from 'react';
+import React from "react";
 
-export const SleepScreen: React.FC = () => (
-  <div className="screen">Sleep Screen</div>
-);
+const SleepScreen: React.FC = () => <div className="screen">Sleep Screen</div>;
+
+export default SleepScreen;

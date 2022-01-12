@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-export const MainScreen: React.FC = () => (
+const MainScreen: React.FC = () => (
   <div className="screen main">
     <h1 className="title">Baby Tracker</h1>
     <div className="main_buttons">
@@ -14,3 +14,5 @@ export const MainScreen: React.FC = () => (
     </div>
   </div>
 );
+
+export default MainScreen;

@@ -1,5 +1,5 @@
-import React from 'react';
+import React from "react";
 
-export const ActivityScreen: React.FC = () => (
-  <div className="screen">Activity Screen</div>
-);
+const ActivityScreen: React.FC = () => <div className="screen">Activity Screen</div>;
+
+export default ActivityScreen;
