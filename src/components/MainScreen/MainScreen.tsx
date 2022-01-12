@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const MainScreen: React.FC = () => (
   <div className="screen main">
     <h1 className="title">Baby Tracker</h1>
-    <div className="main_buttons">
-      <Link to="/sleeping" className="start" id="start_sleep">
-        <span className="btn_text">Sleeping</span>
+    <div className="main-buttons">
+      <Link to="/sleeping" className="start" id="start-sleep">
+        <span className="btn-text">Sleeping</span>
       </Link>
-      <Link to="/feeding" className="start" id="start_feed">
-        <span className="btn_text">Feeding</span>
+      <Link to="/feeding" className="start" id="start-feed">
+        <span className="btn-text">Feeding</span>
       </Link>
     </div>
   </div>

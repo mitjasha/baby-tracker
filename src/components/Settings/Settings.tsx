@@ -13,7 +13,7 @@ const timerSwitch = () => {
 
 // TODO
 const Settings: React.FC = () => (
-  <div className="screen" id="settings_page">
+  <div className="screen" id="settings-page">
     <h2>Settings</h2>
     <div className="settings-container">
       <div className="volume">
@@ -30,11 +30,11 @@ const Settings: React.FC = () => (
     </div>
 
     <div className="settings-buttons">
-      <Link to="/settings" className="settings-btn" id="settings_def">
-        <span className="btn_text">Default</span>
+      <Link to="/settings" className="settings-btn" id="settings-def">
+        <span className="btn-text">Default</span>
       </Link>
-      <Link to="/" className="settings-btn" id="settings_save">
-        <span className="btn_text">Save</span>
+      <Link to="/" className="settings-btn" id="settings-save">
+        <span className="btn-text">Save</span>
       </Link>
     </div>
   </div>
