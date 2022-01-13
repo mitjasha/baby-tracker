@@ -1,7 +1,11 @@
-.timer-container {
+.timer-container-main-screen {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 250px;
+  height: 250px;
+  position: relative;
+  font-size: 35px;
 }
 
 .main-buttons {

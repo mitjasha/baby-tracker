@@ -1,0 +1,60 @@
+progress::-webkit-progress-bar,
+progress::-webkit-progress-value{
+    border-radius: 10px;
+}
+
+.timer-container-sleep-screen{
+    width: 70px;
+    height: 70px;
+    position: relative;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-bar-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    color: #000;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.progress-line {
+    width: 50%;
+    margin: 0 5px;
+}
+
+.sleep-night-progress::-webkit-progress-bar {
+    background-color: #BFE2FE;
+  }
+  
+.sleep-night-progress::-webkit-progress-value {
+    background: #4AA7F1;
+ }
+
+ .sleep-day-progress::-webkit-progress-bar {
+    background: #E2ECA8;
+ }
+
+ .sleep-day-progress::-webkit-progress-value {
+    background: #A7BC28;
+ }
+ 
+.img-progress-bar{
+    width: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+ .night-icon {
+    background-image: url("../../../assets/svg/night-icon.svg");
+ }
+
+ .day-icon {
+     background-image: url("../../../assets/svg/day-icon.svg");
+ }
