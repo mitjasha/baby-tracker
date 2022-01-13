@@ -1,0 +1,70 @@
+.timer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-image: url("../../assets/png/timer-ring.png");
+  /* border-radius: 50%;
+  border-left: 30px solid rgba(223, 126, 138, 0.35);
+  border-right: 30px solid #df7e8a;
+  border-top: 30px solid rgba(223, 126, 138, 0.35);
+  border-bottom: 30px solid #df7e8a; */
+  animation: circle 10s linear infinite;
+}
+
+@keyframes circle {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* 
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: rotate 10s linear infinite;
+  background: #df7e8a;
+  border-radius: 50%;
+  height: 170px;
+  width: 170px;
+  position: relative;
+}
+
+.spinner:before,
+.spinner:after {
+  content: "";
+  position: absolute;
+}
+
+.spinner:before {
+  border-radius: 50%;
+  background: conic-gradient(from 0deg at 100% 50%, #df7e8a 0deg, #70b0f2 175.13deg, #df7e8a 360deg);
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  top: -30px;
+  bottom: -30px;
+  left: -30px;
+  right: -30px;
+}
+
+.spinner:after {
+  background: #fecdcb;
+  border-radius: 50%;
+  top: 3%;
+  bottom: 3%;
+  left: 3%;
+  right: 3%;
+} */
