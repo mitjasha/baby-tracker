@@ -1,0 +1,33 @@
+.btn {
+  position: relative;
+  padding: 10px 15px;
+  background-color: #7cc6fe;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #70b4e6;
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.active {
+  background-color: #23c9ff;
+  border: 1px solid #5eb2f2;
+  box-shadow: 0px 0 2px 0px #c0c0c0;
+}
+
+.btn.invert {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
