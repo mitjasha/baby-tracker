@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 import "./Button.css";
 
 interface IButton {
@@ -10,11 +10,14 @@ interface IButton {
   disabled?: boolean;
   active?: boolean;
   invert?: boolean;
+  tag?: "a" | "button" | "Link";
+  to?: string;
+  id?: string;
 }
 
-const Button: React.FC<IButton> = ({ children, onClick, className, disabled, active, invert, ...attrs }) => {
+const Button: React.FC<IButton> = ({ children, onClick, className, disabled, active, invert, tag, to, ...attrs }) => {
   // eslint-disable-next-line consistent-return
-  const onClickAction = (e: MouseEvent) => {
+  const onClickAction = (e: Event) => {
     if (disabled) {
       e.preventDefault();
     } else {
@@ -24,29 +27,27 @@ const Button: React.FC<IButton> = ({ children, onClick, className, disabled, act
 
   const classes = classNames("btn", className, { active }, { invert });
 
-  const Tag = attrs.href ? "a" : "button";
+  if (tag === "button") {
+    return (
+      <button className={classes} disabled={disabled} onClick={() => onClickAction} {...attrs}>
+        {children}
+      </button>
+    );
+  }
+
+  if (tag === "a") {
+    return (
+      <a href={to} className={classes} onClick={() => onClickAction} {...attrs}>
+        {children}
+      </a>
+    );
+  }
 
   return (
-    <Tag className={classes} disabled={disabled} onClick={onClickAction} {...attrs}>
+    <Link to={to as string} className={classes} onClick={() => onClickAction} {...attrs}>
       {children}
-    </Tag>
+    </Link>
   );
-};
-
-Button.propTypes = {
-  children: PropTypes.node,
-  onClick: PropTypes.func,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  active: PropTypes.bool,
-};
-
-Button.defaultProps = {
-  children: "Default button",
-  onClick: () => {},
-  className: "",
-  disabled: false,
-  active: false,
 };
 
 export default Button;
