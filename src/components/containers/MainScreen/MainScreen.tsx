@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Timer from "../../common/Timer/Timer";
+import Button from "../../common/Button/Button";
 import "./MainScreen.css";
 
 const MainScreen: React.FC = () => (
@@ -11,12 +11,12 @@ const MainScreen: React.FC = () => (
       <Timer />
     </div>
     <div className="main-buttons">
-      <Link to="/sleeping" className="start" id="start-sleep">
+      <Button tag="Link" to="/sleeping" className="start" id="start-sleep">
         <span className="btn-text">Sleeping</span>
-      </Link>
-      <Link to="/feeding" className="start" id="start-feed">
+      </Button>
+      <Button tag="Link" to="/feeding" className="start" id="start-feed">
         <span className="btn-text">Feeding</span>
-      </Link>
+      </Button>
     </div>
   </div>
 );
