@@ -3,10 +3,8 @@ import "./Timer.css";
 
 const Timer: React.FC = () => (
   <>
-    <div className="spinner"></div>
-    <div className="timer">
-      <div className="circle"></div>
-    </div>
+    <h2>00:00:00</h2>
+    <div className="timer"></div>
   </>
 );
 

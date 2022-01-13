@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Timer from "../common/Timer";
+import Timer from "../../common/Timer/Timer";
 import "./MainScreen.css";
 
 const MainScreen: React.FC = () => (
