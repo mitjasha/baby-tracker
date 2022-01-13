@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ActivityScreen from "./components/ActivityScreen/ActivityScreen";
-import FeedingScreen from "./components/FeedingScreen/FeedingScreen";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import MainScreen from "./components/MainScreen/MainScreen";
-import Settings from "./components/Settings/Settings";
-import SleepScreen from "./components/SleepScreen/SleepScreen";
+import ActivityScreen from "./components/containers/ActivityScreen/ActivityScreen";
+import FeedingScreen from "./components/containers/FeedingScreen/FeedingScreen";
+import Footer from "./components/containers/Footer";
+import Header from "./components/containers/Header";
+import MainScreen from "./components/containers/MainScreen/MainScreen";
+import Settings from "./components/containers/Settings/Settings";
+import SleepScreen from "./components/containers/SleepScreen/SleepScreen";
 
 const App: React.FC = () => (
   <>

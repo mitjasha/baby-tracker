@@ -1,0 +1,11 @@
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 360px;
+}
