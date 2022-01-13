@@ -1,9 +1,13 @@
 import React from "react";
 import ProgressBar from "../../common/ProgressBar/ProgressBar";
+import Timer from "../../common/Timer/Timer";
 import "./SleepScreen.css";
 
 const SleepScreen: React.FC = () => (
   <div className="screen">Sleep Screen
+   <div className="timer-container-sleep-screen">
+      <Timer />
+    </div>
     <ProgressBar 
     icon = "night-icon"
     value = "60"

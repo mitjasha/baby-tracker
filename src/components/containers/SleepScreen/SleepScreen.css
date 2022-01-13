@@ -3,6 +3,16 @@ progress::-webkit-progress-value{
     border-radius: 10px;
 }
 
+.timer-container-sleep-screen{
+    width: 70px;
+    height: 70px;
+    position: relative;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .progress-bar-container{
     display: flex;
     flex-direction: row;

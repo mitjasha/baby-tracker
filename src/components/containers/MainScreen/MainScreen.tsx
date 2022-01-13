@@ -7,7 +7,7 @@ const MainScreen: React.FC = () => (
   <div className="screen main">
     <h1 className="title">Baby Tracker</h1>
 
-    <div className="timer-container">
+    <div className="timer-container-main-screen">
       <Timer />
     </div>
     <div className="main-buttons">
