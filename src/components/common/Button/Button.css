@@ -1,10 +1,10 @@
 .btn {
-  position: relative;
+  /* position: relative;
   padding: 10px 15px;
-  background-color: #7cc6fe;
-  border: none;
+  background-color: #7cc6fe; */
+  /* border: none;
   color: #fff;
-  font-weight: 600;
+  font-weight: 600; */
   cursor: pointer;
   text-transform: uppercase;
   display: inline-block;

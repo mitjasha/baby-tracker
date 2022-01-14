@@ -1,6 +1,6 @@
 .timer {
   position: absolute;
-   top: 0;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -9,9 +9,8 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  animation: circle 10s linear infinite;
+  /* animation: circle 10s linear infinite; */
 }
-
 @keyframes circle {
   100% {
     transform: rotate(360deg);
