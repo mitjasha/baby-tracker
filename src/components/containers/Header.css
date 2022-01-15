@@ -1,0 +1,12 @@
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+
+  background-color: #fecdcb;
+}
+
+.header-nav-collapse {
+  background-color: #fecdcb;
+  height: 100vh;
+}
