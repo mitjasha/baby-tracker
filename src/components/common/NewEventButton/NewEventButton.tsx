@@ -11,8 +11,10 @@ const NewEventButton: React.FC = () => {
   };
 
   return (
-    <div className="App">
-      <button onClick={toggleModal}>Show Modal</button>
+    <div>
+      <button className="btn" onClick={toggleModal}>
+        + НОВОЕ СОБЫТИЕ
+      </button>
       <BaseModalWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal} />
     </div>
   );
