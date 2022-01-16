@@ -20,6 +20,7 @@
     "quotes": ["error", "double"],
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
-    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }]
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "no-console": 0
   }
 }

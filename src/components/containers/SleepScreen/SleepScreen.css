@@ -1,16 +1,33 @@
+.screen{
+    background-color: #FFF;
+}
+
+.baby-sleep-container{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.baby-sleep{
+    width: 200px;
+    transform: scale(-1, 1)
+}
+
 progress::-webkit-progress-bar,
 progress::-webkit-progress-value{
     border-radius: 10px;
 }
 
-.timer-container-sleep-screen{
+.timer-container{
     width: 70px;
     height: 70px;
-    position: relative;
+    position: absolute;
     font-size: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    left: 150px;
+    color: #000;
 }
 
 .progress-bar-container{
