@@ -1,22 +1,20 @@
-import React from "react";
-import classNames from "classnames";
+import React, { useState } from "react";
+import BaseModalWrapper from "../ModalMenu/BaseModalWraper";
+
 import "./NewEventButton.css";
 
-interface IButton {
-  children?: React.ReactNode;
-  onClick: () => void;
-  className?: string;
-  id?: string;
-}
+const NewEventButton: React.FC = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-// TODO
-const NewEventButton: React.FC<IButton> = ({ children, onClick, className, ...attrs }) => {
-  const classes = classNames("btn", className);
+  const toggleModal = () => {
+    setIsModalVisible((wasModalVisible) => !wasModalVisible);
+  };
 
   return (
-    <button className={classes} onClick={() => onClick()} {...attrs}>
-      {children}
-    </button>
+    <div className="App">
+      <button onClick={toggleModal}>Show Modal</button>
+      <BaseModalWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal} />
+    </div>
   );
 };
 

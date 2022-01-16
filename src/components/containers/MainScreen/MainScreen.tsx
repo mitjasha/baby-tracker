@@ -31,13 +31,7 @@ const MainScreen: React.FC = () => (
       <Timeline></Timeline>
     </div>
     <div className="main-screen-add-activity">
-      <NewEventButton
-        onClick={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      >
-        + Новое событие
-      </NewEventButton>
+      <NewEventButton />
     </div>
   </div>
 );
