@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NewEventButton from "../../common/NewEventButton/NewEventButton";
 import Timer from "../../common/Timer/Timer";
 import "./MainScreen.css";
 
@@ -18,6 +19,15 @@ const MainScreen: React.FC = () => (
       <Link to="/feeding" className="start" id="start-feed">
         <span className="btn-text">Feeding</span>
       </Link>
+    </div>
+    <div className="main-add-activity">
+      <NewEventButton
+        onClick={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      >
+        + Новое событие
+      </NewEventButton>
     </div>
   </div>
 );
