@@ -20,6 +20,7 @@ const MainScreen: React.FC = () => (
         <span className="btn-text">Feeding</span>
       </Link>
     </div>
+    <div className="main-screen-timeline"></div>
     <div className="main-add-activity">
       <NewEventButton
         onClick={function (): void {
