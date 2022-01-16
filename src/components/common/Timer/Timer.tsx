@@ -12,8 +12,8 @@ const Timer: React.FC = () => {
 
   const stopwatchCurrent = (startTime: number): void => {
     const currentTime = Date.now() - startTime;
-    setHours(Math.floor(currentTime / 3600000));
-    setMin(Math.floor(currentTime / 60000));
+    setHours(Math.floor(currentTime / 3600000) % 60);
+    setMin(Math.floor(currentTime / 60000) % 60);
     setSec(Math.floor((currentTime / 1000) % 60));
   };
 

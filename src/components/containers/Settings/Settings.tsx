@@ -20,7 +20,7 @@ const Settings: React.FC = () => (
         <h3>Volume</h3>
         <input className="slider-volume" id="volume" type="range" name="volume" min="0" max="100" step="1" />
       </div>
-      <div className="timer">
+      <div className="settings-timer">
         <h3>Timer</h3>
         <label htmlFor="checkbox" className="timer-switch">
           <input type="checkbox" name="timer-switcher" id="checkbox" onChange={() => timerSwitch} />

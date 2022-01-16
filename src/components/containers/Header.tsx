@@ -1,19 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import SideBar from "../common/SideBar/SideBar";
+import "./Header.css";
 
 const Header: React.FC = () => (
   <header className="header">
-    <div className="back ">
-      <Link to="/" className="back-btn" id="back">
-        back
-      </Link>
-    </div>
-    <div />
-    <div className="settings">
-      <Link to="/settings" className="settings-cog-btn" id="settings">
-        settings
-      </Link>
-    </div>
+    <SideBar />
   </header>
 );
 
