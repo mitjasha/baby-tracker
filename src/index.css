@@ -22,8 +22,16 @@ body {
   justify-content: space-between;
   max-width: 1440px;
   width: 100vw;
-  height: 80px;
+
   background-color: lightblue;
+}
+
+.header {
+  height: 80px;
+}
+
+.footer {
+  height: 20px;
 }
 
 .footer-content {
