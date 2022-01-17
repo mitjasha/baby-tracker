@@ -1,5 +1,5 @@
 import React from "react";
-import ModalMenu from "./ModalEventWindow";
+import ModalEventWindow from "./ModalEventWindow";
 
 interface BaseModalWrapperProps {
   isModalVisible: boolean;
@@ -12,11 +12,11 @@ const BaseModalWindowWrapper: React.FC<BaseModalWrapperProps> = ({ onBackdropCli
   }
 
   return (
-    <ModalMenu onBackdropClick={onBackdropClick}>
+    <ModalEventWindow onBackdropClick={onBackdropClick}>
       <div className="desktop-modal-window-container modal-window-container">
         <div className="modal-window-content"></div>
       </div>
-    </ModalMenu>
+    </ModalEventWindow>
   );
 };
 
