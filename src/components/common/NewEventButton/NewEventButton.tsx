@@ -10,7 +10,12 @@ interface IButton {
 }
 
 // TODO
-const NewEventButton: React.FC<IButton> = ({ children, onClick, className, ...attrs }) => {
+const NewEventButton: React.FC<IButton> = ({
+  children,
+  onClick,
+  className,
+  ...attrs
+}) => {
   const classes = classNames("btn", className);
 
   return (

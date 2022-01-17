@@ -1,0 +1,17 @@
+.fly-notes {
+  color: #000;
+  position: absolute;
+  margin-left: 15px;
+  animation: fly linear infinite;
+  animation-timing-function: linear;
+  animation-delay: 0.5s;
+}
+
+@keyframes fly {
+  from {
+    top: 60px;
+  }
+  to {
+    top: 0px;
+  }
+}

@@ -12,7 +12,15 @@ interface ILinkButton {
   to?: string;
 }
 
-const MainMenuButton: React.FC<ILinkButton> = ({ children, className, disabled, active, invert, to, ...attrs }) => {
+const MainMenuButton: React.FC<ILinkButton> = ({
+  children,
+  className,
+  disabled,
+  active,
+  invert,
+  to,
+  ...attrs
+}) => {
   const classes = classNames("btn", className, { active }, { invert });
 
   return (

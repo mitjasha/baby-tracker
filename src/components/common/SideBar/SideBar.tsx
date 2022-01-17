@@ -18,7 +18,10 @@ const Sidebar: React.FC = () => {
           <AiOutlineMenu />
         </Link>
       </div>
-      <div className="sidebar-nav" style={sidebar ? { left: "0%" } : { left: "-100%" }}>
+      <div
+        className="sidebar-nav"
+        style={sidebar ? { left: "0%" } : { left: "-100%" }}
+      >
         <div className="sidebar-wrap">
           <Link to="#" className="nav-icon" onClick={showSidebar}>
             <AiOutlineClose />
