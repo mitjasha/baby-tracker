@@ -13,11 +13,8 @@ const BaseModalWindowWrapper: React.FC<BaseModalWrapperProps> = ({ onBackdropCli
 
   return (
     <ModalMenu onBackdropClick={onBackdropClick}>
-      <div className="desktop-modal-container modal-container">
-        <div className="modal-content"></div>
-        <div className="modal-content"></div>
-        <div className="modal-content"></div>
-        <div className="modal-content"></div>
+      <div className="desktop-modal-window-container modal-window-container">
+        <div className="modal-window-content"></div>
       </div>
     </ModalMenu>
   );
