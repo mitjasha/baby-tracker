@@ -10,6 +10,7 @@ import {
   progressBarClasses,
   notesSize,
 } from "./sleepScreenConst";
+import NewSleepButton from "../../common/NewSleepButton/NewSleepButton";
 import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 
 const SleepScreen: React.FC = () => (
@@ -45,6 +46,11 @@ const SleepScreen: React.FC = () => (
       textName={sleepingTime.DAY_SLEEP}
       textValue="1 ч 30 м"
     />
+    <NewSleepButton
+        onClick={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
   </div>
 );
 

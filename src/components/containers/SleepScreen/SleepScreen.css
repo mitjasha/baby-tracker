@@ -1,5 +1,8 @@
-.screen {
+.sleep-screen {
   background-color: #fff;
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto;
 }
 
 .baby-sleep-container {

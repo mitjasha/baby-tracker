@@ -30,7 +30,7 @@ export const progressBarClasses: IndexInterface = {
 };
 
 export const sleepScreenClasses: IndexInterface = {
-  MAIN_CLASS: "screen",
+  MAIN_CLASS: "screen sleep-screen",
   BABY_SLEEP_CONTAINER: "baby-sleep-container",
   TIMER_CONTAINER: "timer-container",
   BABY_PICTURE_SLEEP: "baby-sleep",
