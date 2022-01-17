@@ -36,7 +36,22 @@
   justify-content: space-between;
   width: 360px;
   height: 120px;
-  background-color: #bfe2fe;
+  background-color: #fff;
+}
+
+.main-screen-bnt-left {
+  border-bottom-left-radius: 20px;
+}
+
+.main-screen-bnt-right {
+  /* flex-flow: row-reverse; */
+  border-bottom-right-radius: 20px;
+}
+
+.main-screen-btn-text {
+  width: 90px;
+  height: 40px;
+  font-size: 14px;
 }
 
 .main-screen-timeline {

@@ -1,7 +1,15 @@
+import classNames from "classnames";
 import React, { useState } from "react";
 import BaseModalWindowWrapper from "../ModalEventWindow/BaseModalWindowWraper";
+import "./MainScreenButton.css";
 
-const MainScreenButton: React.FC = () => {
+interface IMainScreenButton {
+  children?: React.ReactNode;
+  className?: string;
+}
+
+const MainScreenButton: React.FC<IMainScreenButton> = ({ children, className }) => {
+  const classes = classNames("main-screen-button", className);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -9,8 +17,8 @@ const MainScreenButton: React.FC = () => {
   };
   return (
     <>
-      <button className="btn" onClick={toggleModal}>
-        + НОВОЕ СОБЫТИЕ
+      <button className={classes} onClick={toggleModal}>
+        {children}
       </button>
       <BaseModalWindowWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal} />
     </>
