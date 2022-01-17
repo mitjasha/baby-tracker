@@ -1,12 +1,12 @@
 import React from "react";
-import ModalMenu from "./ModalMenu";
+import ModalMenu from "./ModalEventWindow";
 
 interface BaseModalWrapperProps {
   isModalVisible: boolean;
   onBackdropClick: () => void;
 }
 
-const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({ onBackdropClick, isModalVisible }) => {
+const BaseModalWindowWrapper: React.FC<BaseModalWrapperProps> = ({ onBackdropClick, isModalVisible }) => {
   if (!isModalVisible) {
     return null;
   }
@@ -23,4 +23,4 @@ const BaseModalWrapper: React.FC<BaseModalWrapperProps> = ({ onBackdropClick, is
   );
 };
 
-export default BaseModalWrapper;
+export default BaseModalWindowWrapper;

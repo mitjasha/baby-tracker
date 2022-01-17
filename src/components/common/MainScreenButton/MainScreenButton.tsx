@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import BaseModalEventWrapper from "../ModalEventMenu/BaseModalEventWraper";
+import BaseModalWindowWrapper from "../ModalEventWindow/BaseModalWindowWraper";
 
-import "./NewEventButton.css";
-
-const NewEventButton: React.FC = () => {
+const MainScreenButton: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
     setIsModalVisible((wasModalVisible) => !wasModalVisible);
   };
-
   return (
-    <div>
+    <>
       <button className="btn" onClick={toggleModal}>
         + НОВОЕ СОБЫТИЕ
       </button>
-      <BaseModalEventWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal} />
-    </div>
+      <BaseModalWindowWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal} />
+    </>
   );
 };
 
-export default NewEventButton;
+export default MainScreenButton;
