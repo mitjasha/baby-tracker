@@ -19,14 +19,19 @@ const ProgressBar: React.FC<IProgressBar> = ({
   classNameProgressBar,
   textName,
   textValue,
-  icon}) => (
+  icon,
+}) => (
   <>
-  <div className= {classNameContainer}>
-    <div className={cnd("img-progress-bar", icon)}/>
-    <span>{textName}</span>
-      <progress max = {max} value={value} className= {cnd("progress-line", classNameProgressBar)}/>
+    <div className={classNameContainer}>
+      <div className={cnd("img-progress-bar", icon)} />
+      <span>{textName}</span>
+      <progress
+        max={max}
+        value={value}
+        className={cnd("progress-line", classNameProgressBar)}
+      />
       <span>{textValue}</span>
-      </div>
+    </div>
   </>
 );
 
