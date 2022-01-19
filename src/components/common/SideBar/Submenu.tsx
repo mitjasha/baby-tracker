@@ -17,7 +17,9 @@ const Submenu: FC<SidebarLinkProps> = ({ item }) => {
           {item.icon}
           <div className="sidebar-label">{item.title}</div>
         </div>
-        <div>{item?.subnav && subnav ? item?.iconOpened : item?.iconClosed}</div>
+        <div>
+          {item?.subnav && subnav ? item?.iconOpened : item?.iconClosed}
+        </div>
       </Link>
       {subnav &&
         item?.subnav?.map((subnavItem, index) => (

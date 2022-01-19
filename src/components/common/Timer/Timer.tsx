@@ -29,11 +29,19 @@ const Timer: React.FC = () => {
             clearInterval(timer.stateTimer);
             setTimer({ stateTimer: undefined });
           } else {
-            setTimer({ stateTimer: window.setInterval(() => stopwatchCurrent(startTime), 1000) });
+            setTimer({
+              stateTimer: window.setInterval(
+                () => stopwatchCurrent(startTime),
+                1000,
+              ),
+            });
           }
         }}
       >
-        <div className="timer" style={timer.stateTimer ? styleFast : styleSlow}></div>
+        <div
+          className="timer"
+          style={timer.stateTimer ? styleFast : styleSlow}
+        ></div>
       </button>
       <div className="timer-value">
         {hours === 0 ? "" : `${hours < 10 ? `0${hours}:` : `${hours}:`}`}

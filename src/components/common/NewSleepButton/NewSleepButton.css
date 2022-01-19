@@ -1,0 +1,26 @@
+.btn-sleep{
+  width: 60px;
+  height: 60px;
+  background-color: #9DCDFF;
+  position: absolute;
+  color: #FFF;
+  border-radius: 50%;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.btn-sleep::before{
+  content: "+";
+  font-size: 51px;
+  position: absolute;
+  left: 16px;
+}
+
+.btn-sleep:hover{
+  background-color: #4AA7F1;
+}
+
+.btn-sleep:active{
+  background-color: #A7BC28;
+}

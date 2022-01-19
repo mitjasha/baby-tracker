@@ -1,33 +1,57 @@
+/* eslint-disable global-require */
 import React from "react";
 import ProgressBar from "../../common/ProgressBar/ProgressBar";
 import Timer from "../../common/Timer/Timer";
 import "./SleepScreen.css";
+import {
+  sleepScreenClasses,
+  sleepingTime,
+  progressBarValue,
+  progressBarClasses,
+  notesSize,
+} from "./sleepScreenConst";
+import NewSleepButton from "../../common/NewSleepButton/NewSleepButton";
+import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 
 const SleepScreen: React.FC = () => (
-  <div className="screen">Sleep Screen
-   <div className="timer-container-sleep-screen">
-      <Timer />
+  <div className={sleepScreenClasses.MAIN_CLASS}>
+    <div className={sleepScreenClasses.BABY_SLEEP_CONTAINER}>
+      <NotesOfSleep num={notesSize.FIRST_NOTE_SIZE} />
+      <NotesOfSleep num={notesSize.SECOND_NOTE_SIZE} />
+      <NotesOfSleep num={notesSize.THIRD_NOTE_SIZE} />
+      <img
+        className={sleepScreenClasses.BABY_PICTURE_SLEEP}
+        src={require("../../../assets/png/girl.png")}
+        alt="baby"
+      />
+      <div className={sleepScreenClasses.TIMER_CONTAINER}>
+        <Timer />
+      </div>
     </div>
-    <ProgressBar 
-    icon = "night-icon"
-    value = "60"
-    max = "100"
-    classNameProgressBar = "sleep-night-progress"
-    classNameContainer = "progress-bar-container"
-    textName = "Ночной сон" 
-    textValue = "3 ч 30 м"
+    <ProgressBar
+      icon={progressBarValue.NIGHT_ICON_NAME}
+      value="60"
+      max={progressBarValue.DEFAULT_MAX}
+      classNameProgressBar={progressBarClasses.SLEEP_NIGHT_CLASS}
+      classNameContainer={progressBarClasses.MAIN_CONTAINER_ALL_PROGRESS}
+      textName={sleepingTime.NIGHT_SLEEP}
+      textValue="8 ч 30 м"
     />
     <ProgressBar
-    icon = "day-icon"
-    value = "30"
-    max = "100"
-    classNameProgressBar ="sleep-day-progress"
-    classNameContainer = "progress-bar-container"
-    textName = "Дневной сон"
-    textValue = "1 ч 30 м"
+      icon={progressBarValue.DAY_ICON_NAME}
+      value="30"
+      max={progressBarValue.DEFAULT_MAX}
+      classNameProgressBar={progressBarClasses.SLEEP_DAY_CLASS}
+      classNameContainer={progressBarClasses.MAIN_CONTAINER_ALL_PROGRESS}
+      textName={sleepingTime.DAY_SLEEP}
+      textValue="1 ч 30 м"
     />
-</div>
-
+    <NewSleepButton
+        onClick={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+  </div>
 );
 
 export default SleepScreen;
