@@ -13,6 +13,7 @@ import {
 import NewSleepButton from "../../common/NewSleepButton/NewSleepButton";
 import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 
+
 const SleepScreen: React.FC = () => (
   <div className={sleepScreenClasses.MAIN_CLASS}>
     <div className={sleepScreenClasses.BABY_SLEEP_CONTAINER}>
@@ -47,8 +48,8 @@ const SleepScreen: React.FC = () => (
       textValue="1 ч 30 м"
     />
     <NewSleepButton
-        onClick={function (): void {
-          throw new Error("Function not implemented.");
+        onClick={(): void => {
+          console.log("Событие кнопки");
         }}
       />
   </div>

@@ -12,9 +12,9 @@
 
 .btn-sleep::before{
   content: "+";
-  font-size: 51px;
+  font-size: 48px;
   position: absolute;
-  left: 16px;
+  left: 17px;
 }
 
 .btn-sleep:hover{
