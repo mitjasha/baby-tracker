@@ -1,5 +1,5 @@
 import React from "react";
-import "./NotesOfSleep.css";
+import classes from "./NotesOfSleep.module.css";
 import correctionNumber from "./notesOfSleepConst";
 
 interface INotesOfSleep {
@@ -22,7 +22,7 @@ function styleNotes(num: number) {
 
 const NotesOfSleep: React.FC<INotesOfSleep> = ({ num }) => (
   <>
-    <div className="fly-notes" style={styleNotes(num)}>
+    <div className= {classes.notes} style={styleNotes(num)}>
       &#9834;
     </div>
   </>

@@ -1,22 +1,21 @@
-import React from "react";
+import React , { useState } from "react";
 import "./NewSleepButton.css";
+import ModalSleepScreen from "../../common/ModalSleepScreen/ModalSleepScreen";
 
-interface INewSleepButton {
-  children?: React.ReactNode;
-  onClick: () => void;
-  className?: string;
-  id?: string;
-}
 
-const NewSleepButton: React.FC<INewSleepButton> = ({
-  children,
-  onClick,
-  ...attrs
-}) => (
-    <div className={"btn-sleep"} onClick={() => onClick()} {...attrs}>
-      {children}
+const NewSleepButton: React.FC = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalVisible((wasModalVisible) => !wasModalVisible);
+  };
+
+  return (
+    <div>
+      <button className="btn btn-sleep" onClick={toggleModal} />
+      <ModalSleepScreen isModalVisible={isModalVisible} onBackdropClick={toggleModal} />
     </div>
   );
-;
+};
 
 export default NewSleepButton;

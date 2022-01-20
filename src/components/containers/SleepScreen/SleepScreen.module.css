@@ -1,17 +1,23 @@
-.sleep-screen {
+.sleepScreen {
   background-color: #fff;
   position: relative;
-  max-width: 560px;
+  max-width: 360px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 160px);
+  transition: margin 0.5s ease-out;
 }
 
-.baby-sleep-container {
+.baby {
   display: flex;
   flex-direction: row;
   position: relative;
 }
 
-.baby-sleep {
+.babySleep {
   width: 200px;
   transform: scale(-1, 1);
 }
@@ -21,7 +27,7 @@ progress::-webkit-progress-value {
   border-radius: 10px;
 }
 
-.timer-container {
+.timer {
   width: 70px;
   height: 70px;
   position: absolute;
@@ -33,7 +39,7 @@ progress::-webkit-progress-value {
   color: #000;
 }
 
-.progress-bar-container {
+.progressBar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -43,38 +49,26 @@ progress::-webkit-progress-value {
   margin-top: 10px;
 }
 
-.progress-line {
-  width: 50%;
-  margin: 0 5px;
-}
-
-.sleep-night-progress::-webkit-progress-bar {
+.night::-webkit-progress-bar {
   background-color: #bfe2fe;
 }
 
-.sleep-night-progress::-webkit-progress-value {
+.night::-webkit-progress-value {
   background: #4aa7f1;
 }
 
-.sleep-day-progress::-webkit-progress-bar {
+.day::-webkit-progress-bar {
   background: #e2eca8;
 }
 
-.sleep-day-progress::-webkit-progress-value {
+.day::-webkit-progress-value {
   background: #a7bc28;
 }
 
-.img-progress-bar {
-  width: 20px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
-.night-icon {
+.nightIcon {
   background-image: url("../../../assets/svg/night-icon.svg");
 }
 
-.day-icon {
+.dayIcon {
   background-image: url("../../../assets/svg/day-icon.svg");
 }

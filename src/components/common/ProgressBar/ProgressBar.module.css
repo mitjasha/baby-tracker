@@ -1,0 +1,11 @@
+.icon {
+  width: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.line {
+  width: 50%;
+  margin: 0 5px;
+}

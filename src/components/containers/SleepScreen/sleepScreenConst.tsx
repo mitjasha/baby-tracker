@@ -13,8 +13,8 @@ export const sleepingTime = {
 
 export const progressBarValue: IndexInterface = {
   DEFAULT_MAX: "100",
-  NIGHT_ICON_NAME: "night-icon",
-  DAY_ICON_NAME: "day-icon",
+  NIGHT_ICON_NAME: "nightIcon",
+  DAY_ICON_NAME: "dayIcon",
 };
 
 export const notesSize: IndexInterfaceNumb = {
@@ -23,15 +23,3 @@ export const notesSize: IndexInterfaceNumb = {
   THIRD_NOTE_SIZE: 30,
 };
 
-export const progressBarClasses: IndexInterface = {
-  SLEEP_NIGHT_CLASS: "sleep-night-progress",
-  SLEEP_DAY_CLASS: "sleep-day-progress",
-  MAIN_CONTAINER_ALL_PROGRESS: "progress-bar-container",
-};
-
-export const sleepScreenClasses: IndexInterface = {
-  MAIN_CLASS: "screen sleep-screen",
-  BABY_SLEEP_CONTAINER: "baby-sleep-container",
-  TIMER_CONTAINER: "timer-container",
-  BABY_PICTURE_SLEEP: "baby-sleep",
-};
