@@ -1,6 +1,6 @@
 import React from "react";
-import "./ProgressBar.css";
 import cnd from "classnames";
+import classes from "./ProgressBar.module.css";
 
 interface IProgressBar {
   value: string;
@@ -23,12 +23,12 @@ const ProgressBar: React.FC<IProgressBar> = ({
 }) => (
   <>
     <div className={classNameContainer}>
-      <div className={cnd("img-progress-bar", icon)} />
+      <div className={cnd(classes.icon, icon)} />
       <span>{textName}</span>
       <progress
         max={max}
         value={value}
-        className={cnd("progress-line", classNameProgressBar)}
+        className={cnd(classes.line, classNameProgressBar)}
       />
       <span>{textValue}</span>
     </div>

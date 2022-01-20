@@ -2,55 +2,50 @@
 import React from "react";
 import ProgressBar from "../../common/ProgressBar/ProgressBar";
 import Timer from "../../common/Timer/Timer";
-import "./SleepScreen.css";
+import classes from "./SleepScreen.module.css";
 import {
-  sleepScreenClasses,
   sleepingTime,
   progressBarValue,
-  progressBarClasses,
   notesSize,
 } from "./sleepScreenConst";
 import NewSleepButton from "../../common/NewSleepButton/NewSleepButton";
 import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 
+
 const SleepScreen: React.FC = () => (
-  <div className={sleepScreenClasses.MAIN_CLASS}>
-    <div className={sleepScreenClasses.BABY_SLEEP_CONTAINER}>
+  <div className={classes.sleepScreen}>
+    <div className={classes.baby}>
       <NotesOfSleep num={notesSize.FIRST_NOTE_SIZE} />
       <NotesOfSleep num={notesSize.SECOND_NOTE_SIZE} />
       <NotesOfSleep num={notesSize.THIRD_NOTE_SIZE} />
       <img
-        className={sleepScreenClasses.BABY_PICTURE_SLEEP}
+        className={classes.babySleep}
         src={require("../../../assets/png/girl.png")}
         alt="baby"
       />
-      <div className={sleepScreenClasses.TIMER_CONTAINER}>
+      <div className={classes.timer}>
         <Timer />
       </div>
     </div>
     <ProgressBar
-      icon={progressBarValue.NIGHT_ICON_NAME}
+      icon={classes.nightIcon}
       value="60"
       max={progressBarValue.DEFAULT_MAX}
-      classNameProgressBar={progressBarClasses.SLEEP_NIGHT_CLASS}
-      classNameContainer={progressBarClasses.MAIN_CONTAINER_ALL_PROGRESS}
+      classNameProgressBar={classes.night}
+      classNameContainer={classes.progressBar}
       textName={sleepingTime.NIGHT_SLEEP}
       textValue="8 ч 30 м"
     />
     <ProgressBar
-      icon={progressBarValue.DAY_ICON_NAME}
+      icon={classes.dayIcon}
       value="30"
       max={progressBarValue.DEFAULT_MAX}
-      classNameProgressBar={progressBarClasses.SLEEP_DAY_CLASS}
-      classNameContainer={progressBarClasses.MAIN_CONTAINER_ALL_PROGRESS}
+      classNameProgressBar={classes.day}
+      classNameContainer={classes.progressBar}
       textName={sleepingTime.DAY_SLEEP}
       textValue="1 ч 30 м"
     />
-    <NewSleepButton
-        onClick={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
+    <NewSleepButton />
   </div>
 );
 

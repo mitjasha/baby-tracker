@@ -12,3 +12,8 @@
 .btn:hover {
   background-color: #70b4e6;
 }
+.btn:visited{
+  border:0px;
+}
+
+
