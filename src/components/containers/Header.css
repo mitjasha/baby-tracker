@@ -1,8 +1,12 @@
+.header-container{
+  width: 360px;
+  margin: 0 auto;
+}
+
 .header-nav {
   display: flex;
   justify-content: space-between;
   width: 100vw;
-
   background-color: #fecdcb;
 }
 

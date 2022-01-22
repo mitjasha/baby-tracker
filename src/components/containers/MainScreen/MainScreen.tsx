@@ -8,7 +8,7 @@ import Timer from "../../common/Timer/Timer";
 import "./MainScreen.css";
 
 const MainScreen: React.FC = () => (
-  <div className="screen main">
+  <div className="screen">
     <div className="main-screen-up-container">
       <div className="main-screen-info">
         <h1 className="title">Baby Tracker</h1>
@@ -26,12 +26,12 @@ const MainScreen: React.FC = () => (
         <div className="main-screen-bnt-icon">
           <img src={require("../../../assets/svg/sleeping-icon.svg").default} alt="sleeping" />
         </div>
-        <div className="main-screen-btn-text">
+        <div className="main-screen-btn-text-left">
           <p>Добавить</p> <p>сон</p>
         </div>
       </MainScreenButton>
       <MainScreenButton className="main-screen-bnt-right">
-        <div className="main-screen-btn-text">
+        <div className="main-screen-btn-text-right">
           <p>Добавить</p> <p>кормление</p>
         </div>
         <div className="main-screen-bnt-icon">

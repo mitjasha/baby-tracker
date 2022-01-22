@@ -1,14 +1,3 @@
-.main {
-  height: 540px;
-}
-
-.main-screen-up-container {
-  height: 260px;
-}
-.main-screen-info {
-  height: 110px;
-}
-
 .main-screen-timer-container {
   display: flex;
   justify-content: center;
@@ -20,6 +9,8 @@
   font-size: 35px;
   background-color: #fecdcb;
   border-radius: 50%;
+  position: relative;
+  top: 50px;
 }
 
 .timer-wrap {
@@ -44,18 +35,28 @@
 }
 
 .main-screen-bnt-right {
-  /* flex-flow: row-reverse; */
   border-bottom-right-radius: 20px;
 }
 
-.main-screen-btn-text {
-  width: 90px;
-  height: 40px;
-  font-size: 14px;
+.main-screen-btn-text-right {
+  padding: 40px 0px 0px 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.main-screen-btn-text-left {
+  padding: 40px 20px 0px 0px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.main-screen-bnt-icon{
+  width: 80px;
+  max-height: 80px;
+  object-fit: contain;
 }
 
 .main-screen-timeline {
-  width: 100vw;
   height: 100px;
   background-color: #fff;
 }
