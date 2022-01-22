@@ -20,7 +20,11 @@ import InputTimeDate from "../../common/InputTimeDate/InputTimeDate";
 const SleepScreen: React.FC = () => {
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const toggleModal = () => setIsModalOpen(!isModalOpen);
+  const toggleModal = ():void => setIsModalOpen(!isModalOpen);
+  const saveData = () => {
+    console.log("save");
+    toggleModal();
+  };
 
   console.log(isModalOpen);
 
@@ -67,7 +71,7 @@ const SleepScreen: React.FC = () => {
     withIcon
     iconImg = {require("../../../assets/png/icon-sleep.png")} 
     titleModal = {"Добавить сон"}
-    primaryBtn = {{text: "Сохранить"}}
+    primaryBtn = {{text: "Сохранить", className: "h", onClick: saveData}}
     >
       <InputTimeDate className="" textName="Начало"/>
       <InputTimeDate className="" textName="Конец"/>

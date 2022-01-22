@@ -8,7 +8,7 @@ type TPrimaryBtn = {
     text: string,
     onClick?: () => void,
     icon?: string,
-    className?: string,
+    className: string,
 }
 
 type TSecondaryBtn = {

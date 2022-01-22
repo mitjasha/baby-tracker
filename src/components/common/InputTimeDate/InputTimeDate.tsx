@@ -1,31 +1,27 @@
 import React from "react";
 import cn from "classnames";
 import "./InputTimeDate.css";
+import {currentDay, currentTime} from "../../helpers/const";
 
 interface IInputTimeDate {
-  className: string;
-  textName: string;
+  className: string,
+  textName: string
 }
 
 const InputTimeDate: React.FC<IInputTimeDate> = ({
   className,
-  textName,
+  textName
 }) => {
-  const dateValue = () => {
-   const d = new Date();
-  const dt = d.getDate();
-let mn = d.getMonth();
-  mn += mn;
-  const yy = d.getFullYear();
-  const res = `${dt}/${mn}/${yy}`;
-  return res;
-  };
-  return (  <div className = "input-time-date-container">
-    <span>{textName}</span>
-      <input className={cn("input-time-date", {className})}  type = "time"/>
-      <input className={cn("input-time-date", {className})} type = "date" onChange={dateValue} />
+
+  console.log(currentDay);
+  return (
+    <div className = "input-time-date-container">
+    <span className= "title-input">{textName}</span>
+      <input className={cn("input-time-date", {className})}  type = "time" defaultValue={currentTime}/>
+      <input className={cn("input-time-date", {className})} type = "date" defaultValue={currentDay}/>
     </div>
 );
 };
+
 
 export default InputTimeDate;
