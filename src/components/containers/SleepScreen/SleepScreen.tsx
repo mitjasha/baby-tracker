@@ -11,6 +11,8 @@ import {
 import NewSleepButton from "../../common/NewSleepButton/NewSleepButton";
 import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 import ModalWindow from "../../common/ModalWindow/ModalWindow";
+import InputTimeDate from "../../common/InputTimeDate/InputTimeDate";
+
 
 
 
@@ -58,8 +60,18 @@ const SleepScreen: React.FC = () => {
         />
     </div>
     <NewSleepButton className = {`btn-sleep ${isModalOpen  ? "open": "close"}`} onClick = {toggleModal} text = {""}/>
-    <ModalWindow className = {`${isModalOpen  ? "open": "close"}`} withFooter = {true} onClose={toggleModal}>
-      <div>FFF</div>
+    <ModalWindow
+    className = {`${isModalOpen  ? "open": "close"}`}
+    withFooter = {true}
+    onClose={toggleModal}
+    withIcon
+    iconImg = {require("../../../assets/png/icon-sleep.png")} 
+    titleModal = {"Добавить сон"}
+    primaryBtn = {{text: "Сохранить"}}
+    >
+      <InputTimeDate className="" textName="Начало"/>
+      <InputTimeDate className="" textName="Конец"/>
+     
     </ModalWindow>
   </div>
   );

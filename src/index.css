@@ -1,6 +1,12 @@
 @font-face {
   font-family: Roboto;
   src: url("./assets/font/Roboto-Light.ttf");
+  font-weight: 100;
+}
+
+@font-face{
+  font-family: Roboto;
+  src: url("./assets/font/Roboto-Regular.ttf");
   font-weight: 300;
 }
 
@@ -25,12 +31,17 @@
 }
 
 button {
-  cursor: pointer;
+  cursor: pointer;  
 }
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
+
+button:focus{
+  outline: none;
 }
+
+input:focus{
+  outline: 5px solid #9DCDFF;
+}
+
 
 footer,
 header {
