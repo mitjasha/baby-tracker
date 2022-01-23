@@ -1,3 +1,7 @@
+.main-screen {
+  background-color: #fecdcb;
+  color: #fff;
+}
 .main-screen-timer-container {
   display: flex;
   justify-content: center;

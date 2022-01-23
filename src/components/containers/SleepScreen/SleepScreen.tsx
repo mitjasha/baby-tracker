@@ -7,7 +7,7 @@ import { sleepingTime, progressBarValue, notesSize } from "./sleepScreenConst";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 import ModalWindow from "../../common/ModalWindow/ModalWindow";
-import InputTimeDate from "../../common/InputTimeDate/InputTimeDate";
+import InputTimeDate from "../../common/Inputs/InputTimeDate/InputTimeDate";
 
 const SleepScreen: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

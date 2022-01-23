@@ -38,11 +38,11 @@ button {
 }
 
 button:focus {
-  outline: none;
+  outline: 2px solid #000;
 }
 
 input:focus {
-  outline: 5px solid #9dcdff;
+  outline: 4px solid #9dcdff;
 }
 
 footer,
@@ -60,7 +60,6 @@ html {
 
 body {
   color: #fff;
-  height: 100vh;
   overflow: hidden;
   text-align: center;
   font-family: Roboto;
@@ -80,6 +79,8 @@ body {
 .main {
   flex: 1 1 auto;
   margin: 0 auto;
+  background-color: #fff;
+  width: 360px;
 }
 .header,
 .footer {
@@ -95,13 +96,15 @@ body {
 
 .footer {
   height: 60px;
+  width: 100%;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100vw;
+  width: 360px;
+  margin: 0 auto;
 }
 
 .screen {
@@ -109,7 +112,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 360px;
   transition: margin 0.5s ease-out;
-  background: #fecdcb;
+  color: #000;
 }

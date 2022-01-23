@@ -33,7 +33,7 @@ const SidebarData: SidebarItem[] = [
   {
     title: "Домой",
     iconName: "home",
-    path: "/",
+    path: "/main",
   },
 ];
 

@@ -8,7 +8,7 @@ import Timer from "../../common/Timer/Timer";
 import "./MainScreen.css";
 
 const MainScreen: React.FC = () => (
-  <div className="screen">
+  <div className="screen main-screen">
     <div className="main-screen-up-container">
       <div className="main-screen-info">
         <h1 className="title">Baby Tracker</h1>

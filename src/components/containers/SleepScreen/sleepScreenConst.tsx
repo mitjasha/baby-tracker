@@ -6,7 +6,11 @@ interface IndexInterfaceNumb {
   [key: string]: number;
 }
 
-export const sleepingTime = {
+interface IsleepingTime {
+  [key: string]: string;
+}
+
+export const sleepingTime: IsleepingTime = {
   NIGHT_SLEEP: "Ночной сон",
   DAY_SLEEP: "Дневной сон",
 };

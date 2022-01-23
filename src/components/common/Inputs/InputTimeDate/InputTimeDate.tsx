@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import "./InputTimeDate.css";
-import { currentDay, currentTime } from "../../helpers/changeNum";
+import { currentDay, currentTime } from "../../../helpers/changeNum";
 
 interface IInputTimeDate {
   className: string;
