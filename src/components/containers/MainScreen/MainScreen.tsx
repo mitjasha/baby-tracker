@@ -1,8 +1,8 @@
 /* eslint-disable global-require */
 import React from "react";
 // import { Link } from "react-router-dom";
-import MainScreenButton from "../../common/MainScreenButton/MainScreenButton";
-import NewEventButton from "../../common/NewEventButton/NewEventButton";
+import MainScreenButton from "../../common/Buttons/MainScreenButton/MainScreenButton";
+import NewEventButton from "../../common/Buttons/NewEventButton/NewEventButton";
 import Timeline from "../../common/Timeline/Timeline";
 import Timer from "../../common/Timer/Timer";
 import "./MainScreen.css";
@@ -24,7 +24,10 @@ const MainScreen: React.FC = () => (
       {/* TODO button */}
       <MainScreenButton className="main-screen-bnt-left">
         <div className="main-screen-bnt-icon">
-          <img src={require("../../../assets/svg/sleeping-icon.svg").default} alt="sleeping" />
+          <img
+            src={require("../../../assets/svg/sleeping-icon.svg").default}
+            alt="sleeping"
+          />
         </div>
         <div className="main-screen-btn-text-left">
           <p>Добавить</p> <p>сон</p>
@@ -35,7 +38,10 @@ const MainScreen: React.FC = () => (
           <p>Добавить</p> <p>кормление</p>
         </div>
         <div className="main-screen-bnt-icon">
-          <img src={require("../../../assets/svg/bottle-icon.svg").default} alt="feeding" />
+          <img
+            src={require("../../../assets/svg/bottle-icon.svg").default}
+            alt="feeding"
+          />
         </div>
       </MainScreenButton>
       {/* <Link to="/sleeping" className="start" id="start-sleep">

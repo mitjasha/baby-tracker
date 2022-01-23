@@ -6,7 +6,10 @@ interface BaseModalWrapperProps {
   onBackdropClick: () => void;
 }
 
-const BaseModalWindowWrapper: React.FC<BaseModalWrapperProps> = ({ onBackdropClick, isModalVisible }) => {
+const BaseModalWindowWrapper: React.FC<BaseModalWrapperProps> = ({
+  onBackdropClick,
+  isModalVisible,
+}) => {
   if (!isModalVisible) {
     return null;
   }

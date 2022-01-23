@@ -1,5 +1,5 @@
 import React from "react";
-import ModalMenuButton from "../ModalMenuButton/ModalMenuButton";
+import ModalMenuButton from "../../Buttons/ModalMenuButton/ModalMenuButton";
 import ModalEventMenu from "./ModalEventMenu";
 
 interface BaseModalWrapperProps {
@@ -7,7 +7,10 @@ interface BaseModalWrapperProps {
   onBackdropClick: () => void;
 }
 
-const BaseModalEventWrapper: React.FC<BaseModalWrapperProps> = ({ onBackdropClick, isModalVisible }) => {
+const BaseModalEventWrapper: React.FC<BaseModalWrapperProps> = ({
+  onBackdropClick,
+  isModalVisible,
+}) => {
   if (!isModalVisible) {
     return null;
   }

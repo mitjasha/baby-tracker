@@ -1,12 +1,9 @@
 import React from "react";
-import { AiOutlineHistory, AiOutlineHome } from "react-icons/ai";
-import { FaCog, FaOpencart } from "react-icons/fa";
-import { GiNightSleep } from "react-icons/gi";
 
 export interface SidebarItem {
   title: string;
   path: string;
-  icon: React.ReactNode;
+  iconName: string;
   iconOpened?: React.ReactNode;
   iconClosed?: React.ReactNode;
   subnav?: SidebarItem[];
@@ -15,28 +12,28 @@ export interface SidebarItem {
 const SidebarData: SidebarItem[] = [
   {
     title: "Сон",
+    iconName: "sleep",
     path: "/sleeping",
-    icon: <GiNightSleep />,
   },
   {
     title: "Кормление",
+    iconName: "feeding",
     path: "/feeding",
-    icon: <FaOpencart />,
   },
   {
     title: "Активность",
+    iconName: "activity",
     path: "/activity",
-    icon: <AiOutlineHistory />,
   },
   {
     title: "Настройки",
+    iconName: "setting",
     path: "/settings",
-    icon: <FaCog />,
   },
   {
     title: "Домой",
+    iconName: "home",
     path: "/",
-    icon: <AiOutlineHome />,
   },
 ];
 

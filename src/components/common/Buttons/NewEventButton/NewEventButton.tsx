@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BaseModalEventWrapper from "../ModalEventMenu/BaseModalEventWraper";
+import BaseModalEventWrapper from "../../ALLModalEdit/ModalEventMenu/BaseModalEventWraper";
 
 import "./NewEventButton.css";
 
@@ -15,7 +15,10 @@ const NewEventButton: React.FC = () => {
       <button className="btn" onClick={toggleModal}>
         + НОВОЕ СОБЫТИЕ
       </button>
-      <BaseModalEventWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal} />
+      <BaseModalEventWrapper
+        isModalVisible={isModalVisible}
+        onBackdropClick={toggleModal}
+      />
     </div>
   );
 };

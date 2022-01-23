@@ -4,7 +4,7 @@
   font-weight: 100;
 }
 
-@font-face{
+@font-face {
   font-family: Roboto;
   src: url("./assets/font/Roboto-Regular.ttf");
   font-weight: 300;
@@ -22,7 +22,6 @@
   font-weight: 700;
 }
 
-
 * {
   padding: 0;
   margin: 0;
@@ -30,18 +29,21 @@
   box-sizing: border-box;
 }
 
-button {
-  cursor: pointer;  
+a {
+  text-decoration: none;
 }
 
-button:focus{
+button {
+  cursor: pointer;
+}
+
+button:focus {
   outline: none;
 }
 
-input:focus{
-  outline: 5px solid #9DCDFF;
+input:focus {
+  outline: 5px solid #9dcdff;
 }
-
 
 footer,
 header {
@@ -52,7 +54,7 @@ ul li {
   list-style: none;
 }
 
-html{
+html {
   height: 100%;
 }
 
@@ -68,7 +70,7 @@ body {
   height: 100%;
 }
 
-#root{
+#root {
   display: flex;
   flex-direction: column;
   margin: 0 auto;

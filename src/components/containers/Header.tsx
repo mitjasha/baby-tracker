@@ -5,7 +5,7 @@ import "./Header.css";
 const Header: React.FC = () => (
   <header className="header">
     <div className="header-container">
-       <SideBar />
+      <SideBar />
     </div>
   </header>
 );

@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React, { useState } from "react";
-import BaseModalWindowWrapper from "../ModalEventWindow/BaseModalWindowWraper";
+import BaseModalWindowWrapper from "../../ALLModalEdit/ModalEventWindow/BaseModalWindowWraper";
 import "./ModalMenuButton.css";
 
 interface IModalMenuButton {
@@ -8,7 +8,10 @@ interface IModalMenuButton {
   className?: string;
 }
 
-const ModalMenuButton: React.FC<IModalMenuButton> = ({ children, className }) => {
+const ModalMenuButton: React.FC<IModalMenuButton> = ({
+  children,
+  className,
+}) => {
   const classes = classNames("modal-menu-button", className);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -20,7 +23,10 @@ const ModalMenuButton: React.FC<IModalMenuButton> = ({ children, className }) =>
       <button className={classes} onClick={toggleModal}>
         {children}
       </button>
-      <BaseModalWindowWrapper isModalVisible={isModalVisible} onBackdropClick={toggleModal} />
+      <BaseModalWindowWrapper
+        isModalVisible={isModalVisible}
+        onBackdropClick={toggleModal}
+      />
     </>
   );
 };

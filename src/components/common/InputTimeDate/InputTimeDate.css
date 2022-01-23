@@ -1,4 +1,4 @@
-.input-time-date-container{
+.input-time-date-container {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -10,15 +10,15 @@
   font-weight: 100;
 }
 
-.title-input{
+.title-input {
   width: 67px;
   text-align: left;
 }
 
-.input-time-date{
+.input-time-date {
   width: 100px;
   height: 40px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   font-size: 18px;
   text-align: center;
 }
@@ -30,20 +30,17 @@ input[type="date"]::-webkit-clear-button {
   position: relative;
 }
 
-
-
-input[type="date"]::-webkit-datetime-edit-month-field{
+input[type="date"]::-webkit-datetime-edit-month-field {
   position: absolute !important;
-  border-left:1px solid #8c8c8c;
+  border-left: 1px solid #8c8c8c;
   padding: 2px;
-  color:#000;
+  color: #000;
   left: 26px;
 }
 
-
-input[type="date"]::-webkit-datetime-edit-day-field{
+input[type="date"]::-webkit-datetime-edit-day-field {
   position: absolute !important;
-  color:#000;
+  color: #000;
   padding: 2px;
-  left: 4px;  
+  left: 4px;
 }

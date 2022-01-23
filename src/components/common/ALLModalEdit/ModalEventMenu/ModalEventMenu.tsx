@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./ModalEventWindow.css";
+import "./ModalEventMenu.css";
 
 interface ModalProps {
   onBackdropClick: () => void;
 }
 
-const ModalEventWindow: React.FC<ModalProps> = ({ onBackdropClick, children }) =>
+const ModalMenu: React.FC<ModalProps> = ({ onBackdropClick, children }) =>
   ReactDOM.createPortal(
     <div className="overlay" onClick={onBackdropClick}>
       <div onClick={(e) => e.stopPropagation()}>{children}</div>
     </div>,
-    document.getElementById("modal-root")!
+    document.getElementById("modal-root")!,
   );
 
-export default ModalEventWindow;
+export default ModalMenu;

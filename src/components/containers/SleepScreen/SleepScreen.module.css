@@ -9,7 +9,7 @@
   min-height: 80vh;
 }
 
-.babyContainer{
+.babyContainer {
   height: 450px;
   display: flex;
   flex-direction: column;

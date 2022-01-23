@@ -22,4 +22,3 @@ export const notesSize: IndexInterfaceNumb = {
   SECOND_NOTE_SIZE: 20,
   THIRD_NOTE_SIZE: 30,
 };
-

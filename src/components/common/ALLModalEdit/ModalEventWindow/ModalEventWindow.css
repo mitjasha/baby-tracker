@@ -1,5 +1,9 @@
 .modal-window-container {
-  background: linear-gradient(180deg, rgba(250, 234, 234, 0.82) 0%, #faeaea 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(250, 234, 234, 0.82) 0%,
+    #faeaea 100%
+  );
   box-sizing: border-box;
   border-radius: 20px;
   display: flex;

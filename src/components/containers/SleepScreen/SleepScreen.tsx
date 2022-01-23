@@ -1,49 +1,38 @@
 /* eslint-disable global-require */
-import React, { useState} from "react";
+import React, { useState } from "react";
 import ProgressBar from "../../common/ProgressBar/ProgressBar";
 import Timer from "../../common/Timer/Timer";
 import classes from "./SleepScreen.module.css";
-import {
-  sleepingTime,
-  progressBarValue,
-  notesSize,
-} from "./sleepScreenConst";
-import NewSleepButton from "../../common/NewSleepButton/NewSleepButton";
+import { sleepingTime, progressBarValue, notesSize } from "./sleepScreenConst";
+import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 import ModalWindow from "../../common/ModalWindow/ModalWindow";
 import InputTimeDate from "../../common/InputTimeDate/InputTimeDate";
 
-
-
-
-
 const SleepScreen: React.FC = () => {
-
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const toggleModal = ():void => setIsModalOpen(!isModalOpen);
+  const toggleModal = (): void => setIsModalOpen(!isModalOpen);
   const saveData = () => {
     console.log("save");
     toggleModal();
   };
-
   console.log(isModalOpen);
-
   return (
-  <div className={classes.sleepScreen}>
-    <div className={classes.babyContainer}>
-      <div className={classes.baby}>
+    <div className={classes.sleepScreen}>
+      <div className={classes.babyContainer}>
+        <div className={classes.baby}>
           <NotesOfSleep num={notesSize.FIRST_NOTE_SIZE} />
           <NotesOfSleep num={notesSize.SECOND_NOTE_SIZE} />
-           <NotesOfSleep num={notesSize.THIRD_NOTE_SIZE} />
-       <img
-        className={classes.babySleep}
-        src={require("../../../assets/png/girl.png")}
-        alt="baby"
-      />
-        <div className={classes.timer}>
-        <Timer />
+          <NotesOfSleep num={notesSize.THIRD_NOTE_SIZE} />
+          <img
+            className={classes.babySleep}
+            src={require("../../../assets/png/girl.png")}
+            alt="baby"
+          />
+          <div className={classes.timer}>
+            <Timer />
+          </div>
         </div>
-      </div>
         <ProgressBar
           icon={classes.nightIcon}
           value="60"
@@ -62,22 +51,25 @@ const SleepScreen: React.FC = () => {
           textName={sleepingTime.DAY_SLEEP}
           textValue="1 ч 30 м"
         />
+      </div>
+      <NewSleepButton
+        className={`btn-sleep ${isModalOpen ? "open" : "close"}`}
+        onClick={toggleModal}
+        text={""}
+      />
+      <ModalWindow
+        className={`${isModalOpen ? "open" : "close"}`}
+        withFooter={true}
+        onClose={toggleModal}
+        withIcon
+        iconImg={require("../../../assets/png/icon-sleep.png")}
+        titleModal={"Добавить сон"}
+        primaryBtn={{ text: "Сохранить", className: "h", onClick: saveData }}
+      >
+        <InputTimeDate className="" textName="Начало" />
+        <InputTimeDate className="" textName="Конец" />
+      </ModalWindow>
     </div>
-    <NewSleepButton className = {`btn-sleep ${isModalOpen  ? "open": "close"}`} onClick = {toggleModal} text = {""}/>
-    <ModalWindow
-    className = {`${isModalOpen  ? "open": "close"}`}
-    withFooter = {true}
-    onClose={toggleModal}
-    withIcon
-    iconImg = {require("../../../assets/png/icon-sleep.png")} 
-    titleModal = {"Добавить сон"}
-    primaryBtn = {{text: "Сохранить", className: "h", onClick: saveData}}
-    >
-      <InputTimeDate className="" textName="Начало"/>
-      <InputTimeDate className="" textName="Конец"/>
-     
-    </ModalWindow>
-  </div>
   );
 };
 

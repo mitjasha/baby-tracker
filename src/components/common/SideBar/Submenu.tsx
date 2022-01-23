@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+import cn from "classnames";
 import { Link } from "react-router-dom";
 import { SidebarItem } from "./SidebarData";
 
@@ -13,18 +14,14 @@ const Submenu: FC<SidebarLinkProps> = ({ item }) => {
   return (
     <>
       <Link to={item.path} onClick={showSubnav}>
-        <div>
-          {item.icon}
+        <div className="nav-link-sidebar">
+          <div className={cn("icon-img", `icon-img-${item.iconName}`)}></div>
           <div className="sidebar-label">{item.title}</div>
-        </div>
-        <div>
-          {item?.subnav && subnav ? item?.iconOpened : item?.iconClosed}
         </div>
       </Link>
       {subnav &&
         item?.subnav?.map((subnavItem, index) => (
           <Link className="dropdown-link" to={subnavItem.path} key={index}>
-            {subnavItem.icon}
             <div className="sidebar-label">{subnavItem.title}</div>
           </Link>
         ))}

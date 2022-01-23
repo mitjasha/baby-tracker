@@ -1,16 +1,16 @@
-.btn-sleep{
+.btn-sleep {
   width: 60px;
   height: 60px;
-  background-color: #9DCDFF;
+  background-color: #9dcdff;
   position: absolute;
-  color: #FFF;
+  color: #fff;
   border-radius: 50%;
   bottom: 20px;
   right: 20px;
   cursor: pointer;
 }
 
-.btn-sleep::before{
+.btn-sleep::before {
   content: "+";
   font-size: 48px;
   position: absolute;
@@ -18,10 +18,10 @@
   bottom: 0px;
 }
 
-.btn-sleep:hover{
-  background-color: #4AA7F1;
+.btn-sleep:hover {
+  background-color: #4aa7f1;
 }
 
-.btn-sleep:active{
-  background-color: #A7BC28;
+.btn-sleep:active {
+  background-color: #a7bc28;
 }
