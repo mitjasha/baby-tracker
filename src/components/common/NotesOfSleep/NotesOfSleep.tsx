@@ -22,7 +22,7 @@ function styleNotes(num: number) {
 
 const NotesOfSleep: React.FC<INotesOfSleep> = ({ num }) => (
   <>
-    <div className= {classes.notes} style={styleNotes(num)}>
+    <div className={classes.notes} style={styleNotes(num)}>
       &#9834;
     </div>
   </>

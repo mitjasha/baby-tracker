@@ -4,9 +4,11 @@ import ActivityScreen from "./components/containers/ActivityScreen/ActivityScree
 import FeedingScreen from "./components/containers/FeedingScreen/FeedingScreen";
 import Footer from "./components/containers/Footer";
 import Header from "./components/containers/Header";
+
 import MainScreen from "./components/containers/MainScreen/MainScreen";
 import Settings from "./components/containers/Settings/Settings";
 import SleepScreen from "./components/containers/SleepScreen/SleepScreen";
+import LoginScreen from "./components/containers/LoginScreen/LoginScreen";
 
 const App: React.FC = () => (
   <>
@@ -14,7 +16,8 @@ const App: React.FC = () => (
       <Header />
       <main className="main">
         <Routes>
-          <Route path="/" element={<MainScreen />} />
+          <Route path="/" element={<LoginScreen />} />
+          <Route path="/main" element={<MainScreen />} />
           <Route path="/activity" element={<ActivityScreen />} />
           <Route path="/feeding" element={<FeedingScreen />} />
           <Route path="/sleeping" element={<SleepScreen />} />

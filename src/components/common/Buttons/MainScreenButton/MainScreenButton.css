@@ -1,0 +1,10 @@
+.main-screen-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: 49%;
+  height: 120px;
+  background-color: #bfe2fe;
+}

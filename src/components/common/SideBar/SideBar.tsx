@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import styled from "styled-components";
 import { IconContext } from "react-icons";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import SidebarData from "./SidebarData";
@@ -13,19 +12,19 @@ const Sidebar: React.FC = () => {
 
   return (
     <IconContext.Provider value={{ color: "#fff" }}>
-      <div className="nav">
-        <Link to="#" className="nav-icon" onClick={showSidebar}>
+      <div className="nav" onClick={showSidebar}>
+        <Link to="#" className="nav-icon">
           <AiOutlineMenu />
         </Link>
       </div>
       <div
         className="sidebar-nav"
-        style={sidebar ? { left: "0%" } : { left: "-100%" }}
+        style={sidebar ? { bottom: "0px" } : { bottom: "-100%" }}
       >
-        <div className="sidebar-wrap">
-          <Link to="#" className="nav-icon" onClick={showSidebar}>
-            <AiOutlineClose />
-          </Link>
+        <Link to="#" className="nav-icon" onClick={showSidebar}>
+          <AiOutlineClose />
+        </Link>
+        <div className="sidebar-wrap" onClick={showSidebar}>
           {SidebarData.map((item, index) => (
             <Submenu item={item} key={index} />
           ))}
