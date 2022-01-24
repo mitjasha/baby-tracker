@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user {
+  background-image: url("../../../assets/svg/user-name-logo.svg");
+}
+
+.password {
+  background-image: url("../../../assets/svg/password-logo.svg");
+}
+
+.logo {
+  background-image: url("../../../assets/svg/logo.svg");
+  width: 160px;
+  height: 160px;
+  background-size: 160px 160px;
+  background-repeat: no-repeat;
+  margin: 85px 0px 33px;
+}
+
+.button {
+  width: 268px;
+  height: 54px;
+  background-color: #fecdcb;
+  border-radius: 40px;
+  margin: 33px 0px 125px;
+  color: #fff;
+  font-size: 18px;
+  background: linear-gradient(-45deg, #f8a1a9, #dd5569, #4aa7f1, #9dcdff);
+  background-size: 400% 400%;
+  animation: animate_gradient 5s ease infinite;
+}
+
+@keyframes animate_gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.signIn {
+  font-size: 16px;
+  color: #6d6d6d;
+  cursor: pointer;
+}
+
+.signIn:hover {
+  color: #8d1c1a;
+}
+
+input.password {
+  color: #6d6d6d;
+}
