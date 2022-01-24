@@ -60,28 +60,27 @@ html {
 
 body {
   color: #fff;
-  overflow: hidden;
   text-align: center;
   font-family: Roboto;
   font-weight: 400;
   background: #fecdcb;
-  width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  min-height: 100%;
+  height: 100%;
 }
 
 .main {
   flex: 1 1 auto;
-  margin: 0 auto;
-  background-color: #fff;
-  width: 360px;
+  background-color: #facdcc;
+  width: 100%;
 }
+
 .header,
 .footer {
   display: flex;
@@ -112,7 +111,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 360px;
-  transition: margin 0.5s ease-out;
   color: #000;
+  margin: 0 auto;
 }

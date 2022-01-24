@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 360px;
+  height: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.name {
+  width: 258px;
+  height: 44px;
+}
+
+.birth {
+  width: 258px;
+  height: 44px;
+  padding-left: 60px;
+  cursor: cell;
+}
+
+.parameters {
+  width: 258px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 38px;
+}
+
+.weight,
+.height {
+  width: 110px;
+  height: 44px;
+}
+
+.title {
+  font-size: 24px;
+  color: #8d1c1a;
+  white-space: pre-line;
+  margin-top: 24px;
+}
+
+.button {
+  width: 268px;
+  height: 54px;
+  background-color: #fecdcb;
+  border-radius: 40px;
+  margin: 19px 0px;
+  color: #fff;
+  font-size: 18px;
+  background: linear-gradient(-45deg, #f8a1a9, #dd5569, #4aa7f1, #9dcdff);
+  background-size: 400% 400%;
+  animation: animate_gradient 5s ease infinite;
+}
+
+@keyframes animate_gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.later {
+  font-size: 16px;
+  color: #6d6d6d;
+  cursor: pointer;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.photo {
+  width: 68px;
+  height: 38px;
+  background-image: url("../../../assets//svg/img.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.photoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  opacity: 0;
+  left: -1000px;
+  visibility: hidden;
+  position: absolute;
+}
+
+.boy {
+  background-image: url("../../../assets/png/feeling/boy/06.png");
+}
+
+.girl {
+  background-image: url("../../../assets/png/feeling/girl/06.png");
+}
