@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import classes from "./LoginScreen.module.css";
+import classes from "./RegScreen.module.css";
 import InputLogin from "../../common/Inputs/InputLogin/InputLogin";
-import loginScreen from "./LoginScreenConst";
+import regScreen from "./RegScreenConst";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 
-const LoginScreen: React.FC = () => {
+const RegScreen: React.FC = () => {
   const [valueUserName, setValueUserName] = useState("");
   const [valuePassword, setValuePassword] = useState("");
 
@@ -18,40 +18,36 @@ const LoginScreen: React.FC = () => {
     console.log(`PASSWORD = ${e.target.value}`);
   };
 
-  const Login = () => console.log("ВОЙТИ");
-  const registrationFn = () => console.log("REGISTRATION");
+  const register = () => console.log("ЗАРЕГИСТРИРОВАТЬСЯ");
+  const signIn = () => console.log("ВОЙТИ");
 
   return (
     <div className={classes.container}>
       <div className={classes.logo} />
       <InputLogin
         className={classes.user}
-        type={loginScreen.TYPE_TEXT}
-        placeholder={loginScreen.PLACEHOLDER_USER}
+        type={regScreen.TYPE_TEXT}
+        placeholder={regScreen.PLACEHOLDER_USER}
         value={valueUserName}
         onChange={enterUserName}
       />
       <InputLogin
         className={classes.password}
-        type={loginScreen.TYPE_PASSWORD}
-        placeholder={loginScreen.PLACEHOLDER_PASSWORD}
+        type={regScreen.TYPE_PASSWORD}
+        placeholder={regScreen.PLACEHOLDER_PASSWORD}
         value={valuePassword}
         onChange={enterPassword}
       />
       <NewSleepButton
         className={classes.button}
-        text={loginScreen.TEXT_BUTTON}
-        onClick={Login}
+        text={regScreen.TEXT_BUTTON}
+        onClick={register}
       />
-      <Link
-        to="/registration"
-        className={classes.registration}
-        onClick={registrationFn}
-      >
-        {loginScreen.TEXT_REGISTRATION}
+      <Link to="/" className={classes.signIn} onClick={signIn}>
+        {regScreen.TEXT_SIGNIN}
       </Link>
     </div>
   );
 };
 
-export default LoginScreen;
+export default RegScreen;

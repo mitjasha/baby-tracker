@@ -9,6 +9,7 @@ import MainScreen from "./components/containers/MainScreen/MainScreen";
 import Settings from "./components/containers/Settings/Settings";
 import SleepScreen from "./components/containers/SleepScreen/SleepScreen";
 import LoginScreen from "./components/containers/LoginScreen/LoginScreen";
+import RegScreen from "./components/containers/RegScreen/RegnScreen";
 
 const App: React.FC = () => (
   <>
@@ -17,6 +18,7 @@ const App: React.FC = () => (
       <main className="main">
         <Routes>
           <Route path="/" element={<LoginScreen />} />
+          <Route path="/registration" element={<RegScreen />} />
           <Route path="/main" element={<MainScreen />} />
           <Route path="/activity" element={<ActivityScreen />} />
           <Route path="/feeding" element={<FeedingScreen />} />
