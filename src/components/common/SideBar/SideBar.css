@@ -7,10 +7,11 @@
   height: 100vh;
   background-color: #add8e6;
   position: fixed;
-  bottom: -100%;
-  margin: 0 auto;
+  margin: -80px auto 0px;
   transition: 350ms;
+  left: -1000px;
   z-index: 100;
+  position: absolute;
 }
 
 .nav-link-sidebar {
@@ -84,4 +85,8 @@
   padding-left: 3rem;
   text-decoration: none;
   color: #fff;
+}
+
+.open {
+  left: calc(100vw / 2 - 180px);
 }

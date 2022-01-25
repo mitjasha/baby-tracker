@@ -5,7 +5,7 @@ import classes from "./BabyDataScreen.module.css";
 import babyData from "./BabyDataScreenCONST";
 import { currentDay } from "../../helpers/changeNum";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
-import InputGender from "../../common/Inputs/InputGender/InputGender";
+import InputGenderAddBaby from "../../common/Inputs/InputGenederAddBaby/InputGenderAddBaby";
 
 const BabyDataScreen: React.FC = () => {
   const save = () => console.log("save");
@@ -19,7 +19,7 @@ const BabyDataScreen: React.FC = () => {
         type={babyData.TYPE_TEXT}
         placeholder={babyData.NAME}
       />
-      <InputGender
+      <InputGenderAddBaby
         textTitle={babyData.TEXT_GENDER}
         classBoy={classes.boy}
         classGirl={classes.girl}
@@ -59,7 +59,6 @@ const BabyDataScreen: React.FC = () => {
           type={babyData.TYPE_FILE}
         />
       </label>
-
       <NewSleepButton
         className={classes.button}
         text={babyData.TEXT_BUTTON}
