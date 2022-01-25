@@ -1,6 +1,5 @@
 import React from "react";
-import cn from "classnames";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import ActivityScreen from "./components/containers/ActivityScreen/ActivityScreen";
 import FeedingScreen from "./components/containers/FeedingScreen/FeedingScreen";
 import MainScreen from "./components/containers/MainScreen/MainScreen";
@@ -11,22 +10,20 @@ import RegScreen from "./components/containers/RegScreen/RegnScreen";
 import BabyDataScreen from "./components/containers/BabyDataScreen/BabyDataScreen";
 
 const App: React.FC = () => (
-  <>
-    <Router>
-      <main className={cn("main")}>
-        <Routes>
-          <Route path="/" element={<LoginScreen />} />
-          <Route path="/registration" element={<RegScreen />} />
-          <Route path="/baby-data" element={<BabyDataScreen />} />
-          <Route path="/main" element={<MainScreen />} />
-          <Route path="/activity" element={<ActivityScreen />} />
-          <Route path="/feeding" element={<FeedingScreen />} />
-          <Route path="/sleeping" element={<SleepScreen />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
-      </main>
-    </Router>
-  </>
+  <HashRouter>
+    <main className="main">
+      <Routes>
+        <Route path="/" element={<LoginScreen />} />
+        <Route path="/registration" element={<RegScreen />} />
+        <Route path="/baby-data" element={<BabyDataScreen />} />
+        <Route path="/main" element={<MainScreen />} />
+        <Route path="/activity" element={<ActivityScreen />} />
+        <Route path="/feeding" element={<FeedingScreen />} />
+        <Route path="/sleeping" element={<SleepScreen />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
+    </main>
+  </HashRouter>
 );
 
 export default App;

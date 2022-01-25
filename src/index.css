@@ -72,13 +72,13 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  height: 100%;
+  min-height: 100%;
 }
 
 .main {
   flex: 1 1 auto;
-  background-color: #facdcc;
-  width: 100%;
+  margin: 0 auto;
+  background-color: #fecdcb;
 }
 
 .header,
@@ -95,7 +95,6 @@ body {
 
 .footer {
   height: 60px;
-  width: 100%;
 }
 
 .footer-content {
