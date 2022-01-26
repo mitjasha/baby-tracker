@@ -4,14 +4,16 @@
 
 .sidebar-nav {
   width: 360px;
-  height: 100vh;
   background-color: #add8e6;
   position: fixed;
-  margin: -80px auto 0px;
+  margin: auto 0px;
   transition: 350ms;
   left: -1000px;
   z-index: 100;
   position: absolute;
+  top: 0px;
+  padding-bottom: 20px;
+  border-radius: 0px 0px 20px 20px;
 }
 
 .nav-link-sidebar {
@@ -87,6 +89,6 @@
   color: #fff;
 }
 
-.open {
-  left: calc(100vw / 2 - 180px);
+.open-bar {
+  left: calc(100% / 2 - 180px);
 }

@@ -18,7 +18,7 @@ const Sidebar: React.FC = () => {
           <AiOutlineMenu />
         </Link>
       </div>
-      <div className={cn("sidebar-nav", sidebar ? "open" : "close")}>
+      <div className={cn("sidebar-nav", sidebar ? "open-bar" : "close-bar")}>
         <Link to="#" className="nav-icon" onClick={showSidebar}>
           <AiOutlineClose />
         </Link>
