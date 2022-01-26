@@ -1,12 +1,7 @@
 .sleepScreen {
   background-color: #fff;
   position: relative;
-  width: 360px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
+  overflow: hidden;
 }
 
 .babyContainer {

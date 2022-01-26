@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import cn from "classnames";
 import SidebarData from "./SidebarData";
 import Submenu from "./Submenu";
 import "./SideBar.css";
@@ -17,10 +18,7 @@ const Sidebar: React.FC = () => {
           <AiOutlineMenu />
         </Link>
       </div>
-      <div
-        className="sidebar-nav"
-        style={sidebar ? { bottom: "0px" } : { bottom: "-100%" }}
-      >
+      <div className={cn("sidebar-nav", sidebar ? "open" : "close")}>
         <Link to="#" className="nav-icon" onClick={showSidebar}>
           <AiOutlineClose />
         </Link>

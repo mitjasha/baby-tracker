@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import classes from "./RegScreen.module.css";
 import InputLogin from "../../common/Inputs/InputLogin/InputLogin";
 import regScreen from "./RegScreenConst";
+import Footer from "../Footer";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 
 const RegScreen: React.FC = () => {
@@ -18,35 +19,40 @@ const RegScreen: React.FC = () => {
     console.log(`PASSWORD = ${e.target.value}`);
   };
 
-  const register = () => console.log("ЗАРЕГИСТРИРОВАТЬСЯ");
   const signIn = () => console.log("ВОЙТИ");
+  const register = () => console.log("РЕГИСТРАЦИЯ");
 
   return (
-    <div className={classes.container}>
-      <div className={classes.logo} />
-      <InputLogin
-        className={classes.user}
-        type={regScreen.TYPE_TEXT}
-        placeholder={regScreen.PLACEHOLDER_USER}
-        value={valueUserName}
-        onChange={enterUserName}
-      />
-      <InputLogin
-        className={classes.password}
-        type={regScreen.TYPE_PASSWORD}
-        placeholder={regScreen.PLACEHOLDER_PASSWORD}
-        value={valuePassword}
-        onChange={enterPassword}
-      />
-      <NewSleepButton
-        className={classes.button}
-        text={regScreen.TEXT_BUTTON}
-        onClick={register}
-      />
-      <Link to="/" className={classes.signIn} onClick={signIn}>
-        {regScreen.TEXT_SIGNIN}
-      </Link>
-    </div>
+    <>
+      <div className={classes.container}>
+        <div className={classes.logo} />
+        <InputLogin
+          className={classes.user}
+          type={regScreen.TYPE_TEXT}
+          placeholder={regScreen.PLACEHOLDER_USER}
+          value={valueUserName}
+          onChange={enterUserName}
+        />
+        <InputLogin
+          className={classes.password}
+          type={regScreen.TYPE_PASSWORD}
+          placeholder={regScreen.PLACEHOLDER_PASSWORD}
+          value={valuePassword}
+          onChange={enterPassword}
+        />
+        <Link to="/baby-data">
+          <NewSleepButton
+            className={classes.button}
+            text={regScreen.TEXT_BUTTON}
+            onClick={register}
+          />
+        </Link>
+        <Link to="/" className={classes.signIn} onClick={signIn}>
+          {regScreen.TEXT_SIGNIN}
+        </Link>
+      </div>
+      <Footer />
+    </>
   );
 };
 
