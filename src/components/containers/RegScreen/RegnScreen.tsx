@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import classes from "./RegScreen.module.css";
 import InputLogin from "../../common/Inputs/InputLogin/InputLogin";
 import regScreen from "./RegScreenConst";
-import Footer from "../Footer";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 
 const RegScreen: React.FC = () => {
@@ -51,7 +50,6 @@ const RegScreen: React.FC = () => {
           {regScreen.TEXT_SIGNIN}
         </Link>
       </div>
-      <Footer />
     </>
   );
 };

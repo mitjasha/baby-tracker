@@ -79,6 +79,7 @@ main {
   flex: 1 1 auto;
   margin: 0 auto;
   background-color: #fecdcb;
+  width: 360px;
 }
 
 .header,
@@ -112,6 +113,5 @@ main {
   justify-content: center;
   color: #000;
   margin: 0 auto;
-  width: 360px;
   height: 100%;
 }
