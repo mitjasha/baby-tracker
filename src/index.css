@@ -72,10 +72,10 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  min-height: 100%;
+  height: 100%;
 }
 
-.main {
+main {
   flex: 1 1 auto;
   margin: 0 auto;
   background-color: #fecdcb;
@@ -112,4 +112,6 @@ body {
   justify-content: center;
   color: #000;
   margin: 0 auto;
+  width: 360px;
+  height: 100%;
 }

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./LoginScreen.module.css";
-import Footer from "../Footer";
 import InputLogin from "../../common/Inputs/InputLogin/InputLogin";
 import loginScreen from "./LoginScreenConst";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
@@ -55,7 +54,6 @@ const LoginScreen: React.FC = () => {
           {loginScreen.TEXT_REGISTRATION}
         </Link>
       </div>
-      <Footer />
     </>
   );
 };

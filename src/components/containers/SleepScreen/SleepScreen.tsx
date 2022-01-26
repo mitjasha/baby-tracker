@@ -9,7 +9,6 @@ import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 import ModalWindow from "../../common/ModalWindow/ModalWindow";
 import InputTimeDate from "../../common/Inputs/InputTimeDate/InputTimeDate";
-import Header from "../Header";
 
 const SleepScreen: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -21,7 +20,6 @@ const SleepScreen: React.FC = () => {
   console.log(isModalOpen);
   return (
     <>
-      <Header />
       <div className={cn("screen", classes.sleepScreen)}>
         <div className={classes.babyContainer}>
           <div className={classes.baby}>

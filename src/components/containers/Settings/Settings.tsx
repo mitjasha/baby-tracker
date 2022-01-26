@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "../Header";
-import Footer from "../Footer";
 
 const Settings: React.FC = () => {
   let timerStatus = false;
@@ -15,7 +13,6 @@ const Settings: React.FC = () => {
   };
   return (
     <>
-      <Header />
       <div className="screen" id="settings-page">
         <h2>Settings</h2>
         <div className="settings-container">
@@ -54,7 +51,6 @@ const Settings: React.FC = () => {
           </Link>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

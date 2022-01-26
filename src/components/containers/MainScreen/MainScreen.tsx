@@ -5,12 +5,10 @@ import MainScreenButton from "../../common/Buttons/MainScreenButton/MainScreenBu
 import NewEventButton from "../../common/Buttons/NewEventButton/NewEventButton";
 import Timeline from "../../common/Timeline/Timeline";
 import Timer from "../../common/Timer/Timer";
-import Header from "../Header";
 import "./MainScreen.css";
 
 const MainScreen: React.FC = () => (
   <>
-    <Header />
     <div className="screen main-screen">
       <div className="main-screen-up-container">
         <div className="main-screen-info">
@@ -22,43 +20,46 @@ const MainScreen: React.FC = () => (
           </div>
         </div>
       </div>
-
-      <div className="main-buttons-container">
-        {/* TODO button */}
-        <MainScreenButton className="main-screen-bnt-left">
-          <div className="main-screen-bnt-icon">
-            <img
-              src={require("../../../assets/svg/sleeping-icon.svg").default}
-              alt="sleeping"
-            />
-          </div>
-          <div className="main-screen-btn-text-left">
-            <p>Добавить</p> <p>сон</p>
-          </div>
-        </MainScreenButton>
-        <MainScreenButton className="main-screen-bnt-right">
-          <div className="main-screen-btn-text-right">
-            <p>Добавить</p> <p>кормление</p>
-          </div>
-          <div className="main-screen-bnt-icon">
-            <img
-              src={require("../../../assets/svg/bottle-icon.svg").default}
-              alt="feeding"
-            />
-          </div>
-        </MainScreenButton>
-        {/* <Link to="/sleeping" className="start" id="start-sleep">
+      <div className="button-wrapper">
+        <div className="main-buttons-container">
+          {/* TODO button */}
+          <MainScreenButton className="main-screen-bnt-left">
+            <div className="main-screen-bnt-icon">
+              <img
+                src={require("../../../assets/svg/sleeping-icon.svg").default}
+                alt="sleeping"
+              />
+            </div>
+            <div className="main-screen-btn-text-left">
+              <p>Добавить</p> <p>сон</p>
+            </div>
+          </MainScreenButton>
+          <MainScreenButton className="main-screen-bnt-right">
+            <div className="main-screen-btn-text-right">
+              <p>Добавить</p> <p>кормление</p>
+            </div>
+            <div className="main-screen-bnt-icon">
+              <img
+                src={require("../../../assets/svg/bottle-icon.svg").default}
+                alt="feeding"
+              />
+            </div>
+          </MainScreenButton>
+          {/* <Link to="/sleeping" className="start" id="start-sleep">
         <span className="btn-text">Sleeping</span>
       </Link>
       <Link to="/feeding" className="start" id="start-feed">
         <span className="btn-text">Feeding</span>
       </Link> */}
+        </div>
       </div>
-      <div className="main-screen-timeline">
-        <Timeline></Timeline>
-      </div>
-      <div className="main-screen-add-activity">
-        <NewEventButton />
+      <div>
+        <div className="main-screen-timeline">
+          <Timeline></Timeline>
+        </div>
+        <div className="main-screen-add-activity">
+          <NewEventButton />
+        </div>
       </div>
     </div>
   </>

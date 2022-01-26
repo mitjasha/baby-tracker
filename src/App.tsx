@@ -8,9 +8,12 @@ import SleepScreen from "./components/containers/SleepScreen/SleepScreen";
 import LoginScreen from "./components/containers/LoginScreen/LoginScreen";
 import RegScreen from "./components/containers/RegScreen/RegnScreen";
 import BabyDataScreen from "./components/containers/BabyDataScreen/BabyDataScreen";
+import Header from "./components/containers/Header";
+import Footer from "./components/containers/Footer";
 
 const App: React.FC = () => (
   <HashRouter>
+    <Header />
     <main className="main">
       <Routes>
         <Route path="/" element={<LoginScreen />} />
@@ -23,6 +26,7 @@ const App: React.FC = () => (
         <Route path="/settings" element={<Settings />} />
       </Routes>
     </main>
+    <Footer />
   </HashRouter>
 );
 

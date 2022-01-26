@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../Header";
+import cn from "classnames";
+import classes from "./ActivityScreen.module.css";
 
 const ActivityScreen: React.FC = () => (
   <>
-    <Header />
-    <div className="screen">Activity Screen</div>
+    <div className={cn("screen", classes.container)}>Activity Screen</div>
   </>
 );
 

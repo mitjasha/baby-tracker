@@ -1,8 +1,6 @@
 .sleepScreen {
   background-color: #fff;
   position: relative;
-  width: 360px;
-  min-height: 80vh;
   overflow: hidden;
 }
 
