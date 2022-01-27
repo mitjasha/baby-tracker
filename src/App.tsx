@@ -1,5 +1,5 @@
-import React from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import ActivityScreen from "./components/containers/ActivityScreen/ActivityScreen";
 import FeedingScreen from "./components/containers/FeedingScreen/FeedingScreen";
 import MainScreen from "./components/containers/MainScreen/MainScreen";
@@ -11,23 +11,35 @@ import BabyDataScreen from "./components/containers/BabyDataScreen/BabyDataScree
 import Header from "./components/containers/Header";
 import Footer from "./components/containers/Footer";
 
-const App: React.FC = () => (
-  <HashRouter>
-    <Header />
-    <main className="main">
-      <Routes>
-        <Route path="/" element={<LoginScreen />} />
-        <Route path="/registration" element={<RegScreen />} />
-        <Route path="/baby-data" element={<BabyDataScreen />} />
-        <Route path="/main" element={<MainScreen />} />
-        <Route path="/activity" element={<ActivityScreen />} />
-        <Route path="/feeding" element={<FeedingScreen />} />
-        <Route path="/sleeping" element={<SleepScreen />} />
-        <Route path="/settings" element={<Settings />} />
-      </Routes>
-    </main>
-    <Footer />
-  </HashRouter>
-);
+const routesWithoutHeader: string[] = ["/", "/registration", "/baby-data"];
+
+const App: React.FC = () => {
+  const location = useLocation();
+  const [isHeader, setHeader] = useState<boolean>(false);
+  const [isFooter, setFooter] = useState<boolean>(false);
+  useEffect(() => {
+    setHeader(routesWithoutHeader.includes(location.pathname));
+    setFooter(routesWithoutHeader.includes(location.pathname));
+  }, [location.pathname]);
+
+  return (
+    <>
+      {!isHeader && <Header />}
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<LoginScreen />} />
+          <Route path="/registration" element={<RegScreen />} />
+          <Route path="/baby-data" element={<BabyDataScreen />} />
+          <Route path="/main" element={<MainScreen />} />
+          <Route path="/activity" element={<ActivityScreen />} />
+          <Route path="/feeding" element={<FeedingScreen />} />
+          <Route path="/sleeping" element={<SleepScreen />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+      </main>
+      {isFooter && <Footer />}
+    </>
+  );
+};
 
 export default App;
