@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import cn from "classnames";
+import Footer from "../../containers/Footer";
 import SidebarData from "./SidebarData";
 import Submenu from "./Submenu";
 import "./SideBar.css";
@@ -26,6 +27,7 @@ const Sidebar: React.FC = () => {
           {SidebarData.map((item, index) => (
             <Submenu item={item} key={index} />
           ))}
+          <Footer />
         </div>
       </div>
     </IconContext.Provider>
