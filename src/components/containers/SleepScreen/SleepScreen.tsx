@@ -14,10 +14,8 @@ const SleepScreen: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const toggleModal = (): void => setIsModalOpen(!isModalOpen);
   const saveData = () => {
-    console.log("save");
     toggleModal();
   };
-  console.log(isModalOpen);
   return (
     <>
       <div className={cn("screen", classes.sleepScreen)}>
