@@ -3,8 +3,8 @@ import feelingIcon from "../../../assets/svg/feeling-icon.svg";
 import gamesIcon from "../../../assets/svg/games-icon.svg";
 import bathIcon from "../../../assets/svg/baby-bath-icon.svg";
 import walk from "../../../assets/png/activity/girl-walk.png";
-import active from "../../../assets/png/activity/girl-active.png";
-import bath from "../../../assets/png/activity/boy-active.png";
+import active from "../../../assets/png/activity/girl-play.png";
+import bath from "../../../assets/png/activity/girl-bath.png";
 import girlDefault from "../../../assets/png/activity/girl-default.png";
 
 export interface IActivityScreenConst {
