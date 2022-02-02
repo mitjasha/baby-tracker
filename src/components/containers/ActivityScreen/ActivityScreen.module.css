@@ -3,3 +3,43 @@
   height: 100%;
   background-color: #fff;
 }
+
+.timer {
+  width: 80px;
+  height: 80px;
+  margin: 0px;
+}
+
+.imgTimer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 140px;
+  height: 225px;
+}
+
+.containerBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+}
+
+.valueTime {
+  left: 25%;
+}
+
+.img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin-left: 25px;
+}
+
+.wrapper {
+  width: 80px;
+  height: 80px;
+  font-size: 14px;
+  position: relative;
+}

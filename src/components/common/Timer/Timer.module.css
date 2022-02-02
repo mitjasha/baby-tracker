@@ -9,10 +9,28 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  /* animation: circle 10s linear infinite; */
+  animation: circle 10s linear infinite;
 }
 @keyframes circle {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.styleSlow {
+  animation: circle 15s linear infinite;
+}
+
+.styleFast {
+  animation: circle 5s linear infinite;
+}
+
+.value {
+  position: absolute;
+  top: 39%;
+  left: 29%;
+}
+
+.wrapper {
+  position: relative;
 }

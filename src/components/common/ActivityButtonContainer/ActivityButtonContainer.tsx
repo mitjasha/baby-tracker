@@ -1,7 +1,7 @@
 import React, { FC, MouseEvent } from "react";
 import classes from "./ActivityButtonContainer.module.css";
 import ButtonChoseActivity from "../Buttons/ButtonChoseActivity/ButtonChoseActivity";
-import { ActivityButtonConst } from "../../common/ActivityButtonContainer/ActivityButonConst";
+import { ActivityButtonConst } from "./ActivityButtonConst";
 
 interface IActivityButtonContainer {
   onClick: (event: MouseEvent) => void;

@@ -30,7 +30,7 @@ const SleepScreen: React.FC = () => {
               alt="baby"
             />
             <div className={classes.timer}>
-              <Timer />
+              <Timer withClick />
             </div>
           </div>
           <ProgressBar
