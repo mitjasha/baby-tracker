@@ -16,7 +16,7 @@ const MainScreen: React.FC = () => (
         </div>
         <div className="main-screen-timer-container">
           <div className="timer-wrap">
-            <Timer />
+            <Timer withClick />
           </div>
         </div>
       </div>

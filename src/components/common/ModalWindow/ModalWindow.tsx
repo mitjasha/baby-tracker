@@ -1,13 +1,13 @@
 /* eslint-disable global-require */
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, MouseEvent } from "react";
 import cn from "classnames";
 import "./ModalWindow.css";
 
 type TPrimaryBtn = {
   text: string;
-  onClick?: () => void;
+  onClick?: (event: MouseEvent) => void;
   icon?: string;
-  className: string;
+  className?: string;
 };
 
 type TSecondaryBtn = {
@@ -26,7 +26,7 @@ interface IModalWindow {
   primaryBtn: TPrimaryBtn;
   secondaryBtn?: TSecondaryBtn;
   className?: string;
-  onClose: () => void;
+  onClose: (event: MouseEvent) => void;
   titleModal: string;
 }
 
@@ -50,7 +50,10 @@ const ModalWindow: FC<IModalWindow> = ({
         </div>
         {withIcon && (
           <div className="modalIcon">
-            <img className="modal-icon-img" src={`${iconImg}`} />
+            <img
+              className={cn("modal-icon-img", `icon-${titleModal}`)}
+              src={`${iconImg}`}
+            />
           </div>
         )}
 

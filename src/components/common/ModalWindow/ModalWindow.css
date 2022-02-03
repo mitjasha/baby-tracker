@@ -9,6 +9,7 @@
 }
 
 .overlay-sleep {
+  margin-top: -80px;
   width: 100%;
   height: 100%;
   background-color: #000;
@@ -22,11 +23,12 @@
   position: absolute;
   z-index: 50;
   transition: 350ms;
-  bottom: -1000%;
+  left: -2000px;
 }
 
 .modal-open {
   bottom: 10vh;
+  left: calc(100% / 2 - 180px);
 }
 
 .overlay-open {
@@ -54,7 +56,7 @@
 
 .title-modal {
   color: #df7e8a;
-  margin: 70px 0 15px;
+  margin: 55px 0 15px;
   font-size: 36px;
   font-weight: 300;
 }
@@ -78,4 +80,12 @@
 
 .modal-button:hover {
   background-color: #9dcdff;
+}
+
+.icon-Купание {
+  margin-top: 15px;
+}
+
+.icon-Активность {
+  padding-right: 22px;
 }

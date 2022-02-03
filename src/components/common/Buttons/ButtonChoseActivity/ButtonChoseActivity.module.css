@@ -1,0 +1,36 @@
+.icon {
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+  background-color: #9dcdff;
+  position: absolute;
+  left: 0px;
+}
+
+.button {
+  position: relative;
+  width: 140px;
+  height: 41px;
+  border-radius: 20px;
+  background-color: #fecdcb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 30px;
+}
+
+.text {
+  font-size: 14px;
+}
+
+.img {
+  width: 28px;
+  height: 28px;
+  left: 6px;
+  top: 6px;
+  object-fit: contain;
+  position: absolute;
+}
+.button:hover {
+  background-color: #9dcdff;
+}
