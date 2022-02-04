@@ -10,12 +10,14 @@ interface ITimer {
   classNameTimer?: string;
   classNameValue?: string;
   withClick: boolean;
+  click?: () => void;
 }
 const Timer: React.FC<ITimer> = ({
   classNameTimer,
   classNameValue,
   classWrap,
   withClick,
+  click,
 }) => {
   const [hours, setHours] = useState<number>(0);
   const [min, setMin] = useState<number>(0);
@@ -30,7 +32,7 @@ const Timer: React.FC<ITimer> = ({
   };
 
   return (
-    <div className={classWrap}>
+    <div className={classWrap} onClick={click}>
       <button
         onClick={() => {
           if (withClick) {

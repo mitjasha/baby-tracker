@@ -1,23 +1,26 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 import cn from "classnames";
 import classes from "./InputGender.module.css";
 
 interface IInputGender {
-  classBaby: string;
+  id?: string;
+  img: string;
+  className?: string;
   textBaby: string;
-  onClick: () => void;
+  onClick: (event: MouseEvent) => void;
 }
 
 const InputGender: React.FC<IInputGender> = ({
-  classBaby,
+  img,
+  id,
   textBaby,
+  className,
   onClick,
 }) => (
   <>
-    <div className={cn(classes.gender)} onClick={onClick}>
-      <div className={cn(classes.baby, classBaby)}>
-        <p className={classes.title}>{textBaby}</p>
-      </div>
+    <div className={cn(classes.gender, className)} id={id} onClick={onClick}>
+      <img className={cn(classes.baby)} src={img}></img>
+      <div className={classes.title}>{textBaby}</div>
     </div>
   </>
 );

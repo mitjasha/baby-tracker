@@ -18,6 +18,7 @@ type TSecondaryBtn = {
 };
 
 interface IModalWindow {
+  id: string | undefined;
   children?: ReactNode;
   iconImg: string;
   childrenModalContent?: ReactNode;
@@ -31,6 +32,7 @@ interface IModalWindow {
 }
 
 const ModalWindow: FC<IModalWindow> = ({
+  id,
   children,
   titleModal,
   iconImg,
@@ -44,7 +46,7 @@ const ModalWindow: FC<IModalWindow> = ({
   <>
     <div className={cn("modal", `modal-${className}`)}>
       <div className={cn("modalOpen")}>
-        <div className="modalWrapper">
+        <div className="modalWrapper" id={id}>
           <h3 className="title-modal">{titleModal}</h3>
           <div className="content-modal">{children}</div>
         </div>

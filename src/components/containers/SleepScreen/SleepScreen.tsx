@@ -58,6 +58,7 @@ const SleepScreen: React.FC = () => {
           text={""}
         />
         <ModalWindow
+          id={"Сон"}
           className={`${isModalOpen ? "open" : "close"}`}
           withFooter={true}
           onClose={toggleModal}
