@@ -27,7 +27,7 @@ interface IModalWindow {
   secondaryBtn?: TSecondaryBtn;
   className?: string;
   onClose: (event: MouseEvent) => void;
-  titleModal: string;
+  titleModal: string | undefined;
 }
 
 const ModalWindow: FC<IModalWindow> = ({

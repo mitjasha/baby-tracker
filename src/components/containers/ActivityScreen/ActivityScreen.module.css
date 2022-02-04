@@ -26,10 +26,6 @@
   padding: 20px;
 }
 
-.valueTime {
-  left: 25%;
-}
-
 .img {
   width: 140px;
   height: 140px;
@@ -41,5 +37,22 @@
   width: 80px;
   height: 80px;
   font-size: 14px;
+  position: relative;
+}
+
+.timerModal {
+  width: 147px;
+  height: 147px;
+}
+
+.valueTimer {
+  font-size: 24px;
+  top: 44%;
+  left: 38%;
+}
+
+.timerWrapper {
+  width: 150px;
+  height: 150px;
   position: relative;
 }

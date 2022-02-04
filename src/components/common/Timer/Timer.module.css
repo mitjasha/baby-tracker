@@ -29,6 +29,7 @@
   position: absolute;
   top: 39%;
   left: 29%;
+  pointer-events: none;
 }
 
 .wrapper {

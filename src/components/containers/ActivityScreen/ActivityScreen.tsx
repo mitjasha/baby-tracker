@@ -10,7 +10,8 @@ import girlDefault from "../../../assets/png/activity/girl-default.png";
 
 const ActivityScreen: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [dataActive, setDataActive] = useState<string | undefined>("");
+  const [dataActive, setDataActive] = useState<string|undefined>("");
+  const [addData, setAddData] = useState<boolean>(false);
   const [icon, setIcon] = useState<string>("");
   const [img, setImg] = useState<string>(girlDefault);
 
@@ -30,10 +31,14 @@ const ActivityScreen: React.FC = () => {
       console.log(newImg);
     }
     setIsModalOpen(!isModalOpen);
+    setAddData(!addData);
   };
 
   const saveData = () => {
     setIsModalOpen(!isModalOpen);
+  };
+  const addNewData = () => {
+    setAddData(!addData);
   };
   return (
     <>
@@ -51,6 +56,27 @@ const ActivityScreen: React.FC = () => {
           <ActivityButtonContainer onClick={toggleModal} />
         </section>
         {dataActive && (
+          <ModalWindow
+            className={`${isModalOpen ? "open" : "close"}`}
+            withFooter
+            withIcon
+            iconImg={icon}
+            titleModal={dataActive}
+            primaryBtn={{
+              text: "+ Добавить",
+              onClick: addNewData,
+            }}
+            onClose={toggleModal}
+          >
+            <Timer
+              withClick
+              classWrap={classes.timerWrapper}
+              classNameTimer={classes.timerModal}
+              classNameValue={classes.valueTimer}
+            />
+          </ModalWindow>
+        )}
+        {addData && (
           <ModalWindow
             className={`${isModalOpen ? "open" : "close"}`}
             withFooter
