@@ -1,51 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import classes from "./LoginScreen.module.css";
 import InputLogin from "../../common/Inputs/InputLogin/InputLogin";
 import loginScreen from "./LoginScreenConst";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 
+interface UserSubmitForm {
+  login: string;
+  loginPassword: string;
+}
+
 const LoginScreen: React.FC = () => {
-  const [valueUserName, setValueUserName] = useState("");
-  const [valuePassword, setValuePassword] = useState("");
-
-  const enterUserName = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValueUserName(e.target.value);
-    console.log(`USER_NAME = ${e.target.value}`);
+  const { register, handleSubmit } = useForm<UserSubmitForm>();
+  const onSubmit = (data: UserSubmitForm) => {
+    console.log(data);
+    window.location.href = "#/main/";
   };
-  const enterPassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValuePassword(e.target.value);
-    console.log(`PASSWORD = ${e.target.value}`);
-  };
-
-  const Login = () => console.log("ВОЙТИ");
   const registrationFn = () => console.log("REGISTRATION");
 
   return (
     <>
-      <div className={classes.container}>
+      <form className={classes.container} onSubmit={handleSubmit(onSubmit)}>
         <div className={classes.logo} />
         <InputLogin
           className={classes.user}
           type={loginScreen.TYPE_TEXT}
           placeholder={loginScreen.PLACEHOLDER_USER}
-          value={valueUserName}
-          onChange={enterUserName}
+          register={register("login")}
         />
         <InputLogin
           className={classes.password}
           type={loginScreen.TYPE_PASSWORD}
           placeholder={loginScreen.PLACEHOLDER_PASSWORD}
-          value={valuePassword}
-          onChange={enterPassword}
+          register={register("loginPassword")}
         />
-        <Link to="/main">
-          <NewSleepButton
-            className={classes.button}
-            text={loginScreen.TEXT_BUTTON}
-            onClick={Login}
-          />
-        </Link>
+        <NewSleepButton
+          className={classes.button}
+          text={loginScreen.TEXT_BUTTON}
+        />
         <Link
           to="/registration"
           className={classes.registration}
@@ -53,7 +46,7 @@ const LoginScreen: React.FC = () => {
         >
           {loginScreen.TEXT_REGISTRATION}
         </Link>
-      </div>
+      </form>
     </>
   );
 };

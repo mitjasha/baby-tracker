@@ -4,10 +4,12 @@ import cn from "classnames";
 import "./ModalWindow.css";
 
 type TPrimaryBtn = {
+  type?: "submit";
   text: string;
-  onClick?: (event: MouseEvent) => void;
   icon?: string;
   className?: string;
+  onClick?: () => void;
+  form?: string;
 };
 
 type TSecondaryBtn = {
@@ -32,7 +34,6 @@ interface IModalWindow {
 }
 
 const ModalWindow: FC<IModalWindow> = ({
-  id,
   children,
   titleModal,
   iconImg,
@@ -46,7 +47,7 @@ const ModalWindow: FC<IModalWindow> = ({
   <>
     <div className={cn("modal", `modal-${className}`)}>
       <div className={cn("modalOpen")}>
-        <div className="modalWrapper" id={id}>
+        <div className="modalWrapper">
           <h3 className="title-modal">{titleModal}</h3>
           <div className="content-modal">{children}</div>
         </div>
@@ -63,6 +64,8 @@ const ModalWindow: FC<IModalWindow> = ({
         {primaryBtn && (
           <button
             className={cn("modal-button", primaryBtn.className)}
+            type={primaryBtn.type}
+            form={primaryBtn.form}
             onClick={primaryBtn.onClick}
           >
             {primaryBtn.text}

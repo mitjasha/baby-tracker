@@ -1,4 +1,5 @@
 import React, { MouseEvent, useState } from "react";
+import { useForm } from "react-hook-form";
 import cn from "classnames";
 import classes from "./ActivityScreen.module.css";
 import ActivityButtonContainer from "../../common/ActivityButtonContainer/ActivityButtonContainer";
@@ -8,6 +9,10 @@ import ActivityScreenConst from "./ActivityScreenConst";
 import Timer from "../../common/Timer/Timer";
 import InputFeeling from "../../common/Inputs/InputFeeling/InputFeeling";
 import girlDefault from "../../../assets/png/activity/girl-default.png";
+
+interface ISleepData {
+  [key: string]: string;
+}
 
 const ActivityScreen: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -24,21 +29,21 @@ const ActivityScreen: React.FC = () => {
       const newIcon = ActivityScreenConst.filter((el) => el.text === newActive)
         .map((el) => el.icon)
         .join("");
-
       setDataActive(newActive);
       setIcon(newIcon);
     }
   };
 
+  const { register, handleSubmit } = useForm<ISleepData>();
+  const onSubmit = (data: ISleepData) => {
+    console.log(data);
+    setAddData(!addData);
+    setIsModalOpen(!isModalOpen);
+  };
+
   const closeModal = () => {
     setIsModalOpen(!isModalOpen);
     setAddData(!addData);
-  };
-
-  const saveData = () => {
-    console.log("Save DATA");
-    setAddData(!addData);
-    setIsModalOpen(!isModalOpen);
   };
 
   const addNewData = () => {
@@ -98,13 +103,26 @@ const ActivityScreen: React.FC = () => {
               iconImg={icon}
               titleModal={dataActive}
               primaryBtn={{
+                type: "submit",
                 text: "Сохранить",
-                onClick: saveData,
+                form: "form-active",
               }}
               onClose={closeModal}
             >
-              <InputTimeDate className="" textName="Начало" />
-              <InputTimeDate className="" textName="Конец" />
+              <div>
+                <form id="form-active" onSubmit={handleSubmit(onSubmit)}>
+                  <InputTimeDate
+                    textName="Начало"
+                    registerDate={register(`startDate${dataActive}`)}
+                    registerTime={register(`startTime${dataActive}`)}
+                  />
+                  <InputTimeDate
+                    textName="Конец"
+                    registerDate={register(`endDate${dataActive}`)}
+                    registerTime={register(`endTime${dataActive}`)}
+                  />
+                </form>
+              </div>
             </ModalWindow>
           )}
         </>
@@ -119,7 +137,7 @@ const ActivityScreen: React.FC = () => {
           titleModal={dataActive}
           primaryBtn={{
             text: "Сохранить",
-            onClick: toggleModal,
+            type: "submit",
           }}
           onClose={toggleModal}
         >

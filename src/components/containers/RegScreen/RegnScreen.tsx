@@ -1,55 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import classes from "./RegScreen.module.css";
 import InputLogin from "../../common/Inputs/InputLogin/InputLogin";
 import regScreen from "./RegScreenConst";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 
+interface UserSubmitForm {
+  name: string;
+  password: string;
+}
+
 const RegScreen: React.FC = () => {
-  const [valueUserName, setValueUserName] = useState("");
-  const [valuePassword, setValuePassword] = useState("");
+  const { register, handleSubmit } = useForm<UserSubmitForm>();
 
-  const enterUserName = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValueUserName(e.target.value);
-    console.log(`USER_NAME = ${e.target.value}`);
+  const signInBtn: () => void = () => console.log("ВОЙТИ");
+  const onSubmit = (data: UserSubmitForm) => {
+    console.log(data);
+    window.location.href = "#/baby-data/";
   };
-  const enterPassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValuePassword(e.target.value);
-    console.log(`PASSWORD = ${e.target.value}`);
-  };
-
-  const signIn = () => console.log("ВОЙТИ");
-  const register = () => console.log("РЕГИСТРАЦИЯ");
 
   return (
     <>
-      <div className={classes.container}>
+      <form className={classes.container} onSubmit={handleSubmit(onSubmit)}>
         <div className={classes.logo} />
         <InputLogin
           className={classes.user}
           type={regScreen.TYPE_TEXT}
           placeholder={regScreen.PLACEHOLDER_USER}
-          value={valueUserName}
-          onChange={enterUserName}
+          register={register("name")}
         />
         <InputLogin
           className={classes.password}
           type={regScreen.TYPE_PASSWORD}
           placeholder={regScreen.PLACEHOLDER_PASSWORD}
-          value={valuePassword}
-          onChange={enterPassword}
+          register={register("password")}
         />
-        <Link to="/baby-data">
-          <NewSleepButton
-            className={classes.button}
-            text={regScreen.TEXT_BUTTON}
-            onClick={register}
-          />
-        </Link>
-        <Link to="/" className={classes.signIn} onClick={signIn}>
+        <NewSleepButton
+          type="submit"
+          className={classes.button}
+          text={regScreen.TEXT_BUTTON}
+        />
+
+        <Link to="/" className={classes.signIn} onClick={signInBtn}>
           {regScreen.TEXT_SIGNIN}
         </Link>
-      </div>
+      </form>
     </>
   );
 };
