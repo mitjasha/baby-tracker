@@ -3,19 +3,19 @@ import cn from "classnames";
 import classes from "./InputGender.module.css";
 
 interface IInputGender {
-  id?: string;
   img: string;
   className?: string;
   textBaby: string;
   onClick: (event: MouseEvent) => void;
+  id: string;
 }
 
 const InputGender: React.FC<IInputGender> = ({
   img,
-  id,
   textBaby,
   className,
   onClick,
+  id,
 }) => (
   <>
     <div className={cn(classes.gender, className)} id={id} onClick={onClick}>

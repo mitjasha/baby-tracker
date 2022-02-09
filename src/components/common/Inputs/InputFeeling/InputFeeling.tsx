@@ -18,12 +18,12 @@ const InputFeeling: React.FC = () => {
       <div className={classes.container}>
         {InputFeelingConst.map((el, ind) => (
           <InputGender
-            id={el.text}
             className={classes.disactive}
             key={ind}
             textBaby={el.text}
             onClick={onClickBaby}
             img={el.img}
+            id={el.id}
           />
         ))}
       </div>
