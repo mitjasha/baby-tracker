@@ -4,10 +4,9 @@ interface TloginScreen {
 
 interface IValidation {
   required: boolean;
-  pattern: {
-    value: RegExp;
-    message: string;
-  };
+  pattern: RegExp;
+  message: string;
+  maxLength: number;
 }
 
 export const loginScreen: TloginScreen = {
@@ -23,18 +22,16 @@ export const loginScreen: TloginScreen = {
 
 export const validationLogin: IValidation = {
   required: true,
-  pattern: {
-    value: /[a-zA-Z\d]{4,32}/,
-    message:
-      "Имя должно содержать только буквы и цифры и быть не менее 4 и не более 32 символов",
-  },
+  maxLength: 32,
+  pattern: /[a-zA-Z\d]{4,32}$/,
+  message:
+    "Имя должно содержать только буквы и цифры и быть не менее 4 и не более 32 символов",
 };
 
 export const validationPassword: IValidation = {
   required: true,
-  pattern: {
-    value: /[a-zA-Z\d]{8,32}/,
-    message:
-      "Пароль должен содержать только буквы и цифры и быть не менее 8 и не более 32 символов",
-  },
+  maxLength: 32,
+  pattern: /[a-zA-Z\d]{8,32}$/,
+  message:
+    "Пароль должен содержать только буквы и цифры и быть не менее 8 и не более 32 символов",
 };

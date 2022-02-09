@@ -4,10 +4,9 @@ interface TRegScreen {
 
 interface IValidation {
   required: boolean;
-  pattern: {
-    value: RegExp;
-    message: string;
-  };
+  pattern: RegExp;
+  message: string;
+  maxLength: number;
 }
 
 export const regScreen: TRegScreen = {
@@ -22,18 +21,16 @@ export const regScreen: TRegScreen = {
 
 export const validationName: IValidation = {
   required: true,
-  pattern: {
-    value: /[A-Za-z\d]{4,32}/,
-    message:
-      "Имя должно содержать только буквы и цифры и быть не менее 4 и не более 32 символов",
-  },
+  maxLength: 32,
+  pattern: /[A-Za-z\d]{4,32}$/,
+  message:
+    "Имя должно содержать только буквы и цифры и быть не менее 4 и не более 32 символов",
 };
 
 export const validationPassword: IValidation = {
   required: true,
-  pattern: {
-    value: /^[A-Za-z\d][\S\w]{7,31}/,
-    message:
-      "Пароль должен содержать только буквы и цифры и быть не менее 8 и не более 32 символов",
-  },
+  maxLength: 32,
+  pattern: /[a-zA-Z\d]{8,32}$/,
+  message:
+    "Пароль должен содержать только буквы и цифры и быть не менее 8 и не более 32 символов",
 };

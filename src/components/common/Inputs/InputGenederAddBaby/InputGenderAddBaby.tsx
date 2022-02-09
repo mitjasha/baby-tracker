@@ -31,12 +31,14 @@ const InputGenderAddBaby: React.FC<IInputGenderAddBaby> = ({
           textBaby={textBoy}
           img={boy}
           onClick={onClickBaby}
+          id={"boy"}
         />
         <InputGender
           className={stateBaby ? classes.active : classes.disactive}
           textBaby={textGirl}
           img={girl}
           onClick={onClickBaby}
+          id={"girl"}
         />
       </div>
     </>

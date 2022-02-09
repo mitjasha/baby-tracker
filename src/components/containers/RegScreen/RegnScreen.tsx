@@ -42,7 +42,7 @@ const RegScreen: React.FC = () => {
             placeholder={regScreen.PLACEHOLDER_USER}
             register={register("name", { ...validationName })}
           />
-          {errors?.name && <ToolTip text={validationName.pattern.message} />}
+          {errors?.name && <ToolTip text={validationName.message} />}
         </div>
         <div className={classes.password}>
           <InputLogin
@@ -54,7 +54,7 @@ const RegScreen: React.FC = () => {
           {errors?.password && (
             <ToolTip
               classContainer={classes.containerPassword}
-              text={validationPassword.pattern.message}
+              text={validationPassword.message}
             />
           )}
         </div>
