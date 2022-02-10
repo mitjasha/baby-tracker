@@ -23,3 +23,11 @@
   position: absolute;
   bottom: -15px;
 }
+
+.active {
+  opacity: 1;
+}
+
+.disactive {
+  opacity: 0.5;
+}
