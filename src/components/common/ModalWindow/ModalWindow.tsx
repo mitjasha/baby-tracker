@@ -4,10 +4,12 @@ import cn from "classnames";
 import "./ModalWindow.css";
 
 type TPrimaryBtn = {
+  type?: "submit";
   text: string;
-  onClick?: (event: MouseEvent) => void;
   icon?: string;
   className?: string;
+  onClick?: () => void;
+  form?: string;
 };
 
 type TSecondaryBtn = {
@@ -18,6 +20,7 @@ type TSecondaryBtn = {
 };
 
 interface IModalWindow {
+  id: string | undefined;
   children?: ReactNode;
   iconImg: string;
   childrenModalContent?: ReactNode;
@@ -27,7 +30,7 @@ interface IModalWindow {
   secondaryBtn?: TSecondaryBtn;
   className?: string;
   onClose: (event: MouseEvent) => void;
-  titleModal: string;
+  titleModal: string | undefined;
 }
 
 const ModalWindow: FC<IModalWindow> = ({
@@ -61,6 +64,8 @@ const ModalWindow: FC<IModalWindow> = ({
         {primaryBtn && (
           <button
             className={cn("modal-button", primaryBtn.className)}
+            type={primaryBtn.type}
+            form={primaryBtn.form}
             onClick={primaryBtn.onClick}
           >
             {primaryBtn.text}

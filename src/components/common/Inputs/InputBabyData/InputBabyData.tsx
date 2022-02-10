@@ -1,4 +1,5 @@
 import React from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 import cn from "classnames";
 import classes from "./InputBabyData.module.css";
 
@@ -11,9 +12,10 @@ interface IInputBabyData {
   defaultValue?: string;
   placeholder?: string;
   value?: string;
-  min?: string;
-  max?: string;
+  min?: string | undefined;
+  max?: string | undefined;
   step?: string;
+  register: UseFormRegisterReturn;
 }
 
 const InputBabyData: React.FC<IInputBabyData> = ({
@@ -28,6 +30,7 @@ const InputBabyData: React.FC<IInputBabyData> = ({
   min,
   max,
   step,
+  register,
 }) => (
   <div className={cn(classes.container, classContainer)}>
     <div className={cn(classes.title, classTitle)}>{textName}</div>
@@ -41,7 +44,7 @@ const InputBabyData: React.FC<IInputBabyData> = ({
         max={max}
         step={step}
         placeholder={placeholder}
-        required
+        {...register}
       />
     </div>
   </div>

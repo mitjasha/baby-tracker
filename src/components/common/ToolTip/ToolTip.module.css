@@ -1,0 +1,17 @@
+.error {
+  padding: 2px 10px;
+  color: red;
+  font-weight: 100;
+  font-size: 10px;
+}
+
+.container {
+  width: 250px;
+  height: 30px;
+  border-radius: 20px 20px 20px 0px;
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+  background-color: #f5f5f5;
+  box-shadow: 6px 1px 8px 0px #0000008f;
+}

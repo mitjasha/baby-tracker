@@ -1,4 +1,5 @@
 import React from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 import cn from "classnames";
 import classes from "./InputLogin.module.css";
 
@@ -6,26 +7,24 @@ interface IInputTimeDate {
   className: string;
   placeholder: string;
   type: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  name?: string;
+  register: UseFormRegisterReturn;
 }
 
 const InputLogin: React.FC<IInputTimeDate> = ({
   className,
   placeholder,
   type,
-  value,
-  onChange,
+  register,
 }) => (
-  <div className={classes.container}>
+  <>
     <input
-      className={cn(classes.input, className)}
+      className={cn(classes.input, classes.container, className)}
       type={type}
       placeholder={placeholder}
-      value={value}
-      onChange={onChange}
+      {...register}
     />
-  </div>
+  </>
 );
 
 export default InputLogin;

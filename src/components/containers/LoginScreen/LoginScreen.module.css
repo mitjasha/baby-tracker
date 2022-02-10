@@ -6,6 +6,7 @@
   width: 360px;
   height: 100%;
   margin: 0 auto;
+  position: relative;
 }
 
 .user {
@@ -64,4 +65,21 @@
 
 input.password {
   color: #6d6d6d;
+}
+
+.error {
+  color: red;
+  font-weight: 100;
+  bottom: 125px;
+  position: absolute;
+}
+
+.login,
+.loginPassword {
+  position: relative;
+}
+
+.containerPassword {
+  border-radius: 0px 20px 20px 20px;
+  bottom: -25px;
 }
