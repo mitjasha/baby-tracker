@@ -1,16 +1,14 @@
-import React, { MouseEvent } from "react";
+import React, { MouseEvent, useState } from "react";
 import classes from "./InputFeeling.module.css";
 import InputGender from "../InputGender/InputGender";
 import InputFeelingConst from "./InputFeelingConst";
 
 const InputFeeling: React.FC = () => {
+  const [chose, setChouse] = useState(false);
   const onClickBaby = (event: MouseEvent): void => {
-    const target = event.currentTarget;
-    target.classList.toggle(classes.active);
-    target.classList.toggle(classes.disactive);
-    if (!target.className.includes("disactive")) {
-      console.log(target.getAttribute("id"));
-    }
+    event.preventDefault();
+   setChouse(!chose);
+   console.log(chose);
   };
 
   return (
@@ -18,7 +16,7 @@ const InputFeeling: React.FC = () => {
       <div className={classes.container}>
         {InputFeelingConst.map((el, ind) => (
           <InputGender
-            className={classes.disactive}
+          className= {chose ? classes.active : classes.disactive}            
             key={ind}
             textBaby={el.text}
             onClick={onClickBaby}
