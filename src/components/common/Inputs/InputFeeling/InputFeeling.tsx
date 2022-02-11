@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 import classes from "./InputFeeling.module.css";
 import InputGender from "../InputGender/InputGender";
 import InputFeelingConst from "./InputFeelingConst";
 
-const InputFeeling: React.FC = () => {
+interface IInputFeeling {
+  register: UseFormRegisterReturn;
+}
+
+const InputFeeling: React.FC<IInputFeeling> = ({ register }) => {
   const [chose, setChouse] = useState("");
   return (
     <>
@@ -14,8 +19,9 @@ const InputFeeling: React.FC = () => {
             textBaby={el.text}
             img={el.img}
             id={el.id}
-            onClick={() => setChouse(el.id)}
+            onChange={() => setChouse(el.id)}
             isChose={chose === el.id}
+            register={register}
           />
         ))}
       </div>

@@ -41,6 +41,12 @@ const ActivityScreen: React.FC = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const onSubmitFeeling = (data: ISleepData) => {
+    console.log(data.feeling[0].split(",")[1]); // data.feeling = ["англ, русск"]
+    setAddData(!addData);
+    setIsModalOpen(!isModalOpen);
+  };
+
   const closeModal = () => {
     setIsModalOpen(!isModalOpen);
     setAddData(!addData);
@@ -138,10 +144,15 @@ const ActivityScreen: React.FC = () => {
           primaryBtn={{
             text: "Сохранить",
             type: "submit",
+            form: "form-feeling",
           }}
           onClose={toggleModal}
         >
-          <InputFeeling />
+          <div>
+            <form id="form-feeling" onSubmit={handleSubmit(onSubmitFeeling)}>
+              <InputFeeling register={register("feeling")} />
+            </form>
+          </div>
         </ModalWindow>
       )}
     </div>

@@ -1,8 +1,8 @@
-type TbabyData = {
+type TBabyDataConst = {
   [key: string]: string;
 };
 
-const babyData: TbabyData = {
+const babyDataConst: TBabyDataConst = {
   TITLE_SCREEN: "Расскажите \r\n о своём ребёнке",
   TYPE_TEXT: "text",
   TYPE_DATE: "date",
@@ -21,4 +21,4 @@ const babyData: TbabyData = {
   TEXT_GENDER: "Пол ребёнка",
 };
 
-export default babyData;
+export default babyDataConst;

@@ -1,54 +1,64 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import InputBabyData from "../../common/Inputs/InputBabyData/InputBabyData";
 import classes from "./BabyDataScreen.module.css";
-import babyData from "./BabyDataScreenCONST";
+import babyDataConst from "./BabyDataScreenCONST";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 import InputGenderAddBaby from "../../common/Inputs/InputGenederAddBaby/InputGenderAddBaby";
 
 interface IBabySubmitForm {
   nameBaby: string | number;
-  genderBaby: string;
+  gender: string;
   birthDayBaby: Date;
   heightBaby: string;
   weightBaby: string;
   photoBaby?: string;
-  gender: string;
 }
 
 const BabyDataScreen: React.FC = () => {
   const { register, handleSubmit } = useForm<IBabySubmitForm>();
-  const [gender, setGender] = useState("");
   const onSubmit = (data: IBabySubmitForm) => {
-    console.log(data);
-    console.log(gender);
-    setGender(gender);
+    const name = data.nameBaby;
+    const gender = data.gender[0].split(",")[0]; // data.gender = ["англ, русск"]
+    const birth = data.birthDayBaby;
+    const height = data.heightBaby;
+    const weight = data.heightBaby;
+    const photo = data.photoBaby;
+    const babyData = {
+      nameBaby: name,
+      gender,
+      birthDayBaby: birth,
+      heightBaby: height,
+      weightBaby: weight,
+      photo,
+    };
+    console.log(babyData);
     window.location.href = "#/main/";
   };
 
   return (
     <form className={classes.container} onSubmit={handleSubmit(onSubmit)}>
-      <div className={classes.title}>{babyData.TITLE_SCREEN}</div>
+      <div className={classes.title}>{babyDataConst.TITLE_SCREEN}</div>
       <InputBabyData
         classInput={classes.name}
-        textName={babyData.TEXT_NAME}
-        type={babyData.TYPE_TEXT}
-        placeholder={babyData.NAME}
+        textName={babyDataConst.TEXT_NAME}
+        type={babyDataConst.TYPE_TEXT}
+        placeholder={babyDataConst.NAME}
         register={register("nameBaby", { required: true })}
       />
-      <InputGenderAddBaby />
+      <InputGenderAddBaby register={register("gender", { required: true })} />
       <InputBabyData
         classInput={classes.birth}
-        textName={babyData.TEXT_BIRTHDAY}
-        type={babyData.TYPE_DATE}
+        textName={babyDataConst.TEXT_BIRTHDAY}
+        type={babyDataConst.TYPE_DATE}
         register={register("birthDayBaby", { required: true })}
       />
       <div className={classes.parameters}>
         <InputBabyData
           classInput={classes.height}
-          textName={babyData.TEXT_HEIGHT}
-          type={babyData.TYPE_NUMBER}
+          textName={babyDataConst.TEXT_HEIGHT}
+          type={babyDataConst.TYPE_NUMBER}
           placeholder={"52"}
           min={"45"}
           max={"122"}
@@ -57,8 +67,8 @@ const BabyDataScreen: React.FC = () => {
         />
         <InputBabyData
           classInput={classes.weight}
-          textName={babyData.TEXT_WEIGHT}
-          type={babyData.TYPE_NUMBER}
+          textName={babyDataConst.TEXT_WEIGHT}
+          type={babyDataConst.TYPE_NUMBER}
           placeholder={"3,200"}
           min={"1,500"}
           max={"30"}
@@ -69,14 +79,17 @@ const BabyDataScreen: React.FC = () => {
       <label className={classes.photoContainer}>
         <div className={classes.photo}></div>
         <InputBabyData
-          textName={babyData.TEXT_PHOTO}
-          type={babyData.TYPE_FILE}
+          textName={babyDataConst.TEXT_PHOTO}
+          type={babyDataConst.TYPE_FILE}
           register={register("photoBaby")}
         />
       </label>
-      <NewSleepButton className={classes.button} text={babyData.TEXT_BUTTON} />
+      <NewSleepButton
+        className={classes.button}
+        text={babyDataConst.TEXT_BUTTON}
+      />
       <Link to="/main" className={classes.later}>
-        {babyData.TEXT_LATER}
+        {babyDataConst.TEXT_LATER}
       </Link>
     </form>
   );

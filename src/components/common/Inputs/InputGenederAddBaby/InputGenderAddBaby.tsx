@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 import classes from "./InputGenderAddBaby.module.css";
 import InputGender from "../InputGender/InputGender";
 import genderConst from "./InputGenderAddBabyConst";
 
-const InputGenderAddBaby: React.FC = () => {
+interface IInputGenderAddBaby {
+  register: UseFormRegisterReturn;
+}
+
+const InputGenderAddBaby: React.FC<IInputGenderAddBaby> = ({ register }) => {
   const [chose, setChouse] = useState("");
   return (
     <>
@@ -14,8 +19,9 @@ const InputGenderAddBaby: React.FC = () => {
             textBaby={el.text}
             img={el.img}
             id={el.id}
-            onClick={() => setChouse(el.id)}
+            onChange={() => setChouse(el.id)}
             isChose={chose === el.id}
+            register={register}
           />
         ))}
       </div>
