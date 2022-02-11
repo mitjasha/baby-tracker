@@ -1,38 +1,26 @@
-import React from "react";
-import cn from "classnames";
+import React, { useState } from "react";
 import classes from "./InputGenderAddBaby.module.css";
 import InputGender from "../InputGender/InputGender";
-import boy from "../../../../assets/png/feeling/boy/06.png";
-import girl from "../../../../assets/png/feeling/girl/06.png";
+import genderConst from "./InputGenderAddBabyConst";
 
-interface IInputGenderAddBaby {
-  textTitle: string;
-  textGirl: string;
-  textBoy: string;
-  classBoy: string;
-  classGirl: string;
-}
-
-const InputGenderAddBaby: React.FC<IInputGenderAddBaby> = ({
-  textTitle,
-  textGirl,
-  textBoy,
-}) =>  (
+const InputGenderAddBaby: React.FC = () => {
+  const [chose, setChouse] = useState("");
+  return (
     <>
-      <div className={cn(classes.titileContainer)}>{textTitle}</div>
       <div className={classes.container}>
-        <InputGender
-          textBaby={textBoy}
-          img={boy}
-          id={"boy"}
-        />
-        <InputGender
-          textBaby={textGirl}
-          img={girl}
-          id={"girl"}
-        />
+        {genderConst.map((el, ind) => (
+          <InputGender
+            key={ind}
+            textBaby={el.text}
+            img={el.img}
+            id={el.id}
+            onClick={() => setChouse(el.id)}
+            isChose={chose === el.id}
+          />
+        ))}
       </div>
     </>
   );
+};
 
 export default InputGenderAddBaby;

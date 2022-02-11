@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import InputBabyData from "../../common/Inputs/InputBabyData/InputBabyData";
@@ -14,12 +14,16 @@ interface IBabySubmitForm {
   heightBaby: string;
   weightBaby: string;
   photoBaby?: string;
+  gender: string;
 }
 
 const BabyDataScreen: React.FC = () => {
   const { register, handleSubmit } = useForm<IBabySubmitForm>();
+  const [gender, setGender] = useState("");
   const onSubmit = (data: IBabySubmitForm) => {
     console.log(data);
+    console.log(gender);
+    setGender(gender);
     window.location.href = "#/main/";
   };
 
@@ -33,13 +37,7 @@ const BabyDataScreen: React.FC = () => {
         placeholder={babyData.NAME}
         register={register("nameBaby", { required: true })}
       />
-      <InputGenderAddBaby
-        textTitle={babyData.TEXT_GENDER}
-        classBoy={classes.boy}
-        classGirl={classes.girl}
-        textBoy={babyData.TEXT_BOY}
-        textGirl={babyData.TEXT_GIRL}
-      />
+      <InputGenderAddBaby />
       <InputBabyData
         classInput={classes.birth}
         textName={babyData.TEXT_BIRTHDAY}
