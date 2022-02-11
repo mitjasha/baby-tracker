@@ -3,11 +3,20 @@ export interface IUser {
   password: string;
 }
 
-export interface IUserResponse {
+export interface IUserLoginResponse {
   user: {
     id: string;
     username: string;
     childs: [];
+    token: string;
+  };
+}
+
+export interface IUserRegistrationResponse {
+  user: {
+    username: string;
+    password: string;
+    id: string;
     token: string;
   };
 }
