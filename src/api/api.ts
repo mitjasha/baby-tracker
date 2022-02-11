@@ -1,29 +1,10 @@
 const BASE_URL = "http://localhost:3030";
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-let access_token: string | null =
-  (window && window.localStorage && window.localStorage.getItem("jwt")) || "";
-
-export function getToken() {
-  return access_token;
-}
-
-export function setToken(token: string | null) {
-  access_token = token;
-  if (!window.localStorage) {
-    return;
-  }
-  if (token) {
-    window.localStorage.setItem("jwt", token);
-  } else {
-    window.localStorage.removeItem("jwt");
-  }
-}
-
 export async function fetchAsync(
   method: "GET" | "POST" | "DELETE" | "PUT",
   url: string,
   body?: string,
+  access_token?: string,
 ) {
   const headers: HeadersInit = {
     "Content-Type": "application/json",
@@ -31,7 +12,7 @@ export async function fetchAsync(
   if (access_token) {
     headers.Authorization = `Token ${access_token}`;
   }
-  console.log("Token", access_token);
+
   const response = await fetch(`${BASE_URL}${url}`, {
     method,
     mode: "cors",
@@ -39,16 +20,12 @@ export async function fetchAsync(
     body,
   });
 
-  if (response.status === 401) {
-    setToken(null);
-    throw new Error("401");
-  }
-
   const result = await response.json();
 
   if (!response.ok) {
     throw result;
   }
+  // console.log(result);
 
   return result;
 }
