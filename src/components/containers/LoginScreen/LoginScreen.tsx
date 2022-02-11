@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import classes from "./LoginScreen.module.css";
@@ -14,8 +14,6 @@ import userController from "../../../api/userController";
 import { IUser } from "../../../api/api.interface";
 
 const LoginScreen: React.FC = () => {
-  const [accessToken, setAccessToken] = useState("");
-
   const {
     register,
     formState: { errors },
@@ -26,9 +24,10 @@ const LoginScreen: React.FC = () => {
   const onSubmit = async (data: IUser) => {
     const result = await userController.signIn(data);
     if (result) {
-      window.location.href = "#/main/";
-      setAccessToken(result.user.token);
+      const accessToken = result.user.token;
       console.log(accessToken);
+      localStorage.setItem("accessToken", JSON.stringify(accessToken));
+      window.location.href = "#/main/";
     }
     reset();
   };
