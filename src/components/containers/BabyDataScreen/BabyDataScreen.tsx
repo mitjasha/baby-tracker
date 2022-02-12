@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import cn from "classnames";
 import InputBabyData from "../../common/Inputs/InputBabyData/InputBabyData";
 import classes from "./BabyDataScreen.module.css";
 import babyDataConst from "./BabyDataScreenCONST";
@@ -17,20 +18,24 @@ interface IBabySubmitForm {
 }
 
 const BabyDataScreen: React.FC = () => {
-  const { register, handleSubmit } = useForm<IBabySubmitForm>();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<IBabySubmitForm>();
   const onSubmit = (data: IBabySubmitForm) => {
     const name = data.nameBaby;
     const gender = data.gender[0].split(",")[0]; // data.gender = ["англ, русск"]
     const birth = data.birthDayBaby;
     const height = data.heightBaby;
     const weight = data.heightBaby;
-    const photo = data.photoBaby;
+    const photo = "";
     const babyData = {
-      nameBaby: name,
+      name,
       gender,
-      birthDayBaby: birth,
-      heightBaby: height,
-      weightBaby: weight,
+      birth,
+      height,
+      weight,
       photo,
     };
     console.log(babyData);
@@ -41,49 +46,44 @@ const BabyDataScreen: React.FC = () => {
     <form className={classes.container} onSubmit={handleSubmit(onSubmit)}>
       <div className={classes.title}>{babyDataConst.TITLE_SCREEN}</div>
       <InputBabyData
-        classInput={classes.name}
+        classInput={cn(classes.name, errors?.nameBaby && classes.error)}
         textName={babyDataConst.TEXT_NAME}
         type={babyDataConst.TYPE_TEXT}
         placeholder={babyDataConst.NAME}
         register={register("nameBaby", { required: true })}
       />
-      <InputGenderAddBaby register={register("gender", { required: true })} />
+      <InputGenderAddBaby
+        classNameError={errors?.gender && classes.error}
+        register={register("gender", { required: true })}
+      />
       <InputBabyData
-        classInput={classes.birth}
+        classInput={cn(classes.birth, errors?.birthDayBaby && classes.error)}
         textName={babyDataConst.TEXT_BIRTHDAY}
         type={babyDataConst.TYPE_DATE}
+        min={babyDataConst.BIRTH_MIN}
+        max={babyDataConst.BIRTH_MAX}
         register={register("birthDayBaby", { required: true })}
       />
       <div className={classes.parameters}>
         <InputBabyData
-          classInput={classes.height}
+          classInput={cn(classes.height, errors?.heightBaby && classes.error)}
           textName={babyDataConst.TEXT_HEIGHT}
           type={babyDataConst.TYPE_NUMBER}
-          placeholder={"52"}
-          min={"45"}
-          max={"122"}
-          step={"1"}
+          min={babyDataConst.HEIGHT_MIN}
+          max={babyDataConst.HEIGHT_MAX}
+          step={babyDataConst.HEIGHT_STEP}
           register={register("heightBaby", { required: true })}
         />
         <InputBabyData
-          classInput={classes.weight}
+          classInput={cn(classes.weight, errors?.weightBaby && classes.error)}
           textName={babyDataConst.TEXT_WEIGHT}
           type={babyDataConst.TYPE_NUMBER}
-          placeholder={"3,200"}
-          min={"1,500"}
-          max={"30"}
-          step={"0,100"}
+          min={babyDataConst.WEIGHT_MIN}
+          max={babyDataConst.WEIGHT_MAX}
+          step={babyDataConst.WEIGHT_STEP}
           register={register("weightBaby", { required: true })}
         />
       </div>
-      <label className={classes.photoContainer}>
-        <div className={classes.photo}></div>
-        <InputBabyData
-          textName={babyDataConst.TEXT_PHOTO}
-          type={babyDataConst.TYPE_FILE}
-          register={register("photoBaby")}
-        />
-      </label>
       <NewSleepButton
         className={classes.button}
         text={babyDataConst.TEXT_BUTTON}

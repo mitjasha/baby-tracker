@@ -6,15 +6,20 @@ import InputFeelingConst from "./InputFeelingConst";
 
 interface IInputFeeling {
   register: UseFormRegisterReturn;
+  classNameError: string;
 }
 
-const InputFeeling: React.FC<IInputFeeling> = ({ register }) => {
+const InputFeeling: React.FC<IInputFeeling> = ({
+  classNameError,
+  register,
+}) => {
   const [chose, setChouse] = useState("");
   return (
     <>
       <div className={classes.container}>
         {InputFeelingConst.map((el, ind) => (
           <InputGender
+            classNameError={classNameError}
             key={ind}
             textBaby={el.text}
             img={el.img}

@@ -2,34 +2,31 @@ import React from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import cn from "classnames";
 import classes from "./InputTimeDate.module.css";
-import { currentDay, currentTime } from "../../../helpers/changeNum";
 
 interface IInputTimeDate {
-  className?: string;
+  classNameError?: string;
   textName: string;
   registerDate: UseFormRegisterReturn;
   registerTime: UseFormRegisterReturn;
 }
 
 const InputTimeDate: React.FC<IInputTimeDate> = ({
-  className,
+  classNameError,
   textName,
   registerDate,
   registerTime,
 }) => (
   <>
-    <div className={classes.container}>
+    <div className={cn(classes.container)}>
       <span className={classes.title}>{textName}</span>
       <input
-        className={cn(classes.timeDate, { className })}
+        className={cn(classes.timeDate, classNameError)}
         type="time"
-        defaultValue={currentTime}
         {...registerTime}
       />
       <input
-        className={cn(classes.timeDate, { className })}
+        className={cn(classes.timeDate, classNameError)}
         type="date"
-        defaultValue={currentDay}
         {...registerDate}
       />
     </div>

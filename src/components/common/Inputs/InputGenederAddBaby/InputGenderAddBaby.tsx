@@ -6,9 +6,13 @@ import genderConst from "./InputGenderAddBabyConst";
 
 interface IInputGenderAddBaby {
   register: UseFormRegisterReturn;
+  classNameError: string;
 }
 
-const InputGenderAddBaby: React.FC<IInputGenderAddBaby> = ({ register }) => {
+const InputGenderAddBaby: React.FC<IInputGenderAddBaby> = ({
+  classNameError,
+  register,
+}) => {
   const [chose, setChouse] = useState("");
   return (
     <>
@@ -21,6 +25,7 @@ const InputGenderAddBaby: React.FC<IInputGenderAddBaby> = ({ register }) => {
             id={el.id}
             onChange={() => setChouse(el.id)}
             isChose={chose === el.id}
+            classNameError={classNameError}
             register={register}
           />
         ))}

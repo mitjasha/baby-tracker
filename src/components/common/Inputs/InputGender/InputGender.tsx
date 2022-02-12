@@ -5,7 +5,7 @@ import classes from "./InputGender.module.css";
 
 interface IInputGender {
   img: string;
-  className?: string;
+  classNameError: string;
   textBaby: string;
   onChange: () => void;
   id: string;
@@ -16,7 +16,7 @@ interface IInputGender {
 const InputGender: React.FC<IInputGender> = ({
   img,
   textBaby,
-  className,
+  classNameError,
   onChange,
   isChose,
   id,
@@ -26,7 +26,7 @@ const InputGender: React.FC<IInputGender> = ({
     <label
       className={cn(
         classes.gender,
-        className,
+        classNameError,
         isChose ? classes.active : classes.disactive,
       )}
     >
