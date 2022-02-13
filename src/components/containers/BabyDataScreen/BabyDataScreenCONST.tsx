@@ -1,24 +1,30 @@
-type TbabyData = {
+type TBabyDataConst = {
   [key: string]: string;
 };
 
-const babyData: TbabyData = {
+const babyDataConst: TBabyDataConst = {
   TITLE_SCREEN: "Расскажите \r\n о своём ребёнке",
   TYPE_TEXT: "text",
   TYPE_DATE: "date",
   TYPE_NUMBER: "number",
-  TYPE_FILE: "file",
   TEXT_NAME: "Имя ребёнка",
   TEXT_BIRTHDAY: "Дата рождения",
-  TEXT_HEIGHT: "Рост",
-  TEXT_WEIGHT: "Вес",
-  TEXT_PHOTO: "Загрузить фото",
   NAME: "Имя",
   TEXT_BUTTON: "СОХРАНИТЬ",
   TEXT_LATER: "Заполнить позже",
   TEXT_BOY: "мальчик",
   TEXT_GIRL: "девочка",
   TEXT_GENDER: "Пол ребёнка",
+  BIRTH_MIN: "2019-01-01",
+  BIRTH_MAX: "2025-01-01",
+  TEXT_HEIGHT: "Рост",
+  HEIGHT_MIN: "45",
+  HEIGHT_MAX: "122",
+  HEIGHT_STEP: "1",
+  TEXT_WEIGHT: "Вес",
+  WEIGHT_MIN: "1,500",
+  WEIGHT_MAX: "30",
+  WEIGHT_STEP: "0,100",
 };
 
-export default babyData;
+export default babyDataConst;

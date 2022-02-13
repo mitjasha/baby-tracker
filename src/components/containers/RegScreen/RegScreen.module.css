@@ -80,7 +80,7 @@ input.password {
   position: relative;
 }
 
-.containerPassword {
+.errorPassword {
   border-radius: 0px 20px 20px 20px;
   bottom: -25px;
 }

@@ -4,7 +4,7 @@ import cn from "classnames";
 import "./ModalWindow.css";
 
 type TPrimaryBtn = {
-  type?: "submit";
+  type?: "submit" | "reset" | "button" | undefined;
   text: string;
   icon?: string;
   className?: string;

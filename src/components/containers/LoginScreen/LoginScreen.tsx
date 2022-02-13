@@ -52,7 +52,7 @@ const LoginScreen: React.FC = () => {
           />
           {errors?.loginPassword && (
             <ToolTip
-              classContainer={classes.containerPassword}
+              classContainer={classes.errorPassword}
               text={validationPassword.message}
             />
           )}

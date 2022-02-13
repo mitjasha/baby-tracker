@@ -68,6 +68,7 @@ input.password {
 }
 
 .error {
+  position: absolute;
   color: red;
   font-weight: 100;
   bottom: 125px;
@@ -79,7 +80,7 @@ input.password {
   position: relative;
 }
 
-.containerPassword {
-  border-radius: 0px 20px 20px 20px;
-  bottom: -25px;
+.errorPassword {
+  border-radius: 0px 20px 20px 20px !important;
+  bottom: -25px !important;
 }

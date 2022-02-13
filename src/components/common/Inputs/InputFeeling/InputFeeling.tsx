@@ -1,27 +1,32 @@
-import React, { MouseEvent, useState } from "react";
+import React, { useState } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 import classes from "./InputFeeling.module.css";
 import InputGender from "../InputGender/InputGender";
 import InputFeelingConst from "./InputFeelingConst";
 
-const InputFeeling: React.FC = () => {
-  const [chose, setChouse] = useState(false);
-  const onClickBaby = (event: MouseEvent): void => {
-    event.preventDefault();
-   setChouse(!chose);
-   console.log(chose);
-  };
+interface IInputFeeling {
+  register: UseFormRegisterReturn;
+  classNameError: string;
+}
 
+const InputFeeling: React.FC<IInputFeeling> = ({
+  classNameError,
+  register,
+}) => {
+  const [chose, setChouse] = useState("");
   return (
     <>
       <div className={classes.container}>
         {InputFeelingConst.map((el, ind) => (
           <InputGender
-          className= {chose ? classes.active : classes.disactive}            
+            classNameError={classNameError}
             key={ind}
             textBaby={el.text}
-            onClick={onClickBaby}
             img={el.img}
             id={el.id}
+            onChange={() => setChouse(el.id)}
+            isChose={chose === el.id}
+            register={register}
           />
         ))}
       </div>

@@ -57,3 +57,7 @@
   position: relative;
   margin: 0 auto;
 }
+
+.error {
+  outline: 2px solid red;
+}

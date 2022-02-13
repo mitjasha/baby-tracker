@@ -1,0 +1,22 @@
+.photo {
+  width: 68px;
+  height: 38px;
+  background-image: url("../../../../assets/svg/img.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.photoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: black;
+}
+
+input[type="file"] {
+  opacity: 0;
+  left: -1000px;
+  visibility: hidden;
+  position: absolute;
+}

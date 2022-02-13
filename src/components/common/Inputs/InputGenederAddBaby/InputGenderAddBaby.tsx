@@ -1,45 +1,34 @@
 import React, { useState } from "react";
-import cn from "classnames";
+import { UseFormRegisterReturn } from "react-hook-form";
 import classes from "./InputGenderAddBaby.module.css";
 import InputGender from "../InputGender/InputGender";
-import boy from "../../../../assets/png/feeling/boy/06.png";
-import girl from "../../../../assets/png/feeling/girl/06.png";
+import genderConst from "./InputGenderAddBabyConst";
 
 interface IInputGenderAddBaby {
-  textTitle: string;
-  textGirl: string;
-  textBoy: string;
-  classBoy: string;
-  classGirl: string;
+  register: UseFormRegisterReturn;
+  classNameError: string;
 }
 
 const InputGenderAddBaby: React.FC<IInputGenderAddBaby> = ({
-  textTitle,
-  textGirl,
-  textBoy,
+  classNameError,
+  register,
 }) => {
-  const [stateBaby, setStateBaby] = useState(false);
-
-  const onClickBaby = () => setStateBaby(!stateBaby);
-
+  const [chose, setChouse] = useState("");
   return (
     <>
-      <div className={cn(classes.titileContainer)}>{textTitle}</div>
       <div className={classes.container}>
-        <InputGender
-          className={stateBaby ? classes.disactive : classes.active}
-          textBaby={textBoy}
-          img={boy}
-          onClick={onClickBaby}
-          id={"boy"}
-        />
-        <InputGender
-          className={stateBaby ? classes.active : classes.disactive}
-          textBaby={textGirl}
-          img={girl}
-          onClick={onClickBaby}
-          id={"girl"}
-        />
+        {genderConst.map((el, ind) => (
+          <InputGender
+            key={ind}
+            textBaby={el.text}
+            img={el.img}
+            id={el.id}
+            onChange={() => setChouse(el.id)}
+            isChose={chose === el.id}
+            classNameError={classNameError}
+            register={register}
+          />
+        ))}
       </div>
     </>
   );

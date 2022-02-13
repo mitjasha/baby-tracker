@@ -1,27 +1,47 @@
-import React, { MouseEvent } from "react";
+import React from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 import cn from "classnames";
 import classes from "./InputGender.module.css";
 
 interface IInputGender {
   img: string;
-  className?: string;
+  classNameError: string;
   textBaby: string;
-  onClick: (event: MouseEvent) => void;
+  onChange: () => void;
   id: string;
+  isChose: boolean;
+  register?: UseFormRegisterReturn;
 }
 
 const InputGender: React.FC<IInputGender> = ({
   img,
   textBaby,
-  className,
-  onClick,
+  classNameError,
+  onChange,
+  isChose,
   id,
+  register,
 }) => (
   <>
-    <div className={cn(classes.gender, className)} id={id} onClick={onClick}>
+    <label
+      className={cn(
+        classes.gender,
+        classNameError,
+        isChose ? classes.active : classes.disactive,
+      )}
+    >
+      <input
+        className={classes.input}
+        type="checkbox"
+        id={id}
+        checked={isChose}
+        onClick={onChange}
+        value={[id, textBaby]}
+        {...register}
+      />
       <img className={cn(classes.baby)} src={img}></img>
       <div className={classes.title}>{textBaby}</div>
-    </div>
+    </label>
   </>
 );
 

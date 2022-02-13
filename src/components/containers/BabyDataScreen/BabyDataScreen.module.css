@@ -74,32 +74,14 @@
   font-weight: 300;
 }
 
-.photo {
-  width: 68px;
-  height: 38px;
-  background-image: url("../../../assets//svg/img.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.photoContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-input[type="file"] {
-  opacity: 0;
-  left: -1000px;
-  visibility: hidden;
-  position: absolute;
-}
-
 .boy {
   background-image: url("../../../assets/png/feeling/boy/06.png");
 }
 
 .girl {
   background-image: url("../../../assets/png/feeling/girl/06.png");
+}
+
+.error {
+  outline: 2px solid red;
 }

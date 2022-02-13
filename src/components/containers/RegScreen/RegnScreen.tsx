@@ -53,7 +53,7 @@ const RegScreen: React.FC = () => {
           />
           {errors?.password && (
             <ToolTip
-              classContainer={classes.containerPassword}
+              classContainer={classes.errorPassword}
               text={validationPassword.message}
             />
           )}

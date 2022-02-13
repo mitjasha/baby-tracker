@@ -34,11 +34,24 @@ const ActivityScreen: React.FC = () => {
     }
   };
 
-  const { register, handleSubmit } = useForm<ISleepData>();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm<ISleepData>();
   const onSubmit = (data: ISleepData) => {
     console.log(data);
     setAddData(!addData);
     setIsModalOpen(!isModalOpen);
+    reset();
+  };
+
+  const onSubmitFeeling = (data: ISleepData) => {
+    console.log(data.feeling[0].split(",")[1]); // data.feeling = ["англ, русск"]
+    setAddData(!addData);
+    setIsModalOpen(!isModalOpen);
+    reset();
   };
 
   const closeModal = () => {
@@ -113,13 +126,19 @@ const ActivityScreen: React.FC = () => {
                 <form id="form-active" onSubmit={handleSubmit(onSubmit)}>
                   <InputTimeDate
                     textName="Начало"
-                    registerDate={register(`startDate${dataActive}`)}
-                    registerTime={register(`startTime${dataActive}`)}
+                    classNameError={
+                      (errors?.startDate || errors?.startTime) && classes.error
+                    }
+                    registerDate={register("startDate", { required: true })}
+                    registerTime={register("startTime", { required: true })}
                   />
                   <InputTimeDate
                     textName="Конец"
-                    registerDate={register(`endDate${dataActive}`)}
-                    registerTime={register(`endTime${dataActive}`)}
+                    classNameError={
+                      (errors?.endDate || errors?.endTime) && classes.error
+                    }
+                    registerDate={register("endDate", { required: true })}
+                    registerTime={register("endTime", { required: true })}
                   />
                 </form>
               </div>
@@ -138,10 +157,18 @@ const ActivityScreen: React.FC = () => {
           primaryBtn={{
             text: "Сохранить",
             type: "submit",
+            form: "form-feeling",
           }}
           onClose={toggleModal}
         >
-          <InputFeeling />
+          <div>
+            <form id="form-feeling" onSubmit={handleSubmit(onSubmitFeeling)}>
+              <InputFeeling
+                classNameError={errors?.feeling && classes.error}
+                register={register("feeling", { required: true })}
+              />
+            </form>
+          </div>
         </ModalWindow>
       )}
     </div>
