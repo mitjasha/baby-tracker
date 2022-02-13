@@ -3,11 +3,11 @@ export interface IUser {
   password: string;
 }
 
-export interface IUserLoginResponse {
+export interface IUserResponse {
   user: {
     id: string;
     username: string;
-    childs: [];
+    childs: IChild[];
     token: string;
   };
 }
@@ -19,4 +19,29 @@ export interface IUserRegistrationResponse {
     id: string;
     token: string;
   };
+}
+
+export interface IChild {
+  id: string;
+  name: string;
+  gender: EGender;
+  birth: Date;
+  photo: string;
+}
+
+export enum EGender {
+  MALE = "Мальчик",
+  FEMALE = "Девочка",
+  NAN = "NaN",
+}
+
+export enum EEvents {
+  SLEEP = "Сон",
+  FEEDING = "Кормление",
+  STROLL = "Прогулка",
+  MOOD = "Настроение",
+  GROWTH = "Рост",
+  WEIGHT = "Вес",
+  ACTIVITY = "Активность",
+  BATHING = "Купание",
 }

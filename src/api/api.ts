@@ -4,13 +4,14 @@ export async function fetchAsync(
   method: "GET" | "POST" | "DELETE" | "PUT",
   url: string,
   body?: string,
-  access_token?: string,
+  accessToken?: string,
 ) {
   const headers: HeadersInit = {
     "Content-Type": "application/json",
   };
-  if (access_token) {
-    headers.Authorization = `Token ${access_token}`;
+  if (accessToken) {
+    headers.Authorization = `Token ${accessToken}`;
+    console.log(headers);
   }
 
   const response = await fetch(`${BASE_URL}${url}`, {
@@ -19,7 +20,9 @@ export async function fetchAsync(
     headers,
     body,
   });
-
+  if (response.status === 422) {
+    alert("Введены неверные данные");
+  }
   const result = await response.json();
 
   if (!response.ok) {
@@ -30,8 +33,8 @@ export async function fetchAsync(
   return result;
 }
 
-export function get<T>(url: string): Promise<T> {
-  return fetchAsync("GET", url);
+export function get<T>(url: string, accessToken?: string): Promise<T> {
+  return fetchAsync("GET", url, undefined, accessToken);
 }
 
 export function post<T>(url: string, body: string): Promise<T> {

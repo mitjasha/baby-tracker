@@ -1,7 +1,7 @@
-import { post } from "./api";
+import { get, post } from "./api";
 import {
   IUser,
-  IUserLoginResponse,
+  IUserResponse,
   IUserRegistrationResponse,
 } from "./api.interface";
 
@@ -9,7 +9,8 @@ const userController = {
   signUp: (user: IUser) =>
     post<IUserRegistrationResponse>("/users/signup", JSON.stringify(user)),
   signIn: (user: IUser) =>
-    post<IUserLoginResponse>("/users/login", JSON.stringify(user)),
+    post<IUserResponse>("/users/login", JSON.stringify(user)),
+  getUser: (accessToken: string) => get<IUserResponse>("/user", accessToken),
 };
 
 export default userController;
