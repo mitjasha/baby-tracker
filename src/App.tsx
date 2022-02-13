@@ -16,10 +16,8 @@ const routesWithoutHeader: string[] = ["/", "/registration", "/baby-data"];
 const App: React.FC = () => {
   const location = useLocation();
   const [isHeader, setHeader] = useState<boolean>(false);
-  const [isFooter, setFooter] = useState<boolean>(false);
   useEffect(() => {
     setHeader(routesWithoutHeader.includes(location.pathname));
-    setFooter(routesWithoutHeader.includes(location.pathname));
   }, [location.pathname]);
 
   return (
@@ -37,7 +35,7 @@ const App: React.FC = () => {
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </main>
-      {isFooter && <Footer />}
+      {isHeader && <Footer />}
     </>
   );
 };
