@@ -37,12 +37,16 @@ export function get<T>(url: string, accessToken?: string): Promise<T> {
   return fetchAsync("GET", url, undefined, accessToken);
 }
 
-export function post<T>(url: string, body: string): Promise<T> {
-  return fetchAsync("POST", url, body);
+export function post<T>(
+  url: string,
+  body: string,
+  accessToken?: string,
+): Promise<T> {
+  return fetchAsync("POST", url, body, accessToken);
 }
 
-export function del(url: string) {
-  return fetchAsync("DELETE", url);
+export function del(url: string, accessToken: string) {
+  return fetchAsync("DELETE", url, accessToken);
 }
 
 export function put(url: string, body: string) {

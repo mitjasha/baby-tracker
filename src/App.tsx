@@ -15,7 +15,7 @@ const routesWithoutHeader: string[] = ["/", "/registration", "/baby-data"];
 
 const App: React.FC = () => {
   const location = useLocation();
-  const [isHeader, setHeader] = useState<boolean>(false);
+  const [isHeader, setHeader] = useState<boolean>(true);
   const [isFooter, setFooter] = useState<boolean>(false);
   useEffect(() => {
     setHeader(routesWithoutHeader.includes(location.pathname));

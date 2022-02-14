@@ -28,6 +28,43 @@ export interface IChild {
   birth: Date;
   photo: string;
 }
+export interface IChildCreate {
+  name: string;
+  gender: EGender;
+  birth: Date;
+  photo: string;
+}
+
+export interface IChildUpdate {
+  name?: string;
+  gender?: EGender;
+  birth?: Date;
+  photo?: string;
+}
+
+export interface IEvent {
+  event: string;
+  startTime: Date;
+  endTime: Date;
+  description: string;
+}
+
+export interface IEventResponse {
+  id: string;
+  event: string;
+  startTime: Date;
+  endTime: Date;
+  description: string;
+  child: IChild;
+}
+
+export interface IEventRequest {
+  id: string;
+  event: string;
+  startTime: Date;
+  endTime: Date;
+  description: string;
+}
 
 export enum EGender {
   MALE = "Мальчик",
