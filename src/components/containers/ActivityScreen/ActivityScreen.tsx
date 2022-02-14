@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import classes from "./ActivityScreen.module.css";
@@ -9,6 +9,7 @@ import ActivityScreenConst from "./ActivityScreenConst";
 import Timer from "../../common/Timer/Timer";
 import InputFeeling from "../../common/Inputs/InputFeeling/InputFeeling";
 import girlDefault from "../../../assets/png/activity/girl-default.png";
+import { currentDay, currentTime } from "../../helpers/changeNum";
 
 interface ISleepData {
   [key: string]: string;
@@ -37,32 +38,63 @@ const ActivityScreen: React.FC = () => {
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm<ISleepData>();
+    watch,
+  } = useForm<ISleepData>({ mode: "onBlur" });
+
+  const [minDate, setDateMin] = useState(watch("startDate"));
+  const [maxDate, setDateMax] = useState(watch("endDate"));
+  const [minTime, setTimeMin] = useState(watch("startTime"));
+  const [maxTime, setTimeMax] = useState(watch("endTime"));
+  useEffect(() => {
+    setDateMin(watch("startDate"));
+    setDateMax(watch("endDate"));
+    setTimeMin(watch("startTime"));
+    setTimeMax(watch("endTime"));
+  }, [minDate, maxDate, minTime, maxTime]);
+  const change = () => {
+    setDateMin(watch("startDate"));
+    setDateMax(watch("endDate"));
+    setTimeMin(watch("startTime"));
+    setTimeMax(watch("endTime"));
+    console.log(minTime);
+    console.log(maxTime);
+    console.log(maxTime < minTime);
+  };
+
   const onSubmit = (data: ISleepData) => {
-    console.log(data);
+    const dataEvent = {
+      event: dataActive,
+      startTime: `${data.startDate} ${data.startTime}`,
+      endTime: `${data.endDate} ${data.endTime}`,
+      description: "",
+    };
+    console.log(JSON.stringify(dataEvent));
     setAddData(!addData);
     setIsModalOpen(!isModalOpen);
     reset();
   };
 
   const onSubmitFeeling = (data: ISleepData) => {
-    console.log(data.feeling[0].split(",")[1]); // data.feeling = ["англ, русск"]
-
-    setIsModalOpen(!isModalOpen);
+    const time = `${currentDay} ${currentTime}`;
+    const dataEvent = {
+      event: dataActive,
+      startTime: time,
+      endTime: time,
+      description: data.feeling[0].split(",")[1], // data.feeling = ["англ, русск"]
+    };
+    console.log(JSON.stringify(dataEvent));
     reset();
+    setIsModalOpen(!isModalOpen);
   };
 
   const closeModal = () => {
-    console.log(addData);
     if (addData) {
       setIsModalOpen(!isModalOpen);
       setAddData(!addData);
-      console.log("tut");
     } else {
       setIsModalOpen(!isModalOpen);
-      console.log("tut2");
     }
-    console.log(addData);
+    reset();
   };
 
   const addNewData = () => {
@@ -131,7 +163,10 @@ const ActivityScreen: React.FC = () => {
               <div>
                 <form id="form-active" onSubmit={handleSubmit(onSubmit)}>
                   <InputTimeDate
+                    max={maxDate}
+                    maxTime={maxTime}
                     textName="Начало"
+                    onChange={change}
                     classNameError={
                       (errors?.startDate || errors?.startTime) && classes.error
                     }
@@ -139,6 +174,9 @@ const ActivityScreen: React.FC = () => {
                     registerTime={register("startTime", { required: true })}
                   />
                   <InputTimeDate
+                    min={minDate}
+                    minTime={minTime}
+                    onChange={change}
                     textName="Конец"
                     classNameError={
                       (errors?.endDate || errors?.endTime) && classes.error
