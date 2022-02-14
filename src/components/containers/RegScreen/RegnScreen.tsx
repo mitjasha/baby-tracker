@@ -10,11 +10,13 @@ import {
 } from "./RegScreenConst";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 import ToolTip from "../../common/ToolTip/ToolTip";
+import { IUser } from "../../../api/api.interface";
+import userController from "../../../api/userController";
 
-interface UserSubmitForm {
-  name: string;
-  password: string;
-}
+// interface UserSubmitForm {
+//   name: string;
+//   password: string;
+// }
 
 const RegScreen: React.FC = () => {
   const {
@@ -22,12 +24,18 @@ const RegScreen: React.FC = () => {
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm<UserSubmitForm>({ mode: "onChange" });
+  } = useForm<IUser>({ mode: "onChange" });
 
   const signInBtn: () => void = () => console.log("ВОЙТИ");
-  const onSubmit = (data: UserSubmitForm) => {
+  const onSubmit = async (data: IUser) => {
     console.log(data);
-    window.location.href = "#/baby-data/";
+    const result = await userController.signUp(data);
+    if (result) {
+      const accessToken = result.user.token;
+      console.log(accessToken);
+      localStorage.setItem("accessToken", JSON.stringify(accessToken));
+      window.location.href = "#/baby-data/";
+    }
     reset();
   };
 
@@ -40,9 +48,9 @@ const RegScreen: React.FC = () => {
             className={classes.user}
             type={regScreen.TYPE_TEXT}
             placeholder={regScreen.PLACEHOLDER_USER}
-            register={register("name", { ...validationName })}
+            register={register("username", { ...validationName })}
           />
-          {errors?.name && <ToolTip text={validationName.message} />}
+          {errors?.username && <ToolTip text={validationName.message} />}
         </div>
         <div className={classes.password}>
           <InputLogin
@@ -63,7 +71,7 @@ const RegScreen: React.FC = () => {
           text={regScreen.TEXT_BUTTON}
         />
         <div className={classes.error}>
-          {errors?.name && errors?.password && (
+          {errors?.username && errors?.password && (
             <p>{regScreen.TEXT_ERROR_NAME}</p>
           )}
         </div>

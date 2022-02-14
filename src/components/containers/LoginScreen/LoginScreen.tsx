@@ -10,11 +10,8 @@ import {
 } from "./LoginScreenConst";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 import ToolTip from "../../common/ToolTip/ToolTip";
-
-interface UserSubmitForm {
-  login: string;
-  loginPassword: string;
-}
+import userController from "../../../api/userController";
+import { IUser } from "../../../api/api.interface";
 
 const LoginScreen: React.FC = () => {
   const {
@@ -22,12 +19,19 @@ const LoginScreen: React.FC = () => {
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm<UserSubmitForm>({ mode: "onChange" });
-  const onSubmit = (data: UserSubmitForm) => {
-    console.log(data);
-    window.location.href = "#/main/";
+  } = useForm<IUser>({ mode: "onChange" });
+
+  const onSubmit = async (data: IUser) => {
+    const result = await userController.signIn(data);
+    if (result) {
+      const accessToken = result.user.token;
+      console.log(accessToken);
+      localStorage.setItem("accessToken", JSON.stringify(accessToken));
+      window.location.href = "#/main/";
+    }
     reset();
   };
+
   const registrationFn = () => console.log("REGISTRATION");
 
   return (
@@ -39,18 +43,18 @@ const LoginScreen: React.FC = () => {
             className={classes.user}
             type={loginScreen.TYPE_TEXT}
             placeholder={loginScreen.PLACEHOLDER_USER}
-            register={register("login", { ...validationLogin })}
+            register={register("username", { ...validationLogin })}
           />
-          {errors?.login && <ToolTip text={validationLogin.message} />}
+          {errors?.username && <ToolTip text={validationLogin.message} />}
         </div>
         <div className={classes.loginPassword}>
           <InputLogin
             className={classes.password}
             type={loginScreen.TYPE_PASSWORD}
             placeholder={loginScreen.PLACEHOLDER_PASSWORD}
-            register={register("loginPassword", { ...validationPassword })}
+            register={register("password", { ...validationPassword })}
           />
-          {errors?.loginPassword && (
+          {errors?.password && (
             <ToolTip
               classContainer={classes.errorPassword}
               text={validationPassword.message}
@@ -62,7 +66,7 @@ const LoginScreen: React.FC = () => {
           text={loginScreen.TEXT_BUTTON}
         />
         <div className={classes.error}>
-          {errors?.login && errors?.loginPassword && (
+          {errors?.username && errors?.password && (
             <p>{loginScreen.TEXT_ERROR_LOGIN}</p>
           )}
         </div>
