@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-import React, { FC, ReactNode, MouseEvent } from "react";
+import React, { FC, ReactNode } from "react";
 import cn from "classnames";
 import "./ModalWindow.css";
 
@@ -29,7 +29,7 @@ interface IModalWindow {
   primaryBtn: TPrimaryBtn;
   secondaryBtn?: TSecondaryBtn;
   className?: string;
-  onClose: (event: MouseEvent) => void;
+  onClose: () => string | void;
   titleModal: string | undefined;
 }
 
