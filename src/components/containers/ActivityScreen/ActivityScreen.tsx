@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import classes from "./ActivityScreen.module.css";
@@ -16,20 +16,18 @@ interface ISleepData {
 
 const ActivityScreen: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [dataActive, setDataActive] = useState<string | undefined>("");
+  const [dataActive, setDataActive] = useState<string>("");
   const [addData, setAddData] = useState<boolean>(false);
   const [icon, setIcon] = useState<string>("");
   const [img, setImg] = useState<string>(girlDefault);
 
-  const toggleModal = (event: MouseEvent): void => {
+  const toggleModal = (arg: string | undefined) => {
     setIsModalOpen(!isModalOpen);
-    const target = event.currentTarget as HTMLElement;
-    if (target.hasAttribute("data-id")) {
-      const newActive = target.dataset.id;
-      const newIcon = ActivityScreenConst.filter((el) => el.text === newActive)
+    if (arg) {
+      const newIcon = ActivityScreenConst.filter((el) => el.text === arg)
         .map((el) => el.icon)
         .join("");
-      setDataActive(newActive);
+      setDataActive(arg);
       setIcon(newIcon);
     }
   };
@@ -49,14 +47,22 @@ const ActivityScreen: React.FC = () => {
 
   const onSubmitFeeling = (data: ISleepData) => {
     console.log(data.feeling[0].split(",")[1]); // data.feeling = ["англ, русск"]
-    setAddData(!addData);
+
     setIsModalOpen(!isModalOpen);
     reset();
   };
 
   const closeModal = () => {
-    setIsModalOpen(!isModalOpen);
-    setAddData(!addData);
+    console.log(addData);
+    if (addData) {
+      setIsModalOpen(!isModalOpen);
+      setAddData(!addData);
+      console.log("tut");
+    } else {
+      setIsModalOpen(!isModalOpen);
+      console.log("tut2");
+    }
+    console.log(addData);
   };
 
   const addNewData = () => {
@@ -97,7 +103,7 @@ const ActivityScreen: React.FC = () => {
               text: "+ Добавить",
               onClick: addNewData,
             }}
-            onClose={toggleModal}
+            onClose={closeModal}
           >
             <Timer
               click={changeImg}
@@ -159,7 +165,7 @@ const ActivityScreen: React.FC = () => {
             type: "submit",
             form: "form-feeling",
           }}
-          onClose={toggleModal}
+          onClose={closeModal}
         >
           <div>
             <form id="form-feeling" onSubmit={handleSubmit(onSubmitFeeling)}>
