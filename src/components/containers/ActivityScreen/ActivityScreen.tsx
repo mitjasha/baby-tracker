@@ -38,24 +38,24 @@ const ActivityScreen: React.FC = () => {
     formState: { errors },
     handleSubmit,
     reset,
-    watch,
+    getValues,
   } = useForm<ISleepData>({ mode: "onBlur" });
 
-  const [minDate, setDateMin] = useState(watch("startDate"));
-  const [maxDate, setDateMax] = useState(watch("endDate"));
-  const [minTime, setTimeMin] = useState(watch("startTime"));
-  const [maxTime, setTimeMax] = useState(watch("endTime"));
+  const [minDate, setDateMin] = useState(getValues("startDate"));
+  const [maxDate, setDateMax] = useState(getValues("endDate"));
+  const [minTime, setTimeMin] = useState(getValues("startTime"));
+  const [maxTime, setTimeMax] = useState(getValues("endTime"));
   useEffect(() => {
-    setDateMin(watch("startDate"));
-    setDateMax(watch("endDate"));
-    setTimeMin(watch("startTime"));
-    setTimeMax(watch("endTime"));
+    setDateMin(getValues("startDate"));
+    setDateMax(getValues("endDate"));
+    setTimeMin(getValues("startTime"));
+    setTimeMax(getValues("endTime"));
   }, [minDate, maxDate, minTime, maxTime]);
   const change = () => {
-    setDateMin(watch("startDate"));
-    setDateMax(watch("endDate"));
-    setTimeMin(watch("startTime"));
-    setTimeMax(watch("endTime"));
+    setDateMin(getValues("startDate"));
+    setDateMax(getValues("endDate"));
+    setTimeMin(getValues("startTime"));
+    setTimeMax(getValues("endTime"));
     console.log(minTime);
     console.log(maxTime);
     console.log(maxTime < minTime);
