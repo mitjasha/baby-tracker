@@ -25,7 +25,6 @@ const App: React.FC = () => {
   // eslint-disable-next-line react/prop-types
   function RequireAuth({ children }: { children: React.ReactElement }) {
     const authed = !!localStorage.getItem("accessToken");
-    console.log(authed);
 
     return authed === true ? (
       (children as React.ReactElement)

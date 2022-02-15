@@ -9,7 +9,6 @@ const DropDown: React.FC = () => {
     );
 
     const result = await userController.getUser(accessToken);
-    console.log("1");
 
     return result.user.childs;
   };
@@ -21,7 +20,6 @@ const DropDown: React.FC = () => {
   useEffect(() => {
     const setData = async () => {
       const childs = await getChild();
-      console.log("2");
 
       dataSet(childs);
     };

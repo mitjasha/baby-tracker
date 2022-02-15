@@ -1,4 +1,5 @@
-const BASE_URL = "https://baby-server.herokuapp.com";
+// const BASE_URL = "https://baby-server.herokuapp.com";
+const BASE_URL = "http://localhost:3030";
 
 export async function fetchAsync(
   method: "GET" | "POST" | "DELETE" | "PUT",
