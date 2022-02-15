@@ -18,6 +18,9 @@ function getFormattedData(items: ITimelineItem[]) {
       year: "numeric",
       month: "numeric",
       day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
     }).format(new Date(date));
 
     const list: IItem[] = [];
@@ -52,6 +55,7 @@ const Timeline: React.FC = () => {
           <li className="time-label">
             <span>{d}</span>
           </li>
+          {console.log(activities[d])}
           {activities[d].map(({ time, text, key }) => (
             <TimelineItem time={time} text={text} key={key} />
           ))}
