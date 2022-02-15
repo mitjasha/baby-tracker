@@ -8,10 +8,10 @@ export interface IItem {
 const TimelineItem: React.FC<IItem> = ({ time, text }) => (
   <>
     <li>
-      <i className="fa" />
+      {/* <i className="fa" /> */}
       <div className="time-line-item">
         <span className="time">
-          <i className="fa fa-clock-o" />
+          {/* <i className="fa fa-clock-o" /> */}
           {time}
         </span>
         <div className="time-line-header">{text}</div>
