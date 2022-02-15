@@ -59,5 +59,12 @@
 }
 
 .error {
+  width: 310px;
+  height: 20px;
+  color: red;
+  font-weight: 100;
+}
+
+.errorFeeling {
   outline: 2px solid red;
 }

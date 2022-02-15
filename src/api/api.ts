@@ -21,6 +21,7 @@ export async function fetchAsync(
     body,
   });
   if (response.status === 422) {
+    // eslint-disable-next-line no-alert
     alert("Введены неверные данные");
   }
   const result = await response.json();

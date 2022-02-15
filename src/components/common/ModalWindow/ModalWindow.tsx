@@ -31,6 +31,8 @@ interface IModalWindow {
   className?: string;
   onClose: () => string | void;
   titleModal: string | undefined;
+  classNameFooter?: string;
+  textError?: string;
 }
 
 const ModalWindow: FC<IModalWindow> = ({
@@ -42,7 +44,9 @@ const ModalWindow: FC<IModalWindow> = ({
   primaryBtn,
   secondaryBtn,
   className,
+  classNameFooter,
   onClose,
+  textError,
 }) => (
   <>
     <div className={cn("modal", `modal-${className}`)}>
@@ -60,7 +64,9 @@ const ModalWindow: FC<IModalWindow> = ({
           </div>
         )}
 
-        {withFooter && <div className="modalFooter" />}
+        {withFooter && (
+          <div className={cn("modalFooter", classNameFooter)}>{textError}</div>
+        )}
         {primaryBtn && (
           <button
             className={cn("modal-button", primaryBtn.className)}

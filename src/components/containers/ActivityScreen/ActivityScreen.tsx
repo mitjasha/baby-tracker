@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import classes from "./ActivityScreen.module.css";
@@ -21,6 +21,7 @@ const ActivityScreen: React.FC = () => {
   const [addData, setAddData] = useState<boolean>(false);
   const [icon, setIcon] = useState<string>("");
   const [img, setImg] = useState<string>(girlDefault);
+  const [errorS, setErrors] = useState<boolean>(false);
 
   const toggleModal = (arg: string | undefined) => {
     setIsModalOpen(!isModalOpen);
@@ -39,26 +40,35 @@ const ActivityScreen: React.FC = () => {
     handleSubmit,
     reset,
     getValues,
-  } = useForm<ISleepData>({ mode: "onBlur" });
+  } = useForm<ISleepData>({ mode: "onChange" });
 
-  const [minDate, setDateMin] = useState(getValues("startDate"));
-  const [maxDate, setDateMax] = useState(getValues("endDate"));
-  const [minTime, setTimeMin] = useState(getValues("startTime"));
-  const [maxTime, setTimeMax] = useState(getValues("endTime"));
+  const [minDate, setDateMin] = useState("");
+  const [maxDate, setDateMax] = useState("");
+  const [minTime, setTimeMin] = useState("");
+  const [maxTime, setTimeMax] = useState("");
+  const [errMessage, setErrMessage] = useState("");
   useEffect(() => {
-    setDateMin(getValues("startDate"));
-    setDateMax(getValues("endDate"));
-    setTimeMin(getValues("startTime"));
-    setTimeMax(getValues("endTime"));
-  }, [minDate, maxDate, minTime, maxTime]);
-  const change = () => {
-    setDateMin(getValues("startDate"));
-    setDateMax(getValues("endDate"));
-    setTimeMin(getValues("startTime"));
-    setTimeMax(getValues("endTime"));
-    console.log(minTime);
-    console.log(maxTime);
-    console.log(maxTime < minTime);
+    const startEvent = Date.parse(
+      `${getValues("startDate")} ${getValues("startTime")}`,
+    );
+    const endEvent = Date.parse(
+      `${getValues("endDate")} ${getValues("endTime")}`,
+    );
+    if (startEvent > endEvent) {
+      setErrors(false);
+      setErrMessage("Неверные значения");
+    } else {
+      setErrors(true);
+      setErrMessage("");
+    }
+  }, [minDate, maxDate, minTime, maxTime, errMessage]);
+
+  const resetForm = () => {
+    reset();
+    setErrMessage("");
+    setErrors(false);
+    setDateMin("");
+    setDateMax("");
   };
 
   const onSubmit = (data: ISleepData) => {
@@ -71,7 +81,7 @@ const ActivityScreen: React.FC = () => {
     console.log(JSON.stringify(dataEvent));
     setAddData(!addData);
     setIsModalOpen(!isModalOpen);
-    reset();
+    resetForm();
   };
 
   const onSubmitFeeling = (data: ISleepData) => {
@@ -83,8 +93,8 @@ const ActivityScreen: React.FC = () => {
       description: data.feeling[0].split(",")[1], // data.feeling = ["англ, русск"]
     };
     console.log(JSON.stringify(dataEvent));
-    reset();
     setIsModalOpen(!isModalOpen);
+    resetForm();
   };
 
   const closeModal = () => {
@@ -94,7 +104,7 @@ const ActivityScreen: React.FC = () => {
     } else {
       setIsModalOpen(!isModalOpen);
     }
-    reset();
+    resetForm();
   };
 
   const addNewData = () => {
@@ -159,30 +169,47 @@ const ActivityScreen: React.FC = () => {
                 form: "form-active",
               }}
               onClose={closeModal}
+              textError={errMessage}
+              classNameFooter={classes.error}
             >
               <div>
                 <form id="form-active" onSubmit={handleSubmit(onSubmit)}>
                   <InputTimeDate
                     max={maxDate}
-                    maxTime={maxTime}
                     textName="Начало"
-                    onChange={change}
-                    classNameError={
-                      (errors?.startDate || errors?.startTime) && classes.error
-                    }
-                    registerDate={register("startDate", { required: true })}
-                    registerTime={register("startTime", { required: true })}
+                    registerDate={register("startDate", {
+                      required: true,
+                      validate: (input) => {
+                        setDateMin(input);
+                        return errorS;
+                      },
+                      onChange: () => console.log("k"),
+                    })}
+                    registerTime={register("startTime", {
+                      required: true,
+                      validate: (input) => {
+                        setTimeMin(input);
+                        return errorS;
+                      },
+                    })}
                   />
                   <InputTimeDate
                     min={minDate}
-                    minTime={minTime}
-                    onChange={change}
                     textName="Конец"
-                    classNameError={
-                      (errors?.endDate || errors?.endTime) && classes.error
-                    }
-                    registerDate={register("endDate", { required: true })}
-                    registerTime={register("endTime", { required: true })}
+                    registerDate={register("endDate", {
+                      required: true,
+                      validate: (input) => {
+                        setDateMax(input);
+                        return errorS;
+                      },
+                    })}
+                    registerTime={register("endTime", {
+                      required: true,
+                      validate: (input) => {
+                        setTimeMax(input);
+                        return errorS;
+                      },
+                    })}
                   />
                 </form>
               </div>
@@ -208,7 +235,7 @@ const ActivityScreen: React.FC = () => {
           <div>
             <form id="form-feeling" onSubmit={handleSubmit(onSubmitFeeling)}>
               <InputFeeling
-                classNameError={errors?.feeling && classes.error}
+                classNameError={errors?.feeling && classes.errorFeeling}
                 register={register("feeling", { required: true })}
               />
             </form>
