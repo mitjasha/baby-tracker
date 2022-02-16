@@ -1,20 +1,31 @@
 import React from "react";
 
+import classes from "./Timeline.module.css";
+
 export interface IItem {
-  time: string;
-  text: string;
+  id: string;
+  event: string;
+  startTime: string;
+  duration: number;
+  description: string;
   key: number;
 }
-const TimelineItem: React.FC<IItem> = ({ time, text }) => (
+const TimelineItem: React.FC<IItem> = ({
+  id,
+  event,
+  startTime,
+  description,
+}) => (
   <>
     <li>
       {/* <i className="fa" /> */}
-      <div className="time-line-item">
+      <div className={classes.timelineItem} id={id}>
         <span className="time">
           {/* <i className="fa fa-clock-o" /> */}
-          {time}
+          {startTime}
         </span>
-        <div className="time-line-header">{text}</div>
+        <div className={classes.timelineHeader}>{event}</div>
+        <div className={classes.timelineHeader}>{description}</div>
       </div>
     </li>
   </>

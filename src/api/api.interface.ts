@@ -28,6 +28,15 @@ export interface IChild {
   birth: Date;
   photo: string;
 }
+
+export interface IChildResponse {
+  id: string;
+  name: string;
+  gender: string;
+  birth: string;
+  photo: string;
+}
+
 export interface IChildCreate {
   name: string;
   gender: EGender;
@@ -52,10 +61,10 @@ export interface IEvent {
 export interface IEventResponse {
   id: string;
   event: string;
-  startTime: Date;
-  endTime: Date;
+  startTime: string;
+  endTime: string;
   description: string;
-  child: IChild;
+  child?: IChildResponse;
 }
 
 export interface IEventRequest {
