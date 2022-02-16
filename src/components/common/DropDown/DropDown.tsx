@@ -4,10 +4,7 @@ import userController from "../../../api/userController";
 
 const DropDown: React.FC = () => {
   const getChild = async (): Promise<IChild[]> => {
-    const accessToken: string = JSON.parse(
-      localStorage.getItem("accessToken") as string,
-    );
-    const result = await userController.getUser(accessToken);
+    const result = await userController.getUser();
 
     return result.user.childs;
   };
@@ -26,16 +23,15 @@ const DropDown: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!data) {
-      const val = (data as IChild[])[0].name;
-      setValue(val);
-    }
-  });
-
-  data.forEach((child) => {
-    if (child.name === value) {
-      localStorage.setItem("currentChild", JSON.stringify(child.id));
-    }
+    data.forEach((child) => {
+      if (value === undefined) {
+        const val = (data as IChild[])[0].name;
+        setValue(val);
+      }
+      if (child.name === value) {
+        localStorage.setItem("currentChild", JSON.stringify(child.id));
+      }
+    });
   });
 
   const handleChange = (e: {
