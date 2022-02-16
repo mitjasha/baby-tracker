@@ -68,3 +68,7 @@
 .errorFeeling {
   outline: 2px solid red;
 }
+
+.button {
+  width: 240px;
+}

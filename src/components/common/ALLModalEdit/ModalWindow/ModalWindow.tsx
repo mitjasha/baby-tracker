@@ -3,20 +3,13 @@ import React, { FC, ReactNode } from "react";
 import cn from "classnames";
 import "./ModalWindow.css";
 
-type TPrimaryBtn = {
+type TBtn = {
   type?: "submit" | "reset" | "button" | undefined;
   text: string;
   icon?: string;
   className?: string;
   onClick?: () => void;
   form?: string;
-};
-
-type TSecondaryBtn = {
-  onClick: () => void;
-  text?: string;
-  icon?: string;
-  className?: string;
 };
 
 interface IModalWindow {
@@ -26,13 +19,15 @@ interface IModalWindow {
   childrenModalContent?: ReactNode;
   withFooter: boolean;
   withIcon: boolean;
-  primaryBtn: TPrimaryBtn;
-  secondaryBtn?: TSecondaryBtn;
+  withOverlay: boolean;
+  primaryBtn: TBtn;
+  secondaryBtn?: TBtn;
   className?: string;
-  onClose: () => string | void;
+  onClose: () => boolean | string | void | Function;
   titleModal: string | undefined;
   classNameFooter?: string;
   textError?: string;
+  onClick?: () => undefined | void;
 }
 
 const ModalWindow: FC<IModalWindow> = ({
@@ -47,6 +42,8 @@ const ModalWindow: FC<IModalWindow> = ({
   classNameFooter,
   onClose,
   textError,
+  withOverlay,
+  onClick,
 }) => (
   <>
     <div className={cn("modal", `modal-${className}`)}>
@@ -67,30 +64,45 @@ const ModalWindow: FC<IModalWindow> = ({
         {withFooter && (
           <div className={cn("modalFooter", classNameFooter)}>{textError}</div>
         )}
-        {primaryBtn && (
-          <button
-            className={cn("modal-button", primaryBtn.className)}
-            type={primaryBtn.type}
-            form={primaryBtn.form}
-            onClick={primaryBtn.onClick}
-          >
-            {primaryBtn.text}
-          </button>
-        )}
-        {secondaryBtn && (
-          <button
-            className={cn("modal-button", secondaryBtn.className)}
-            onClick={secondaryBtn.onClick}
-          >
-            {secondaryBtn.text}
-          </button>
-        )}
+        <div className="buttons">
+          {primaryBtn && (
+            <button
+              className={cn("modal-button", primaryBtn.className)}
+              onClick={() => {
+                if (primaryBtn.onClick) primaryBtn.onClick();
+                if (onClick) onClick();
+              }}
+              type={primaryBtn.type}
+              form={primaryBtn.form}
+            >
+              {primaryBtn.text}
+            </button>
+          )}
+          {secondaryBtn && (
+            <button
+              className={cn("modal-button", secondaryBtn.className)}
+              onClick={() => {
+                if (secondaryBtn.onClick) secondaryBtn.onClick();
+                // if (onClick) onClick();
+              }}
+              type={secondaryBtn.type}
+              form={secondaryBtn.form}
+            >
+              {secondaryBtn.text}
+            </button>
+          )}
+        </div>
       </div>
     </div>
-    <div
-      className={cn("overlay-sleep", `overlay-${className}`)}
-      onClick={onClose}
-    />
+    {withOverlay && (
+      <div
+        className={cn("overlay-sleep", `overlay-${className}`)}
+        onClick={() => {
+          onClose();
+          if (onClick) onClick();
+        }}
+      />
+    )}
   </>
 );
 
