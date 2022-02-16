@@ -10,9 +10,6 @@ import Timer from "../../common/Timer/Timer";
 import "./MainScreen.css";
 
 const MainScreen: React.FC = () => {
-  const accessToken: string = JSON.parse(
-    localStorage.getItem("accessToken") as string,
-  );
   const childID: string = JSON.parse(
     localStorage.getItem("currentChild") as string,
   );
@@ -20,10 +17,7 @@ const MainScreen: React.FC = () => {
   const [child, childSet] = useState<IChild>();
   useEffect(() => {
     const setData = async () => {
-      const currentChild = await childController.getChildById(
-        childID,
-        accessToken,
-      );
+      const currentChild = await childController.getChildById(childID);
 
       childSet(currentChild as IChild);
     };
@@ -32,10 +26,7 @@ const MainScreen: React.FC = () => {
 
   useEffect(() => {
     const setData = async () => {
-      const eventsList = await eventController.getAllEvents(
-        child as IChild,
-        accessToken,
-      );
+      const eventsList = await eventController.getAllEvents(child as IChild);
 
       eventsSet(eventsList);
     };

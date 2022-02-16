@@ -10,7 +10,7 @@ const userController = {
     post<IUserRegistrationResponse>("/users/signup", JSON.stringify(user)),
   signIn: (user: IUser) =>
     post<IUserResponse>("/users/login", JSON.stringify(user)),
-  getUser: (accessToken: string) => get<IUserResponse>("/user", accessToken),
+  getUser: () => get<IUserResponse>("/user"),
 };
 
 export default userController;
