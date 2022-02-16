@@ -7,11 +7,12 @@ const DropDown: React.FC = () => {
     const accessToken = JSON.parse(
       localStorage.getItem("accessToken") as string,
     );
-
     const result = await userController.getUser(accessToken);
 
     return result.user.childs;
   };
+
+  const [value, setValue] = useState<string>();
 
   const [data, dataSet] = useState<IChild[]>([
     { name: "", id: "", birth: new Date(), gender: EGender.NAN, photo: "" },
@@ -26,17 +27,26 @@ const DropDown: React.FC = () => {
     setData();
   }, []);
 
-  const getInitialState = () => {
-    const value = (data as IChild[])[0].name;
-    return value;
-  };
+  useEffect(() => {
+    const val = (data as IChild[])[0].name;
+    setValue(val);
+  });
 
-  const [value, setValue] = useState(getInitialState);
+  data.forEach((child) => {
+    if (child.name === value) {
+      localStorage.setItem("currentChild", JSON.stringify(child.id));
+    }
+  });
 
   const handleChange = (e: {
     target: { value: React.SetStateAction<string> };
   }) => {
-    setValue(e.target.value);
+    setValue(e.target.value as string);
+    data.forEach((child) => {
+      if (child.name === e.target.value) {
+        localStorage.setItem("currentChild", JSON.stringify(child.id));
+      }
+    });
   };
 
   return (
