@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { EGender, IChild } from "../../../api/api.interface";
+import { IChild } from "../../../api/api.interface";
 import userController from "../../../api/userController";
 
 const DropDown: React.FC = () => {
@@ -14,9 +14,7 @@ const DropDown: React.FC = () => {
 
   const [value, setValue] = useState<string>();
 
-  const [data, dataSet] = useState<IChild[]>([
-    { name: "", id: "", birth: new Date(), gender: EGender.NAN, photo: "" },
-  ]);
+  const [data, dataSet] = useState<IChild[]>([]);
 
   useEffect(() => {
     const setData = async () => {
@@ -28,8 +26,10 @@ const DropDown: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const val = (data as IChild[])[0].name;
-    setValue(val);
+    if (!data) {
+      const val = (data as IChild[])[0].name;
+      setValue(val);
+    }
   });
 
   data.forEach((child) => {
