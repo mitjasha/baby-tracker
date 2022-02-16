@@ -40,38 +40,54 @@ function getFormattedData(items: IEventResponse[]) {
   return activities;
 }
 
-const events: IEventResponse[] = [
-  {
-    id: "b3639cd8-4c71-46b8-8784-ead390915690",
-    event: "Кормление",
-    startTime: "2022-02-12T16:07:13.259Z",
-    endTime: "2022-02-12T16:07:13.259Z",
-    description: "",
-  },
-  {
-    id: "a706b339-a9c1-4b38-beca-523ff0455b9d",
-    event: "Кормление",
-    startTime: "2022-02-12T16:11:23.405Z",
-    endTime: "2022-02-12T16:14:39.825Z",
-    description: "Правая",
-  },
-  {
-    id: "4a25d90a-6299-49e0-a847-30fa802de370",
-    event: "Прогулка",
-    startTime: "2022-02-12T16:16:22.842Z",
-    endTime: "2022-02-12T16:17:39.825Z",
-    description: "прогулка",
-  },
-  {
-    id: "3170df62-86c2-4e8c-8da0-fe48a6f79abb",
-    event: "Прогулка",
-    startTime: "2022-02-12T10:16:22.842Z",
-    endTime: "2022-02-12T12:16:22.842Z",
-    description: "прогулка",
-  },
-];
+// const events: IEventResponse[] = [
+//   {
+//     id: "b3639cd8-4c71-46b8-8784-ead390915690",
+//     event: "Кормление",
+//     startTime: "2022-02-12T16:07:13.259Z",
+//     endTime: "2022-02-12T16:07:13.259Z",
+//     description: "",
+//   },
+//   {
+//     id: "a706b339-a9c1-4b38-beca-523ff0455b9d",
+//     event: "Кормление",
+//     startTime: "2022-02-12T16:11:23.405Z",
+//     endTime: "2022-02-12T16:14:39.825Z",
+//     description: "Правая",
+//   },
+//   {
+//     id: "4a25d90a-6299-49e0-a847-30fa802de370",
+//     event: "Прогулка",
+//     startTime: "2022-02-12T16:16:22.842Z",
+//     endTime: "2022-02-12T16:17:39.825Z",
+//     description: "прогулка",
+//   },
+//   {
+//     id: "3170df62-86c2-4e8c-8da0-fe48a6f79abb",
+//     event: "Прогулка",
+//     startTime: "2022-02-12T10:16:22.842Z",
+//     endTime: "2022-02-12T12:16:22.842Z",
+//     description: "прогулка",
+//   },
+// ];
 
-const Timeline: React.FC = () => {
+interface ITimelineProps {
+  events?: IEventResponse[];
+}
+
+const Timeline: React.FC<ITimelineProps> = ({ events }) => {
+  if (events === undefined) {
+    // eslint-disable-next-line no-param-reassign
+    events = [
+      {
+        id: "",
+        event: "",
+        startTime: String(new Date()),
+        endTime: String(Date.now()),
+        description: "",
+      },
+    ];
+  }
   const activities = getFormattedData(events);
   const dates = Object.keys(activities);
   return (
