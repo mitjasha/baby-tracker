@@ -6,8 +6,8 @@ const childController = {
     post<IChild>("/childs/add", JSON.stringify(child), accessToken),
   delChild: (child: IChild, accessToken: string) =>
     del(`/childs/${child.id}`, accessToken),
-  getChildById: (child: IChild, accessToken: string) =>
-    get<IChild>(`/childs/${child.id}`, accessToken),
+  getChildById: (childID: string, accessToken: string) =>
+    get<IChild>(`/childs/${childID}`, accessToken),
   updateChild: (child: IChild, accessToken: string) =>
     put(`/childs/${child.id}`, accessToken),
 };
