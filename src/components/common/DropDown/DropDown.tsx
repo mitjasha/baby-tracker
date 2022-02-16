@@ -4,7 +4,7 @@ import userController from "../../../api/userController";
 
 const DropDown: React.FC = () => {
   const getChild = async (): Promise<IChild[]> => {
-    const accessToken = JSON.parse(
+    const accessToken: string = JSON.parse(
       localStorage.getItem("accessToken") as string,
     );
     const result = await userController.getUser(accessToken);

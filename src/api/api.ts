@@ -10,6 +10,7 @@ export async function fetchAsync(
   const headers: HeadersInit = {
     "Content-Type": "application/json",
   };
+
   if (accessToken) {
     headers.Authorization = `Token ${accessToken}`;
     console.log(headers);
