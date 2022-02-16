@@ -74,6 +74,7 @@
   width: 100vw;
   height: 100px;
   background-color: #fff;
+  overflow-y: auto;
 }
 
 .main-screen-add-activity {

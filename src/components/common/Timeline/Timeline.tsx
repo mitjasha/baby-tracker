@@ -3,15 +3,6 @@ import TimelineItem, { IItem } from "./TimelineItem";
 import classes from "./Timeline.module.css";
 import { IEventResponse } from "../../../api/api.interface";
 
-// interface ITimeline {
-//   height?: number;
-// }
-
-// interface ITimelineItem {
-//   ts: string;
-//   text: string;
-// }
-
 function getFormattedData(items: IEventResponse[]) {
   const activities: { [date: string]: IItem[] } = {};
 
@@ -20,16 +11,17 @@ function getFormattedData(items: IEventResponse[]) {
       const startDate = Date.parse(startTime);
       const endDate = Date.parse(endTime);
       const duration = endDate - startDate;
-      const dateStr: string = Intl.DateTimeFormat("en", {
+      // const dateStr = new Date(startDate).toISOString().split("T")[0];
+      const dateStr: string = Intl.DateTimeFormat("en-gb", {
         year: "numeric",
-        month: "numeric",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        // hour: "numeric",
+        // minute: "numeric",
+        // second: "numeric",
       }).format(new Date(startDate));
 
-      const list: IItem[] = [];
+      const list: IItem[] = activities[dateStr] || [];
       list.push({
         id,
         event,
@@ -44,16 +36,9 @@ function getFormattedData(items: IEventResponse[]) {
       activities[dateStr] = list;
     },
   );
+
   return activities;
 }
-// const events: ITimelineItem[] = [
-//   { ts: "2017-09-17T12:22:46.587Z", text: "Logged in" },
-//   { ts: "2017-09-17T12:21:46.587Z", text: "Clicked Home Page" },
-//   { ts: "2017-09-17T12:20:46.587Z", text: "Edited Profile" },
-//   { ts: "2017-09-16T12:22:46.587Z", text: "Registred" },
-//   { ts: "2017-09-16T12:21:46.587Z", text: "Clicked Cart" },
-//   { ts: "2017-09-16T12:20:46.587Z", text: "Clicked Checkout" },
-// ];
 
 const events: IEventResponse[] = [
   {
