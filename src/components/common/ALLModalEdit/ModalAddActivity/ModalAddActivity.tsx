@@ -19,21 +19,22 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
   closeModalDefault,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
-  const [dataActive, setDataActive] = useState<string>(whatActivity);
+  const [dataActive, setDataActive] = useState<string>("");
   const [icon, setIcon] = useState<string>("");
   const [errorS, setErrors] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log(dataActive);
-    const newIcon = ModalAddActivityConst.filter(
-      (el) => el.text === whatActivity,
-    )
+    console.log(ModalAddActivityConst);
+
+    console.log(whatActivity);
+    const newIcon = ModalAddActivityConst.filter((el) => el.text === dataActive)
       .map((el) => el.icon)
       .join("");
     setDataActive(whatActivity);
+    
     setIcon(newIcon);
     console.log(newIcon);
-  }, []);
+  }, [dataActive]);
 
   const { register, handleSubmit, reset, getValues } =
     useForm<IModalAddActivityForm>({ mode: "onChange" });

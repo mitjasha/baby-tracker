@@ -36,7 +36,7 @@ const ModalAddActivityConst: IActivityScreenConst[] = [
     img: bath,
   },
   {
-    text: "Coн",
+    text: "Сон",
     icon: iconSleep,
     img: iconSleep,
   },
