@@ -12,6 +12,7 @@ import "./MainScreen.css";
 const MainScreen: React.FC = () => {
   const [events, eventsSet] = useState<IEventResponse[]>();
   const [child, childSet] = useState<IChild>();
+
   const childID: string = JSON.parse(
     localStorage.getItem("currentChild") as string,
   );
