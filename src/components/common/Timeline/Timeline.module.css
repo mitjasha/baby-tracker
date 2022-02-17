@@ -8,10 +8,17 @@
   font-size: 14px;
 }
 
-.timelineItem {
+.timelineElement {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.timelineItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 230px;
   /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   background: #fff; */
@@ -38,6 +45,12 @@
   font-size: 12px;
   color: #999;
   float: right;
+}
+
+.timelineDuration {
+  font-size: 10px;
+  line-height: 12px;
+  color: #a7b3b1;
 }
 
 .img {
