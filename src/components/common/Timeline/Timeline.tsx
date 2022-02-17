@@ -88,6 +88,7 @@ const Timeline: React.FC<ITimelineProps> = ({ events }) => {
       },
     ];
   }
+
   const activities = getFormattedData(events);
   const dates = Object.keys(activities);
   return (

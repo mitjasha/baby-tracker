@@ -14,7 +14,7 @@ export async function fetchAsync(
   );
   if (accessToken) {
     headers.Authorization = `Token ${accessToken}`;
-    console.log(headers);
+    // console.log(headers);
   }
 
   const response = await fetch(`${BASE_URL}${url}`, {
@@ -38,8 +38,6 @@ export async function fetchAsync(
 }
 
 export function get<T>(url: string): Promise<T> {
-  console.log(url);
-
   return fetchAsync("GET", url, undefined);
 }
 

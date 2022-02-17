@@ -15,7 +15,7 @@ const MainScreen: React.FC = () => {
   );
   const [events, eventsSet] = useState<IEventResponse[]>();
   // const [child, childSet] = useState<IChild>();
-  console.log("2 MainScreen ChildID = ", childID);
+  // console.log("2 MainScreen ChildID = ", childID);
   useEffect(() => {
     const setData = async () => {
       const currentChild = await childController.getChildById(childID);

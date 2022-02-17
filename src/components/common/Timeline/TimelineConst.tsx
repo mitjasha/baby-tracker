@@ -4,7 +4,7 @@ import gamesIcon from "../../../assets/svg/games-icon.svg";
 import bathIcon from "../../../assets/svg/baby-bath-icon.svg";
 import bottleIcon from "../../../assets/svg/bottle-icon.svg";
 import sleepingIcon from "../../../assets/svg/sleeping-icon.svg";
-import heightIcon from "../../../assets/svg/ruller-solid.svg";
+import heightIcon from "../../../assets/svg/ruler-solid.svg";
 import weightIcon from "../../../assets/svg/weight-scale-solid.svg";
 
 export interface ITimelineConst {
