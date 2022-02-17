@@ -1,0 +1,13 @@
+.container {
+  margin: 10px;
+  width: 320px !important;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.h3 {
+  color: #df7e8a;
+  font-size: 24px;
+  font-weight: 300;
+}
