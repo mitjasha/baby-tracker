@@ -1,11 +1,10 @@
-const BASE_URL = "https://baby-server.herokuapp.com";
-// const BASE_URL = "http://localhost:3030";
+// const BASE_URL = "https://baby-server.herokuapp.com";
+const BASE_URL = "http://localhost:3030";
 
 export async function fetchAsync(
   method: "GET" | "POST" | "DELETE" | "PUT",
   url: string,
   body?: string,
-  // accessToken?: string,
 ) {
   const headers: HeadersInit = {
     "Content-Type": "application/json",
@@ -38,6 +37,8 @@ export async function fetchAsync(
 }
 
 export function get<T>(url: string): Promise<T> {
+  console.log(url);
+
   return fetchAsync("GET", url, undefined);
 }
 
