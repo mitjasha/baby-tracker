@@ -15,7 +15,7 @@ const TimelineItem: React.FC<IItem> = ({
   id,
   event,
   startTime,
-  description,
+  // description,
   duration,
 }) => (
   <>
@@ -31,10 +31,13 @@ const TimelineItem: React.FC<IItem> = ({
           alt=""
         />
         <div>
-          <div className={classes.timelineHeader}>{event}</div>
-          {event.toLocaleLowerCase() !== description.toLocaleLowerCase() && (
-            <div className={classes.timelineHeader}>{description}</div>
-          )}
+          <div className={classes.eventContainer}>
+            <div className={classes.timelineHeader}>{event}</div>
+            {/* {event.toLocaleLowerCase() !== description.toLocaleLowerCase() && (
+              <div className={classes.timelineHeader}>{description}</div>
+            )} */}
+          </div>
+
           <div className={classes.timelineDuration}>{`${
             Math.floor(duration / 3600000) % 60
           }ч ${Math.floor(duration / 60000) % 60}мин ${Math.floor(
