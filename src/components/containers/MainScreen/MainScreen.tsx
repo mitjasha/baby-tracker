@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 import React, { useEffect, useState } from "react";
-import { IChild, IEventResponse } from "../../../api/api.interface";
+import { IEventResponse } from "../../../api/api.interface";
 import childController from "../../../api/childController";
 import eventController from "../../../api/eventController";
 import MainScreenButton from "../../common/Buttons/MainScreenButton/MainScreenButton";
@@ -10,19 +10,18 @@ import Timer from "../../common/Timer/Timer";
 import "./MainScreen.css";
 
 const MainScreen: React.FC = () => {
-  const [events, eventsSet] = useState<IEventResponse[]>();
-  const [child, childSet] = useState<IChild>();
-
   const childID: string = JSON.parse(
     localStorage.getItem("currentChild") as string,
   );
+  const [events, eventsSet] = useState<IEventResponse[]>();
+  // const [child, childSet] = useState<IChild>();
   console.log("2 MainScreen ChildID = ", childID);
   useEffect(() => {
     const setData = async () => {
       const currentChild = await childController.getChildById(childID);
-      const eventsList = await eventController.getAllEvents(child as IChild);
+      const eventsList = await eventController.getAllEvents(currentChild);
 
-      childSet(currentChild as IChild);
+      // childSet(currentChild as IChild);
       eventsSet(eventsList);
     };
 
