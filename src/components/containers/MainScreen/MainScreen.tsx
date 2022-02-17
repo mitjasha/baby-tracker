@@ -20,19 +20,12 @@ const MainScreen: React.FC = () => {
   useEffect(() => {
     const setData = async () => {
       const currentChild = await childController.getChildById(childID);
-
-      childSet(currentChild as IChild);
-    };
-
-    setData();
-  }, []);
-
-  useEffect(() => {
-    const setData = async () => {
       const eventsList = await eventController.getAllEvents(child as IChild);
 
+      childSet(currentChild as IChild);
       eventsSet(eventsList);
     };
+
     setData();
   }, []);
 
