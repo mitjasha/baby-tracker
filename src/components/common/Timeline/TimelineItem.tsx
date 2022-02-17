@@ -1,6 +1,7 @@
 import React from "react";
 
 import classes from "./Timeline.module.css";
+import TimelineConst from "./TimelineConst";
 
 export interface IItem {
   id: string;
@@ -15,17 +16,28 @@ const TimelineItem: React.FC<IItem> = ({
   event,
   startTime,
   description,
+  duration,
 }) => (
   <>
     <li>
-      {/* <i className="fa" /> */}
       <div className={classes.timelineItem} id={id}>
-        <span className="time">
-          {/* <i className="fa fa-clock-o" /> */}
-          {startTime}
-        </span>
-        <div className={classes.timelineHeader}>{event}</div>
-        <div className={classes.timelineHeader}>{description}</div>
+        <img
+          className={classes.img}
+          src={
+            TimelineConst.filter((elem) => elem.text === event).map(
+              (elem) => elem.icon,
+            )[0]
+          }
+          alt=""
+        />
+        <div>
+          <div className={classes.timelineHeader}>{event}</div>
+          {event.toLocaleLowerCase() !== description.toLocaleLowerCase() && (
+            <div className={classes.timelineHeader}>{description}</div>
+          )}
+          <div className={classes.timelineHeader}>{duration}</div>
+        </div>
+        <span className="time">{startTime}</span>
       </div>
     </li>
   </>

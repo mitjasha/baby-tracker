@@ -36,7 +36,7 @@ const Header: React.FC = () => {
       }
     });
   });
-  console.log("1 DropDown = ", value);
+  // console.log("1 DropDown = ", value);
 
   const handleChange = (e: { target: { value: string } }) => {
     setValue(e.target.value as string);
