@@ -10,17 +10,19 @@ import Timer from "../../common/Timer/Timer";
 import "./MainScreen.css";
 
 const MainScreen: React.FC = () => {
+  const [events, eventsSet] = useState<IEventResponse[]>();
+  const [child, childSet] = useState<IChild>();
   const childID: string = JSON.parse(
     localStorage.getItem("currentChild") as string,
   );
-  const [events, eventsSet] = useState<IEventResponse[]>();
-  const [child, childSet] = useState<IChild>();
+  console.log("2 MainScreen ChildID = ", childID);
   useEffect(() => {
     const setData = async () => {
       const currentChild = await childController.getChildById(childID);
 
       childSet(currentChild as IChild);
     };
+
     setData();
   }, []);
 
@@ -42,7 +44,20 @@ const MainScreen: React.FC = () => {
           </div>
           <div className="main-screen-timer-container">
             <div className="timer-wrap">
-              <Timer withClick />
+              <Timer
+                withClick
+                click={() =>
+                  eventController.addEvent(
+                    {
+                      event: "Сон",
+                      startTime: new Date(),
+                      endTime: new Date(),
+                      description: "СОН",
+                    },
+                    childID,
+                  )
+                }
+              />
             </div>
           </div>
         </div>

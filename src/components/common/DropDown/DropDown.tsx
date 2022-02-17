@@ -33,6 +33,7 @@ const DropDown: React.FC = () => {
       }
     });
   });
+  console.log("1 DropDown = ", value);
 
   const handleChange = (e: {
     target: { value: React.SetStateAction<string> };
