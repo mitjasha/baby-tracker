@@ -4,6 +4,7 @@ import classes from "./ModalAddActivity.module.css";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import InputTimeDate from "../../Inputs/InputTimeDate/InputTimeDate";
 import ModalAddActivityConst from "./ModalAddActivityConst";
+import saveDataFromFormToLS from "../../../helpers/saveDataFromFormLocalStorage";
 
 interface IModalAddActivityForm {
   [key: string]: string;
@@ -73,6 +74,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
       endTime: `${data.endDate} ${data.endTime}`,
       description: "",
     };
+    saveDataFromFormToLS(dataActive, dataEvent);
     console.log(JSON.stringify(dataEvent));
     setIsModalOpen(false);
     resetForm();
