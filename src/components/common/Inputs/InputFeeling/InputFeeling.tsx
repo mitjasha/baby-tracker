@@ -24,8 +24,14 @@ const InputFeeling: React.FC<IInputFeeling> = ({
             textBaby={el.text}
             img={el.img}
             id={el.id}
-            onChange={() => setChouse(el.id)}
-            isChose={chose === el.id}
+            onChange={() => {
+              if (!chose) {
+                setChouse(el.text);
+              } else if (chose !== el.text) {
+                setChouse(el.text);
+              } else setChouse("");
+            }}
+            isChose={chose === el.text}
             register={register}
           />
         ))}

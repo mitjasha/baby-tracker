@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import classes from "./ActivityScreen.module.css";
 import ActivityButtonContainer from "../../common/ActivityButtonContainer/ActivityButtonContainer";
-import ModalWindow from "../../common/ModalWindow/ModalWindow";
-import InputTimeDate from "../../common/Inputs/InputTimeDate/InputTimeDate";
-import ActivityScreenConst from "./ActivityScreenConst";
+import ModalWindow from "../../common/ALLModalEdit/ModalWindow/ModalWindow";
 import Timer from "../../common/Timer/Timer";
 import InputFeeling from "../../common/Inputs/InputFeeling/InputFeeling";
 import girlDefault from "../../../assets/png/activity/girl-default.png";
 import { currentDay, currentTime } from "../../helpers/changeNum";
+import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
+import ModalAddActivityConst from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivityConst";
 
 interface ISleepData {
   [key: string]: string;
@@ -25,7 +25,7 @@ const ActivityScreen: React.FC = () => {
   const toggleModal = (arg: string | undefined) => {
     setIsModalOpen(!isModalOpen);
     if (arg) {
-      const newIcon = ActivityScreenConst.filter((el) => el.text === arg)
+      const newIcon = ModalAddActivityConst.filter((el) => el.text === arg)
         .map((el) => el.icon)
         .join("");
       setDataActive(arg);
@@ -38,41 +38,7 @@ const ActivityScreen: React.FC = () => {
     formState: { errors },
     handleSubmit,
     reset,
-    watch,
-  } = useForm<ISleepData>({ mode: "onBlur" });
-
-  const [minDate, setDateMin] = useState(watch("startDate"));
-  const [maxDate, setDateMax] = useState(watch("endDate"));
-  const [minTime, setTimeMin] = useState(watch("startTime"));
-  const [maxTime, setTimeMax] = useState(watch("endTime"));
-  useEffect(() => {
-    setDateMin(watch("startDate"));
-    setDateMax(watch("endDate"));
-    setTimeMin(watch("startTime"));
-    setTimeMax(watch("endTime"));
-  }, [minDate, maxDate, minTime, maxTime]);
-  const change = () => {
-    setDateMin(watch("startDate"));
-    setDateMax(watch("endDate"));
-    setTimeMin(watch("startTime"));
-    setTimeMax(watch("endTime"));
-    console.log(minTime);
-    console.log(maxTime);
-    console.log(maxTime < minTime);
-  };
-
-  const onSubmit = (data: ISleepData) => {
-    const dataEvent = {
-      event: dataActive,
-      startTime: `${data.startDate} ${data.startTime}`,
-      endTime: `${data.endDate} ${data.endTime}`,
-      description: "",
-    };
-    console.log(JSON.stringify(dataEvent));
-    setAddData(!addData);
-    setIsModalOpen(!isModalOpen);
-    reset();
-  };
+  } = useForm<ISleepData>({ mode: "onChange" });
 
   const onSubmitFeeling = (data: ISleepData) => {
     const time = `${currentDay} ${currentTime}`;
@@ -83,17 +49,16 @@ const ActivityScreen: React.FC = () => {
       description: data.feeling[0].split(",")[1], // data.feeling = ["англ, русск"]
     };
     console.log(JSON.stringify(dataEvent));
-    reset();
     setIsModalOpen(!isModalOpen);
+    reset();
   };
 
   const closeModal = () => {
     if (addData) {
-      setIsModalOpen(!isModalOpen);
       setAddData(!addData);
-    } else {
-      setIsModalOpen(!isModalOpen);
+      setIsModalOpen(false);
     }
+    setIsModalOpen(!isModalOpen);
     reset();
   };
 
@@ -102,7 +67,7 @@ const ActivityScreen: React.FC = () => {
   };
 
   const changeImg = () => {
-    const newImg = ActivityScreenConst.filter((el) => el.text === dataActive)
+    const newImg = ModalAddActivityConst.filter((el) => el.text === dataActive)
       .map((el) => el.img)
       .join("");
     setImg(newImg);
@@ -124,28 +89,7 @@ const ActivityScreen: React.FC = () => {
       </section>
       {dataActive !== "Настроение" && (
         <>
-          <ModalWindow
-            id={dataActive}
-            className={`${isModalOpen ? "open" : "close"}`}
-            withFooter
-            withIcon
-            iconImg={icon}
-            titleModal={dataActive}
-            primaryBtn={{
-              text: "+ Добавить",
-              onClick: addNewData,
-            }}
-            onClose={closeModal}
-          >
-            <Timer
-              click={changeImg}
-              withClick
-              classWrap={classes.timerWrapper}
-              classNameTimer={classes.timerModal}
-              classNameValue={classes.valueTimer}
-            />
-          </ModalWindow>
-          {addData && (
+          {isModalOpen && (
             <ModalWindow
               id={dataActive}
               className={`${isModalOpen ? "open" : "close"}`}
@@ -154,40 +98,23 @@ const ActivityScreen: React.FC = () => {
               iconImg={icon}
               titleModal={dataActive}
               primaryBtn={{
-                type: "submit",
-                text: "Сохранить",
-                form: "form-active",
+                text: "+ Добавить",
+                onClick: addNewData,
+                className: classes.button,
               }}
               onClose={closeModal}
+              withOverlay
             >
-              <div>
-                <form id="form-active" onSubmit={handleSubmit(onSubmit)}>
-                  <InputTimeDate
-                    max={maxDate}
-                    maxTime={maxTime}
-                    textName="Начало"
-                    onChange={change}
-                    classNameError={
-                      (errors?.startDate || errors?.startTime) && classes.error
-                    }
-                    registerDate={register("startDate", { required: true })}
-                    registerTime={register("startTime", { required: true })}
-                  />
-                  <InputTimeDate
-                    min={minDate}
-                    minTime={minTime}
-                    onChange={change}
-                    textName="Конец"
-                    classNameError={
-                      (errors?.endDate || errors?.endTime) && classes.error
-                    }
-                    registerDate={register("endDate", { required: true })}
-                    registerTime={register("endTime", { required: true })}
-                  />
-                </form>
-              </div>
+              <Timer
+                click={changeImg}
+                withClick
+                classWrap={classes.timerWrapper}
+                classNameTimer={classes.timerModal}
+                classNameValue={classes.valueTimer}
+              />
             </ModalWindow>
           )}
+          {addData && <ModalAddActivity whatActivity={dataActive} />}
         </>
       )}
       {dataActive === "Настроение" && (
@@ -204,11 +131,12 @@ const ActivityScreen: React.FC = () => {
             form: "form-feeling",
           }}
           onClose={closeModal}
+          withOverlay
         >
           <div>
             <form id="form-feeling" onSubmit={handleSubmit(onSubmitFeeling)}>
               <InputFeeling
-                classNameError={errors?.feeling && classes.error}
+                classNameError={errors?.feeling && classes.errorFeeling}
                 register={register("feeling", { required: true })}
               />
             </form>

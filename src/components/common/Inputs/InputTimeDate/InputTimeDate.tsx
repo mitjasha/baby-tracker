@@ -1,10 +1,8 @@
 import React from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
-import cn from "classnames";
 import classes from "./InputTimeDate.module.css";
 
 interface IInputTimeDate {
-  classNameError?: string;
   textName: string;
   registerDate: UseFormRegisterReturn;
   registerTime: UseFormRegisterReturn;
@@ -12,11 +10,10 @@ interface IInputTimeDate {
   max?: string;
   minTime?: string;
   maxTime?: string;
-  onChange?: () => void;
+  valueTime?: string;
 }
 
 const InputTimeDate: React.FC<IInputTimeDate> = ({
-  classNameError,
   textName,
   registerDate,
   registerTime,
@@ -24,13 +21,12 @@ const InputTimeDate: React.FC<IInputTimeDate> = ({
   max,
   minTime,
   maxTime,
-  onChange,
 }) => (
   <>
-    <div className={cn(classes.container)}>
+    <div className={classes.container}>
       <span className={classes.title}>{textName}</span>
       <input
-        className={cn(classes.timeDate, classNameError)}
+        className={classes.timeDate}
         type="time"
         min={minTime}
         max={maxTime}
@@ -39,9 +35,8 @@ const InputTimeDate: React.FC<IInputTimeDate> = ({
       <input
         min={min}
         max={max}
-        className={cn(classes.timeDate, classNameError)}
+        className={classes.timeDate}
         type="date"
-        onInput={onChange}
         {...registerDate}
       />
     </div>
