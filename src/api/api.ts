@@ -1,17 +1,20 @@
-const BASE_URL = "https://baby-server.herokuapp.com";
+// const BASE_URL = "https://baby-server.herokuapp.com";
+const BASE_URL = "http://localhost:3030";
 
 export async function fetchAsync(
   method: "GET" | "POST" | "DELETE" | "PUT",
   url: string,
   body?: string,
-  accessToken?: string,
 ) {
   const headers: HeadersInit = {
     "Content-Type": "application/json",
   };
+  const accessToken: string = JSON.parse(
+    localStorage.getItem("accessToken") as string,
+  );
   if (accessToken) {
     headers.Authorization = `Token ${accessToken}`;
-    console.log(headers);
+    // console.log(headers);
   }
 
   const response = await fetch(`${BASE_URL}${url}`, {
@@ -34,20 +37,16 @@ export async function fetchAsync(
   return result;
 }
 
-export function get<T>(url: string, accessToken?: string): Promise<T> {
-  return fetchAsync("GET", url, undefined, accessToken);
+export function get<T>(url: string): Promise<T> {
+  return fetchAsync("GET", url, undefined);
 }
 
-export function post<T>(
-  url: string,
-  body: string,
-  accessToken?: string,
-): Promise<T> {
-  return fetchAsync("POST", url, body, accessToken);
+export function post<T>(url: string, body: string): Promise<T> {
+  return fetchAsync("POST", url, body);
 }
 
-export function del(url: string, accessToken: string) {
-  return fetchAsync("DELETE", url, accessToken);
+export function del(url: string) {
+  return fetchAsync("DELETE", url);
 }
 
 export function put(url: string, body: string) {
