@@ -19,32 +19,37 @@ const Header: React.FC = () => {
   useEffect(() => {
     const setData = async () => {
       const childs = await getChild();
+      if (value === undefined) {
+        if (localStorage.getItem("currentChild")) {
+          const childID: string = JSON.parse(
+            localStorage.getItem("currentChild") as string,
+          );
+          setValue(childs.filter((elem) => elem.id === childID)[0].name);
+        }
+      }
+      if (value) {
+        childs.forEach((childData) => {
+          if (childData.name === value) {
+            localStorage.setItem("currentChild", JSON.stringify(childData.id));
+          }
+        });
+      }
 
       dataSet(childs);
     };
     setData();
   }, []);
 
-  useEffect(() => {
-    data.forEach((childData) => {
-      if (value === undefined) {
-        const val = (data as IChild[])[0].name;
-        setValue(val);
-      }
-      if (childData.name === value) {
-        localStorage.setItem("currentChild", JSON.stringify(childData.id));
-      }
-    });
-  });
-  // console.log("1 DropDown = ", value);
-
   const handleChange = (e: { target: { value: string } }) => {
     setValue(e.target.value as string);
+
     data.forEach((childData) => {
       if (childData.name === e.target.value) {
         localStorage.setItem("currentChild", JSON.stringify(childData.id));
       }
     });
+
+    window.location.reload();
   };
 
   return (

@@ -69,7 +69,6 @@ const Timeline: React.FC<ITimelineProps> = ({ events }) => {
           <li className={classes.timeLabel}>
             <span>{d}</span>
           </li>
-          {console.log(activities[d])}
           {activities[d].map(
             ({ id, event, startTime, duration, description, key }) => (
               <TimelineItem
