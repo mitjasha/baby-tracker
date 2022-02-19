@@ -21,6 +21,7 @@ const FeedingScreen: React.FC = () => {
         .join("");
       setDataActive(arg);
       setIcon(newIcon);
+      console.log(newIcon);
     }
   };
 
@@ -41,7 +42,7 @@ const FeedingScreen: React.FC = () => {
       <section className={cn(classes.containerBtn)}>
         <FeedingButtonContainer onClick={toggleModal} />
       </section>
-      {dataActive !== "Настроение" && (
+      {dataActive && (
         <>
           {isModalOpen && (
             <ModalWindow

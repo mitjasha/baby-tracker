@@ -7,11 +7,16 @@ import walk from "../../../../assets/png/activity/girl-walk.png";
 import active from "../../../../assets/png/activity/girl-play.png";
 import bath from "../../../../assets/png/activity/girl-bath.png";
 import girlDefault from "../../../../assets/png/activity/girl-default.png";
+import {
+  FeedingButtonConst,
+  IFeedingButtonConst,
+} from "../../FeedingButtonContainer/FeedingButtonContainerConst";
 
 export interface IActivityScreenConst {
   text: string;
   icon: string;
   img?: string;
+  FeedingButtonConst?: IFeedingButtonConst;
 }
 
 const ModalAddActivityConst: IActivityScreenConst[] = [
@@ -40,6 +45,7 @@ const ModalAddActivityConst: IActivityScreenConst[] = [
     icon: iconSleep,
     img: iconSleep,
   },
+  ...FeedingButtonConst,
 ];
 
 export default ModalAddActivityConst;

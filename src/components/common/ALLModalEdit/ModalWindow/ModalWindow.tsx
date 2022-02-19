@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import React, { FC, ReactNode } from "react";
 import cn from "classnames";
 import "./ModalWindow.css";

@@ -46,8 +46,9 @@
 }
 
 .modal-icon-img {
-  width: 100%;
-  padding: 15%;
+  width: 115px;
+  height: 115px;
+  padding: 20px;
 }
 
 .modalWrapper {
@@ -83,12 +84,8 @@
   background-color: #9dcdff;
 }
 
-.icon-Купание {
-  margin-top: 15px;
-}
-
 .icon-Активность {
-  padding-right: 22px;
+  padding-right: 26px;
 }
 
 .buttons {
@@ -96,4 +93,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.icon-Левая,
+.icon-Правая {
+  padding-top: 25px;
+  padding-left: 22px;
 }

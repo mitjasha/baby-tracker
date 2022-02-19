@@ -1,9 +1,10 @@
 .container {
+  height: 98px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  height: 98px;
+  align-content: space-between;
 }
 
 .button {
@@ -17,3 +18,4 @@
 .icon {
   background-color: #fecdcb;
 }
+

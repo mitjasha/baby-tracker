@@ -5,3 +5,23 @@
 .containerBtn {
   margin: 25px;
 }
+
+.timerModal {
+  width: 147px;
+  height: 147px;
+}
+
+.valueTimer {
+  font-size: 24px;
+}
+
+.timerWrapper {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.button {
+  width: 240px;
+}
