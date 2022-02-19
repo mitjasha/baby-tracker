@@ -7,12 +7,12 @@ export interface IGenderAddBaby {
 
 const genderConst: IGenderAddBaby[] = [
   {
-    text: "мальчик",
+    text: "Мальчик",
     img: boy,
     id: "boy",
   },
   {
-    text: "девочка",
+    text: "Девочка",
     img: girl,
     id: "girl",
   },

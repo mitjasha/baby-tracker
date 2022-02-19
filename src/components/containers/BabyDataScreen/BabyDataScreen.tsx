@@ -7,17 +7,12 @@ import classes from "./BabyDataScreen.module.css";
 import babyDataConst from "./BabyDataScreenCONST";
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 import InputGenderAddBaby from "../../common/Inputs/InputGenederAddBaby/InputGenderAddBaby";
-import { IEvent } from "../../../api/api.interface";
-
-interface IBabySubmit {
-  nameBaby: string | number;
-  gender: string;
-  birthDayBaby: Date;
-  photoBaby?: string;
-}
+import { IChildCreate, IEvent } from "../../../api/api.interface";
+import childController from "../../../api/childController";
+import eventController from "../../../api/eventController";
 
 interface IBabySubmitForm {
-  babyForm: IBabySubmit;
+  babyForm: IChildCreate;
   heightSubmit: IEvent;
   weightSubmit: IEvent;
 }
@@ -28,11 +23,12 @@ const BabyDataScreen: React.FC = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<IBabySubmitForm>();
+  // const [childID, childSet] = useState<string>();
 
   const onSubmit = (data: IBabySubmitForm) => {
-    const name = data.babyForm.nameBaby;
+    const { name } = data.babyForm;
     const gender = data.babyForm.gender[0].split(",")[1]; // data.gender = ["англ, русск"]
-    const birth = data.babyForm.birthDayBaby;
+    const birth = new Date(data.babyForm.birth).toISOString();
     const photo = "";
     const babyData = {
       name,
@@ -61,6 +57,14 @@ const BabyDataScreen: React.FC = () => {
       description,
     };
 
+    const setData = async () => {
+      const child = await childController.addChild(babyData);
+      eventController.addEvent(eventHeight, child.id);
+
+      eventController.addEvent(eventWeight, child.id);
+    };
+
+    setData();
     console.log(babyData, eventHeight, eventWeight);
     // window.location.href = "#/main/";
   };
@@ -69,29 +73,23 @@ const BabyDataScreen: React.FC = () => {
     <form className={classes.container} onSubmit={handleSubmit(onSubmit)}>
       <div className={classes.title}>{babyDataConst.TITLE_SCREEN}</div>
       <InputBabyData
-        classInput={cn(
-          classes.name,
-          errors?.babyForm?.nameBaby && classes.error,
-        )}
+        classInput={cn(classes.name, errors?.babyForm?.name && classes.error)}
         textName={babyDataConst.TEXT_NAME}
         type={babyDataConst.TYPE_TEXT}
         placeholder={babyDataConst.NAME}
-        register={register("babyForm.nameBaby", { required: true })}
+        register={register("babyForm.name", { required: true })}
       />
       <InputGenderAddBaby
         classNameError={errors?.babyForm?.gender && classes.error}
         register={register("babyForm.gender", { required: true })}
       />
       <InputBabyData
-        classInput={cn(
-          classes.birth,
-          errors?.babyForm?.birthDayBaby && classes.error,
-        )}
+        classInput={cn(classes.birth, errors?.babyForm?.birth && classes.error)}
         textName={babyDataConst.TEXT_BIRTHDAY}
         type={babyDataConst.TYPE_DATE}
         min={babyDataConst.BIRTH_MIN}
         max={babyDataConst.BIRTH_MAX}
-        register={register("babyForm.birthDayBaby", { required: true })}
+        register={register("babyForm.birth", { required: true })}
       />
       <div className={classes.parameters}>
         <InputBabyData

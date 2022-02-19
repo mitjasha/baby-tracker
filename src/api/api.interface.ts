@@ -39,9 +39,9 @@ export interface IChildResponse {
 
 export interface IChildCreate {
   name: string;
-  gender: EGender;
-  birth: Date;
-  photo: string;
+  gender: string;
+  birth: string;
+  photo?: string;
 }
 
 export interface IChildUpdate {
