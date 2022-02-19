@@ -40,6 +40,12 @@ const Settings: React.FC = () => {
               <span className="slider round" />
             </label>
           </div>
+          <Link to="/baby-data" className="settings-btn" id="settings-def">
+            <span className="btn-text">Добавить ребенка</span>
+          </Link>
+          <Link to="/" className="settings-btn" id="settings-def">
+            <span className="btn-text">Выход</span>
+          </Link>
         </div>
 
         <div className="settings-buttons">
