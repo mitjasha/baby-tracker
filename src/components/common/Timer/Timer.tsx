@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import cn from "classnames";
 import classes from "./Timer.module.css";
 
-interface ITimerState {
+export interface ITimerState {
   stateTimer: number | undefined;
 }
-interface ITimer {
+
+export interface ITimer {
   classWrap?: string;
   classNameTimer?: string;
   classNameValue?: string;
