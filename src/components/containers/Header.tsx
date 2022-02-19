@@ -25,6 +25,8 @@ const Header: React.FC = () => {
             localStorage.getItem("currentChild") as string,
           );
           setValue(childs.filter((elem) => elem.id === childID)[0].name);
+        } else {
+          localStorage.setItem("currentChild", JSON.stringify(childs[0].id));
         }
       }
       if (value) {
