@@ -21,7 +21,6 @@ const FeedingScreen: React.FC = () => {
         .join("");
       setDataActive(arg);
       setIcon(newIcon);
-      console.log(newIcon);
     }
   };
 
@@ -37,18 +36,23 @@ const FeedingScreen: React.FC = () => {
     setAddData(!addData);
   };
 
+  const modalFalse = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={cn("screen", classes.container)}>
       <section className={cn(classes.containerBtn)}>
         <FeedingButtonContainer onClick={toggleModal} />
       </section>
-      {dataActive && (
+      {(dataActive.includes("Левая грудь") ||
+        dataActive.includes("Правая грудь")) && (
         <>
           {isModalOpen && (
             <ModalWindow
               id={dataActive}
-              className={`${isModalOpen ? "open" : "close"}`}
-              withFooter
+              className="open"
+              withFooter={false}
               withIcon
               iconImg={icon}
               titleModal={dataActive}
@@ -70,6 +74,12 @@ const FeedingScreen: React.FC = () => {
           )}
           {addData && <ModalAddActivity whatActivity={dataActive} />}
         </>
+      )}
+      {dataActive.includes("Бутылочка") && (
+        <ModalAddActivity
+          closeModalDefault={modalFalse}
+          whatActivity={dataActive}
+        />
       )}
     </div>
   );
