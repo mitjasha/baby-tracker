@@ -15,8 +15,11 @@ const MainScreen: React.FC = () => {
   const childID: string = JSON.parse(
     localStorage.getItem("currentChild") as string,
   );
-  const [events, eventsSet] = useState<IEventResponse[]>();
+  const [events, eventsSet] = useState<IEventResponse[]>(
+    [] as IEventResponse[],
+  );
   const [child, childSet] = useState<IChild>({} as IChild);
+
   useEffect(() => {
     const setData = async () => {
       const currentChild = await childController.getChildById(childID);
@@ -28,6 +31,7 @@ const MainScreen: React.FC = () => {
 
     setData();
   }, []);
+
   const plural = require("plural-ru");
 
   function getAge(dateString: string) {
@@ -46,7 +50,13 @@ const MainScreen: React.FC = () => {
     }
      ${year > 0 ? "" : plural(dayDisplay, "%d день", "%d дня", "%d дней")}`;
   }
-  //
+
+  function getDescription(eventsList: IEventResponse[], el: string) {
+    return eventsList
+      .sort((a, b) => Date.parse(b.startTime) - Date.parse(a.startTime))
+      .find((elem) => elem.event === el)?.description;
+  }
+
   return (
     <>
       <div className="screen main-screen">
@@ -55,6 +65,15 @@ const MainScreen: React.FC = () => {
             <h1 style={{ display: "none" }}>Baby Tracker</h1>
 
             <div className="title">{getAge(String(child.birth))}</div>
+            <div className="main-screen-info-description">
+              <div className="weight">
+                {`Масса тела: 
+                  ${getDescription(events, "Вес")} кг`}
+              </div>
+              <div className="height">
+                {`Рост: ${getDescription(events, "Рост")} см`}
+              </div>
+            </div>
           </div>
           <div className="main-screen-timer-container">
             <div className="timer-wrap">
