@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 import React, { useEffect, useState } from "react";
-import { IEventResponse } from "../../../api/api.interface";
+import { IChild, IEventResponse } from "../../../api/api.interface";
 import childController from "../../../api/childController";
 import eventController from "../../../api/eventController";
 import MainScreenButton from "../../common/Buttons/MainScreenButton/MainScreenButton";
@@ -8,32 +8,53 @@ import NewEventButton from "../../common/Buttons/NewEventButton/NewEventButton";
 import Timeline from "../../common/Timeline/Timeline";
 import Timer from "../../common/Timer/Timer";
 import "./MainScreen.css";
+// eslint-disable-next-line import/order
+import moment from "moment";
 
 const MainScreen: React.FC = () => {
   const childID: string = JSON.parse(
     localStorage.getItem("currentChild") as string,
   );
   const [events, eventsSet] = useState<IEventResponse[]>();
-  // const [child, childSet] = useState<IChild>();
-  // console.log("2 MainScreen ChildID = ", childID);
+  const [child, childSet] = useState<IChild>({} as IChild);
   useEffect(() => {
     const setData = async () => {
       const currentChild = await childController.getChildById(childID);
       const eventsList = await eventController.getAllEvents(currentChild);
 
-      // childSet(currentChild as IChild);
+      childSet(currentChild as IChild);
       eventsSet(eventsList);
     };
 
     setData();
   }, []);
+  const plural = require("plural-ru");
 
+  function getAge(dateString: string) {
+    const year = moment().diff(new Date(dateString), "year");
+    const month = moment().diff(new Date(dateString), "month");
+    const day = moment().diff(new Date(dateString), "day");
+
+    const monthDisplay = month - year * 12;
+    const dayDisplay = day - year * 365 - monthDisplay * 30;
+
+    return `${year > 0 ? plural(year, "%d год", "%d года", "%d лет") : ""} 
+    ${
+      monthDisplay > 0
+        ? plural(monthDisplay, "%d месяц", "%d месяца", "%d месяцев")
+        : ""
+    }
+     ${year > 0 ? "" : plural(dayDisplay, "%d день", "%d дня", "%d дней")}`;
+  }
+  //
   return (
     <>
       <div className="screen main-screen">
         <div className="main-screen-up-container">
           <div className="main-screen-info">
-            <h1 className="title">Baby Tracker</h1>
+            <h1 style={{ display: "none" }}>Baby Tracker</h1>
+
+            <div className="title">{getAge(String(child.birth))}</div>
           </div>
           <div className="main-screen-timer-container">
             <div className="timer-wrap">

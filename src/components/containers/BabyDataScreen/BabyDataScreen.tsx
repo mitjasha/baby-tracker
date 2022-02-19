@@ -66,7 +66,7 @@ const BabyDataScreen: React.FC = () => {
 
     setData();
     console.log(babyData, eventHeight, eventWeight);
-    // window.location.href = "#/main/";
+    window.location.href = "#/main/";
   };
 
   return (
