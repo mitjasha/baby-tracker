@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cn from "classnames";
 import classes from "./Timer.module.css";
 import eventController from "../../../api/eventController";
@@ -16,6 +16,8 @@ interface ITimer {
   eventType?: string;
   eventTypeDisplay?: boolean;
   child?: IChild;
+  startTimeValue?: string;
+  startTimer?: boolean;
   withClick: boolean;
   click?: () => void;
 }
@@ -27,6 +29,8 @@ const Timer: React.FC<ITimer> = ({
   eventType,
   eventTypeDisplay,
   child,
+  startTimeValue,
+  startTimer,
   withClick,
   click,
 }) => {
@@ -44,6 +48,19 @@ const Timer: React.FC<ITimer> = ({
 
   const [timerId, timerIdSet] = useState<string>("");
 
+  useEffect(() => {
+    if (startTimer === true) {
+      if (startTimeValue) {
+        setTimer({
+          stateTimer: window.setInterval(
+            () => stopwatchCurrent(Date.parse(startTimeValue)),
+            1000,
+          ),
+        });
+      }
+    }
+  }, []);
+
   return (
     <div className={classWrap} onClick={click}>
       <button
@@ -52,6 +69,8 @@ const Timer: React.FC<ITimer> = ({
             const startTime = Date.now();
             if (timer.stateTimer) {
               getTimerID(child as IChild, timerIdSet);
+
+              console.log(timerId);
               eventController.updateEvent({
                 id: timerId,
                 endTime: new Date(),
@@ -77,7 +96,6 @@ const Timer: React.FC<ITimer> = ({
                 child?.id as string,
               );
               getTimerID(child as IChild, timerIdSet);
-              console.log(timerId);
             }
           }
         }}

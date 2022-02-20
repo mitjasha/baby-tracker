@@ -11,12 +11,14 @@ import Timer from "../../common/Timer/Timer";
 import "./MainScreen.css";
 // eslint-disable-next-line import/order
 import moment from "moment";
-import getTimerID from "../../helpers/getTmerID";
+// import getTimerID from "../../helpers/getTmerID";
 
 const MainScreen: React.FC = () => {
   let childID: string = JSON.parse(
     localStorage.getItem("currentChild") as string,
   );
+
+  const plural = require("plural-ru");
 
   const [events, eventsSet] = useState<IEventResponse[]>(
     [] as IEventResponse[],
@@ -29,24 +31,6 @@ const MainScreen: React.FC = () => {
 
     return result.user.childs;
   };
-
-  useEffect(() => {
-    const setData = async () => {
-      if (!childID) {
-        const childs = await getChild();
-        childID = childs[0].id;
-      }
-      const currentChild = await childController.getChildById(childID);
-      const eventsList = await eventController.getAllEvents(currentChild);
-
-      childSet(currentChild as IChild);
-      eventsSet(eventsList);
-    };
-
-    setData();
-  }, []);
-
-  const plural = require("plural-ru");
 
   function getAge(dateString: string) {
     const year = moment().diff(new Date(dateString), "year");
@@ -71,12 +55,28 @@ const MainScreen: React.FC = () => {
       .find((elem) => elem.event === el)?.description;
   }
 
-  function timerLoader(eventsList: IEventResponse[], currentChild: IChild) {
-    getTimerID(currentChild, timerIdSet);
-    return timerId;
+  function timerLoader(eventsList: IEventResponse[], timerID: string) {
+    return eventsList.find((elem) => elem.id === timerID);
   }
 
-  console.log(timerLoader(events, child));
+  useEffect(() => {
+    const setData = async () => {
+      if (!childID) {
+        const childs = await getChild();
+        childID = childs[0].id;
+      }
+      const currentChild = await childController.getChildById(childID);
+      const eventsList = await eventController.getAllEvents(currentChild);
+      const id = eventsList.find((elem) => elem.description === "Process")
+        ?.id as string;
+
+      timerIdSet(id);
+      childSet(currentChild as IChild);
+      eventsSet(eventsList);
+    };
+
+    setData();
+  }, []);
 
   return (
     <>
@@ -98,23 +98,29 @@ const MainScreen: React.FC = () => {
           </div>
           <div className="main-screen-timer-container">
             <div className="timer-wrap">
-              <Timer
-                withClick
-                eventType="Сон"
-                eventTypeDisplay={true}
-                child={child}
-                click={() => {
-                  // eventController.addEvent(
-                  //   {
-                  //     event: "Сон",
-                  //     startTime: new Date(),
-                  //     endTime: new Date(),
-                  //     description: "СОН",
-                  //   },
-                  //   childID,
-                  // );
-                }}
-              />
+              {!timerId ? (
+                <div>
+                  <Timer
+                    withClick
+                    eventType="Сон"
+                    eventTypeDisplay={true}
+                    child={child}
+                    click={() => {}}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <Timer
+                    withClick
+                    eventType={timerLoader(events, timerId)?.event}
+                    eventTypeDisplay={true}
+                    child={child}
+                    startTimeValue={timerLoader(events, timerId)?.startTime}
+                    startTimer={true}
+                    click={() => {}}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -149,7 +155,9 @@ const MainScreen: React.FC = () => {
           </div>
 
           <div className="main-screen-timeline">
-            <Timeline events={events as IEventResponse[]}></Timeline>
+            {events && (
+              <Timeline events={events as IEventResponse[]}></Timeline>
+            )}
           </div>
           <div className="main-screen-add-activity">
             <NewEventButton />
