@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { IChild, IEventResponse } from "../../../api/api.interface";
 import childController from "../../../api/childController";
 import eventController from "../../../api/eventController";
+import userController from "../../../api/userController";
 import MainScreenButton from "../../common/Buttons/MainScreenButton/MainScreenButton";
 import NewEventButton from "../../common/Buttons/NewEventButton/NewEventButton";
 import Timeline from "../../common/Timeline/Timeline";
@@ -13,9 +14,10 @@ import moment from "moment";
 import getTimerID from "../../helpers/getTmerID";
 
 const MainScreen: React.FC = () => {
-  const childID: string = JSON.parse(
+  let childID: string = JSON.parse(
     localStorage.getItem("currentChild") as string,
   );
+
   const [events, eventsSet] = useState<IEventResponse[]>(
     [] as IEventResponse[],
   );
@@ -24,6 +26,10 @@ const MainScreen: React.FC = () => {
 
   useEffect(() => {
     const setData = async () => {
+      if (!childID) {
+        const childs = await getChild();
+        childID = childs[0].id;
+      }
       const currentChild = await childController.getChildById(childID);
       const eventsList = await eventController.getAllEvents(currentChild);
 
