@@ -1,0 +1,21 @@
+.container {
+  height: 98px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.button {
+  background-color: #9dcdff;
+}
+
+.button:hover {
+  background-color: #fecdcb;
+}
+
+.icon {
+  background-color: #fecdcb;
+}
+

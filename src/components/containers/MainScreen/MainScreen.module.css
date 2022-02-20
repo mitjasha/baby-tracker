@@ -1,9 +1,10 @@
-.main-screen {
+.screen {
+  color: #fff;
+  background-color: #fecdcb;
   display: flex;
   flex-direction: column;
-  justify-content: end;
-  background-color: #fecdcb;
-  color: #fff;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .title {
@@ -15,7 +16,7 @@
 
   color: black;
 }
-.main-screen-info-description {
+.description {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,14 +30,11 @@
   color: #000000;
 }
 
-.main-screen-up-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: 260px;
+.upContainer {
+  min-height: 40vh;
 }
 
-.main-screen-timer-container {
+.timerContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,71 +46,78 @@
   background-color: #fecdcb;
   border-radius: 50%;
   position: relative;
-  /* top: 50px; */
+  top: 50px;
+  margin: 0 auto;
 }
 
-.timer-wrap {
-  display: flex;
+.timerWrap {
   width: 200px;
   height: 200px;
   position: relative;
-  justify-content: center;
-  align-items: center;
 }
 
-.button-wrapper {
+.buttonWrapper {
   width: 100vw;
   background-color: #fff;
 }
 
-.main-buttons-container {
+.buttonsContainer {
   display: flex;
   justify-content: center;
-  height: 120px;
+  height: 130px;
   background-color: #fff;
+  padding-bottom: 10px;
 }
 
-.main-screen-bnt-left {
+.bntLeft {
   border-bottom-left-radius: 20px;
   margin-right: 2px;
 }
 
-.main-screen-bnt-right {
+.bntRight {
   border-bottom-right-radius: 20px;
   margin-left: 2px;
 }
 
-.main-screen-btn-text-right {
-  padding: 55px 0px 0px 20px;
+.btnTextRight {
+  padding: 40px 0px 0px 20px;
   text-align: center;
   font-size: 16px;
 }
 
-.main-screen-btn-text-left {
-  padding: 55px 20px 0px 0px;
+.btnTextLeft {
+  padding: 40px 20px 0px 0px;
   text-align: center;
   font-size: 16px;
 }
 
-.main-screen-bnt-icon {
+.bntIcon {
   width: 80px;
   max-height: 80px;
   object-fit: contain;
   padding-top: 10px;
 }
 
-.main-screen-timeline {
-  width: 100vw;
-  height: 100px;
+.timeline {
+  width: 100%;
+  height: 100%;
   background-color: #fff;
   overflow-y: auto;
 }
 
-.main-screen-add-activity {
+.timeline::-webkit-scrollbar {
+  width: 0;
+}
+
+.addActivity {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
+  height: 13vh;
   width: 100vw;
   background-color: #fff;
+}
+
+.timilineContainer {
+  height: 30vh;
 }

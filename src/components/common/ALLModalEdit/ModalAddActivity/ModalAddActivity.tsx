@@ -4,6 +4,7 @@ import classes from "./ModalAddActivity.module.css";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import InputTimeDate from "../../Inputs/InputTimeDate/InputTimeDate";
 import ModalAddActivityConst from "./ModalAddActivityConst";
+import InputEat from "../../Inputs/InputsEat/InputEat";
 import saveDataFromFormToLS from "../../../helpers/saveDataFromFormLocalStorage";
 
 interface IModalAddActivityForm {
@@ -25,22 +26,22 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
   const [errorS, setErrors] = useState<boolean>(false);
 
   useEffect(() => {
-    const newIcon = ModalAddActivityConst.filter(
-      (el) => el.text === whatActivity,
-    )
+    const newIcon = ModalAddActivityConst.filter((el) => el.text === dataActive)
       .map((el) => el.icon)
       .join("");
     setDataActive(whatActivity);
+
     setIcon(newIcon);
   }, []);
 
   const { register, handleSubmit, reset, getValues } =
-    useForm<IModalAddActivityForm>({ mode: "onChange" });
+    useForm<IModalAddActivityForm>({ mode: "all" });
 
   const [minDate, setDateMin] = useState("");
   const [maxDate, setDateMax] = useState("");
   const [minTime, setTimeMin] = useState("");
   const [maxTime, setTimeMax] = useState("");
+  const [text, setText] = useState("");
   const [errMessage, setErrMessage] = useState("");
 
   useEffect(() => {
@@ -57,7 +58,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
       setErrors(true);
       setErrMessage("");
     }
-  }, [minDate, maxDate, minTime, maxTime, errMessage]);
+  }, [minDate, maxDate, minTime, maxTime, errMessage, text]);
 
   const resetForm = () => {
     reset();
@@ -65,14 +66,19 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
     setErrors(false);
     setDateMin("");
     setDateMax("");
+    setText("");
   };
 
   const onSubmit = (data: IModalAddActivityForm) => {
+    console.log(data.text);
     const dataEvent = {
       event: dataActive,
       startTime: `${data.startDate} ${data.startTime}`,
       endTime: `${data.endDate} ${data.endTime}`,
-      description: "",
+      description:
+        data.descreatiption !== ""
+          ? `${data.eat}, ${data.descreatiption}, ${data.eatValue} мл`
+          : `${data.eat}, ${data.eatValue} мл`,
     };
     saveDataFromFormToLS(dataActive, dataEvent);
     console.log(JSON.stringify(dataEvent));
@@ -106,10 +112,25 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
       onClick={closeModalDefault}
       textError={errMessage}
       classNameFooter={classes.error}
-      withOverlay={dataActive === "Сон"}
+      withOverlay={dataActive === "Сон" || dataActive === "Бутылочка"}
     >
       <div>
         <form id="form-active" onSubmit={handleSubmit(onSubmit)}>
+          {dataActive === "Бутылочка" && (
+            <InputEat
+              min="10"
+              max="1000"
+              step="10"
+              placeholder="Описание (компот, чай)"
+              registerValue={register("eatValue", {
+                required: true,
+              })}
+              registerData={register("eat", {
+                required: true,
+              })}
+              registerText={register("descreatiption")}
+            />
+          )}
           <InputTimeDate
             max={maxDate}
             textName="Начало"

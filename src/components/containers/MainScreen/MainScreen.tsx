@@ -1,5 +1,8 @@
 /* eslint-disable global-require */
 import React, { useEffect, useState } from "react";
+import cn from "classnames";
+import moment from "moment";
+import classes from "./MainScreen.module.css";
 import { IChild, IEventResponse } from "../../../api/api.interface";
 import childController from "../../../api/childController";
 import eventController from "../../../api/eventController";
@@ -8,10 +11,6 @@ import MainScreenButton from "../../common/Buttons/MainScreenButton/MainScreenBu
 import NewEventButton from "../../common/Buttons/NewEventButton/NewEventButton";
 import Timeline from "../../common/Timeline/Timeline";
 import Timer from "../../common/Timer/Timer";
-import "./MainScreen.css";
-// eslint-disable-next-line import/order
-import moment from "moment";
-// import getTimerID from "../../helpers/getTmerID";
 
 const MainScreen: React.FC = () => {
   let childID: string = JSON.parse(
@@ -79,92 +78,87 @@ const MainScreen: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <div className="screen main-screen">
-        <div className="main-screen-up-container">
-          <div className="main-screen-info">
-            <h1 style={{ display: "none" }}>Baby Tracker</h1>
+    <div className={cn(classes.screen)}>
+      <div className={classes.upContainer}>
+        <div className={classes.info}>
+          <h1 style={{ display: "none" }}>Baby Tracker</h1>
 
-            <div className="title">{getAge(String(child.birth))}</div>
-            <div className="main-screen-info-description">
-              <div className="weight">
-                {`Масса тела: 
+          <div className={classes.title}>{getAge(String(child.birth))}</div>
+          <div className={classes.description}>
+            <div className={classes.weight}>
+              {`Масса тела: 
                   ${getDescription(events, "Вес")} кг`}
-              </div>
-              <div className="height">
-                {`Рост: ${getDescription(events, "Рост")} см`}
-              </div>
             </div>
-          </div>
-          <div className="main-screen-timer-container">
-            <div className="timer-wrap">
-              {!timerId ? (
-                <div>
-                  <Timer
-                    withClick
-                    eventType="Сон"
-                    eventTypeDisplay={true}
-                    child={child}
-                    click={() => {}}
-                  />
-                </div>
-              ) : (
-                <div>
-                  <Timer
-                    withClick
-                    eventType={timerLoader(events, timerId)?.event}
-                    eventTypeDisplay={true}
-                    child={child}
-                    startTimeValue={timerLoader(events, timerId)?.startTime}
-                    startTimer={true}
-                    click={() => {}}
-                  />
-                </div>
-              )}
+            <div className={classes.height}>
+              {`Рост: ${getDescription(events, "Рост")} см`}
             </div>
           </div>
         </div>
-        <div>
-          <div className="button-wrapper">
-            <div className="main-buttons-container">
-              <MainScreenButton className="main-screen-bnt-left">
-                <div className="main-screen-bnt-icon">
-                  <img
-                    src={
-                      require("../../../assets/svg/sleeping-icon.svg").default
-                    }
-                    alt="sleeping"
-                  />
-                </div>
-                <div className="main-screen-btn-text-left">
-                  <p>Добавить</p> <p>сон</p>
-                </div>
-              </MainScreenButton>
-              <MainScreenButton className="main-screen-bnt-right">
-                <div className="main-screen-btn-text-right">
-                  <p>Добавить</p> <p>кормление</p>
-                </div>
-                <div className="main-screen-bnt-icon">
-                  <img
-                    src={require("../../../assets/svg/bottle-icon.svg").default}
-                    alt="feeding"
-                  />
-                </div>
-              </MainScreenButton>
-            </div>
-          </div>
-
-          <div className="main-screen-timeline">
-            {events && (
-              <Timeline events={events as IEventResponse[]}></Timeline>
+        <div className={classes.timerContainer}>
+          <div className={classes.timerWrap}>
+            {!timerId ? (
+              <div>
+                <Timer
+                  withClick
+                  eventType="Сон"
+                  eventTypeDisplay={true}
+                  child={child}
+                  click={() => {}}
+                />
+              </div>
+            ) : (
+              <div>
+                <Timer
+                  withClick
+                  eventType={timerLoader(events, timerId)?.event}
+                  eventTypeDisplay={true}
+                  child={child}
+                  startTimeValue={timerLoader(events, timerId)?.startTime}
+                  startTimer={true}
+                  click={() => {}}
+                />
+              </div>
             )}
-          </div>
-          <div className="main-screen-add-activity">
-            <NewEventButton />
           </div>
         </div>
       </div>
-    </>
+      <div>
+        <div className={classes.buttonWrapper}>
+          <div className={classes.buttonsContainer}>
+            <MainScreenButton className={classes.bntLeft}>
+              <div className={classes.bntIcon}>
+                <img
+                  src={require("../../../assets/svg/sleeping-icon.svg").default}
+                  alt="sleeping"
+                />
+              </div>
+              <div className={classes.btnTextLeft}>
+                <p>Добавить</p> <p>сон</p>
+              </div>
+            </MainScreenButton>
+            <MainScreenButton className={classes.bntRight}>
+              <div className={classes.btnTextRight}>
+                <p>Добавить</p> <p>кормление</p>
+              </div>
+              <div className={classes.bntIcon}>
+                <img
+                  src={require("../../../assets/svg/bottle-icon.svg").default}
+                  alt="feeding"
+                />
+              </div>
+            </MainScreenButton>
+          </div>
+        </div>
+      </div>
+      <div className={classes.timilineContainer}>
+        <div className={classes.timeline}>
+          {events && <Timeline events={events as IEventResponse[]}></Timeline>}
+        </div>
+        <div className={classes.addActivity}>
+          <NewEventButton />
+        </div>
+      </div>
+    </div>
   );
 };
 

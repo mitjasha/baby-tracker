@@ -5,11 +5,11 @@ import eventController from "../../../api/eventController";
 import { IChild, IEventRequest } from "../../../api/api.interface";
 import getTimerID from "../../helpers/getTmerID";
 
-interface ITimerState {
+export interface ITimerState {
   stateTimer: number | undefined;
 }
 
-interface ITimer {
+export interface ITimer {
   classWrap?: string;
   classNameTimer?: string;
   classNameValue?: string;
