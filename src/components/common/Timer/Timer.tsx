@@ -3,6 +3,7 @@ import cn from "classnames";
 import classes from "./Timer.module.css";
 import eventController from "../../../api/eventController";
 import { IChild, IEventRequest } from "../../../api/api.interface";
+import getTimerID from "../../helpers/getTmerID";
 
 interface ITimerState {
   stateTimer: number | undefined;
@@ -43,20 +44,6 @@ const Timer: React.FC<ITimer> = ({
 
   const [timerId, timerIdSet] = useState<string>("");
 
-  const getTimerID = (currentChild: IChild): void => {
-    const setData = async () => {
-      const eventsList = await eventController.getAllEvents(currentChild);
-
-      const id = eventsList.find((elem) => elem.description === "Process")
-        ?.id as string;
-      console.log(id);
-
-      timerIdSet(id);
-    };
-
-    setData();
-  };
-
   return (
     <div className={classWrap} onClick={click}>
       <button
@@ -64,7 +51,7 @@ const Timer: React.FC<ITimer> = ({
           if (withClick) {
             const startTime = Date.now();
             if (timer.stateTimer) {
-              getTimerID(child as IChild);
+              getTimerID(child as IChild, timerIdSet);
               eventController.updateEvent({
                 id: timerId,
                 endTime: new Date(),
@@ -89,7 +76,7 @@ const Timer: React.FC<ITimer> = ({
                 },
                 child?.id as string,
               );
-              getTimerID(child as IChild);
+              getTimerID(child as IChild, timerIdSet);
               console.log(timerId);
             }
           }

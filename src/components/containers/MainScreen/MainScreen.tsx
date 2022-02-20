@@ -10,6 +10,7 @@ import Timer from "../../common/Timer/Timer";
 import "./MainScreen.css";
 // eslint-disable-next-line import/order
 import moment from "moment";
+import getTimerID from "../../helpers/getTmerID";
 
 const MainScreen: React.FC = () => {
   const childID: string = JSON.parse(
@@ -19,6 +20,7 @@ const MainScreen: React.FC = () => {
     [] as IEventResponse[],
   );
   const [child, childSet] = useState<IChild>({} as IChild);
+  const [timerId, timerIdSet] = useState<string>("");
 
   useEffect(() => {
     const setData = async () => {
@@ -57,9 +59,12 @@ const MainScreen: React.FC = () => {
       .find((elem) => elem.event === el)?.description;
   }
 
-  // function timerLoader(eventsList: IEventResponse[]){
+  function timerLoader(eventsList: IEventResponse[], currentChild: IChild) {
+    getTimerID(currentChild, timerIdSet);
+    return timerId;
+  }
 
-  // };
+  console.log(timerLoader(events, child));
 
   return (
     <>
