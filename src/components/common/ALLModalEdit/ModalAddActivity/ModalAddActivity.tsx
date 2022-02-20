@@ -7,7 +7,7 @@ import ModalAddActivityConst from "./ModalAddActivityConst";
 import InputEat from "../../Inputs/InputsEat/InputEat";
 import saveDataFromFormToLS from "../../../helpers/saveDataFromFormLocalStorage";
 
-interface IModalAddActivityForm {
+export interface IModalAddActivityForm {
   [key: string]: string;
 }
 
@@ -32,7 +32,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
     setDataActive(whatActivity);
 
     setIcon(newIcon);
-  }, []);
+  });
 
   const { register, handleSubmit, reset, getValues } =
     useForm<IModalAddActivityForm>({ mode: "all" });
@@ -132,7 +132,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
             />
           )}
           <InputTimeDate
-            max={maxDate}
+            maxi={maxDate}
             textName="Начало"
             registerDate={register("startDate", {
               required: true,
@@ -150,7 +150,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
             })}
           />
           <InputTimeDate
-            min={minDate}
+            mini={minDate}
             textName="Конец"
             registerDate={register("endDate", {
               required: true,

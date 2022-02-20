@@ -4,11 +4,13 @@ import BaseModalWindowWrapper from "../../ALLModalEdit/ModalEventWindow/BaseModa
 import "./ModalMenuButton.css";
 
 interface IModalMenuButton {
+  eventName: string;
   children?: React.ReactNode;
   className?: string;
 }
 
 const ModalMenuButton: React.FC<IModalMenuButton> = ({
+  eventName,
   children,
   className,
 }) => {
@@ -24,6 +26,7 @@ const ModalMenuButton: React.FC<IModalMenuButton> = ({
         {children}
       </button>
       <BaseModalWindowWrapper
+        eventName={eventName}
         isModalVisible={isModalVisible}
         onBackdropClick={toggleModal}
       />

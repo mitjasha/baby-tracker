@@ -4,11 +4,13 @@ import BaseModalWindowWrapper from "../../ALLModalEdit/ModalEventWindow/BaseModa
 import "./MainScreenButton.css";
 
 interface IMainScreenButton {
+  eventName: string;
   children?: React.ReactNode;
   className?: string;
 }
 
 const MainScreenButton: React.FC<IMainScreenButton> = ({
+  eventName,
   children,
   className,
 }) => {
@@ -24,6 +26,7 @@ const MainScreenButton: React.FC<IMainScreenButton> = ({
         {children}
       </button>
       <BaseModalWindowWrapper
+        eventName={eventName}
         isModalVisible={isModalVisible}
         onBackdropClick={toggleModal}
       />
