@@ -5,6 +5,7 @@ import ModalWindow from "../ModalWindow/ModalWindow";
 import InputTimeDate from "../../Inputs/InputTimeDate/InputTimeDate";
 import ModalAddActivityConst from "./ModalAddActivityConst";
 import InputEat from "../../Inputs/InputsEat/InputEat";
+import saveDataFromFormToLS from "../../../helpers/saveDataFromFormLocalStorage";
 
 interface IModalAddActivityForm {
   [key: string]: string;
@@ -31,8 +32,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
     setDataActive(whatActivity);
 
     setIcon(newIcon);
-    console.log(newIcon);
-  }, [dataActive]);
+  }, []);
 
   const { register, handleSubmit, reset, getValues } =
     useForm<IModalAddActivityForm>({ mode: "all" });
@@ -80,6 +80,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
           ? `${data.eat}, ${data.descreatiption}, ${data.eatValue} мл`
           : `${data.eat}, ${data.eatValue} мл`,
     };
+    saveDataFromFormToLS(dataActive, dataEvent);
     console.log(JSON.stringify(dataEvent));
     setIsModalOpen(false);
     resetForm();

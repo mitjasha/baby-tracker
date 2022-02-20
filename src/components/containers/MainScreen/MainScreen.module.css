@@ -7,6 +7,29 @@
   margin: 0 auto;
 }
 
+.title {
+  height: 50px;
+  padding-top: 18px;
+  font-family: Roboto;
+  font-style: normal;
+  font-size: 24px;
+
+  color: black;
+}
+.description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  height: 26px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+
+  color: #000000;
+}
+
 .upContainer {
   min-height: 40vh;
 }
@@ -72,6 +95,7 @@
   width: 80px;
   max-height: 80px;
   object-fit: contain;
+  padding-top: 10px;
 }
 
 .timeline {

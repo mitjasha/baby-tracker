@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cn from "classnames";
 import classes from "./Timer.module.css";
+import eventController from "../../../api/eventController";
+import { IChild, IEventRequest } from "../../../api/api.interface";
+import getTimerID from "../../helpers/getTmerID";
 
 export interface ITimerState {
   stateTimer: number | undefined;
@@ -10,13 +13,24 @@ export interface ITimer {
   classWrap?: string;
   classNameTimer?: string;
   classNameValue?: string;
+  eventType?: string;
+  eventTypeDisplay?: boolean;
+  child?: IChild;
+  startTimeValue?: string;
+  startTimer?: boolean;
   withClick: boolean;
   click?: () => void;
 }
+
 const Timer: React.FC<ITimer> = ({
   classNameTimer,
   classNameValue,
   classWrap,
+  eventType,
+  eventTypeDisplay,
+  child,
+  startTimeValue,
+  startTimer,
   withClick,
   click,
 }) => {
@@ -32,6 +46,21 @@ const Timer: React.FC<ITimer> = ({
     setSec(Math.floor((currentTime / 1000) % 60));
   };
 
+  const [timerId, timerIdSet] = useState<string>("");
+
+  useEffect(() => {
+    if (startTimer === true) {
+      if (startTimeValue) {
+        setTimer({
+          stateTimer: window.setInterval(
+            () => stopwatchCurrent(Date.parse(startTimeValue)),
+            1000,
+          ),
+        });
+      }
+    }
+  }, []);
+
   return (
     <div className={classWrap} onClick={click}>
       <button
@@ -39,7 +68,16 @@ const Timer: React.FC<ITimer> = ({
           if (withClick) {
             const startTime = Date.now();
             if (timer.stateTimer) {
+              getTimerID(child as IChild, timerIdSet);
+
+              console.log(timerId);
+              eventController.updateEvent({
+                id: timerId,
+                endTime: new Date(),
+                description: "",
+              } as IEventRequest);
               clearInterval(timer.stateTimer);
+
               setTimer({ stateTimer: undefined });
             } else {
               setTimer({
@@ -48,6 +86,16 @@ const Timer: React.FC<ITimer> = ({
                   1000,
                 ),
               });
+              eventController.addEvent(
+                {
+                  event: eventType as string,
+                  startTime: new Date(startTime),
+                  endTime: new Date(startTime),
+                  description: "Process",
+                },
+                child?.id as string,
+              );
+              getTimerID(child as IChild, timerIdSet);
             }
           }
         }}
@@ -60,6 +108,9 @@ const Timer: React.FC<ITimer> = ({
           )}
         ></div>
       </button>
+      <div className={cn(classes.valueName, classNameValue)}>{`${
+        eventTypeDisplay ? eventType : ""
+      }`}</div>
       <div className={cn(classes.value, classNameValue)}>
         {hours === 0 ? "" : `${hours < 10 ? `0${hours}:` : `${hours}:`}`}
         {min < 10 ? `0${min}` : min}:{sec < 10 ? `0${sec}` : sec}
