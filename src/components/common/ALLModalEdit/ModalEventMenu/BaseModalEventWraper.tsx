@@ -19,16 +19,16 @@ const BaseModalEventWrapper: React.FC<BaseModalWrapperProps> = ({
     <ModalEventMenu onBackdropClick={onBackdropClick}>
       <div className="desktop-modal-container modal-container">
         <ModalMenuButton>
-          <div className="modal-content"></div>
+          <div className="modal-content">Приём пищи</div>
         </ModalMenuButton>
         <ModalMenuButton>
-          <div className="modal-content"></div>
+          <div className="modal-content">Активность</div>
         </ModalMenuButton>
         <ModalMenuButton>
-          <div className="modal-content"></div>
+          <div className="modal-content">Сон</div>
         </ModalMenuButton>
         <ModalMenuButton>
-          <div className="modal-content"></div>
+          <div className="modal-content">Прогулка</div>
         </ModalMenuButton>
       </div>
     </ModalEventMenu>

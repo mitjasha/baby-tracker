@@ -27,9 +27,31 @@
 
 .value {
   position: absolute;
-  top: 39%;
-  left: 29%;
+  top: 47%;
+  left: 21%;
+  width: 120px;
   pointer-events: none;
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 42px;
+  color: #df7e8a;
+}
+
+.valueName {
+  position: absolute;
+  top: 33%;
+  left: 19%;
+  width: 126px;
+  pointer-events: none;
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  color: #000000;
 }
 
 .wrapper {
