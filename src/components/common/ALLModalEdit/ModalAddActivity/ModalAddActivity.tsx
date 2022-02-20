@@ -4,6 +4,7 @@ import classes from "./ModalAddActivity.module.css";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import InputTimeDate from "../../Inputs/InputTimeDate/InputTimeDate";
 import ModalAddActivityConst from "./ModalAddActivityConst";
+import saveDataFromFormToLS from "../../../helpers/saveDataFromFormLocalStorage";
 
 interface IModalAddActivityForm {
   [key: string]: string;
@@ -24,17 +25,14 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
   const [errorS, setErrors] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log(ModalAddActivityConst);
-
-    console.log(whatActivity);
-    const newIcon = ModalAddActivityConst.filter((el) => el.text === dataActive)
+    const newIcon = ModalAddActivityConst.filter(
+      (el) => el.text === whatActivity,
+    )
       .map((el) => el.icon)
       .join("");
     setDataActive(whatActivity);
-    
     setIcon(newIcon);
-    console.log(newIcon);
-  }, [dataActive]);
+  }, []);
 
   const { register, handleSubmit, reset, getValues } =
     useForm<IModalAddActivityForm>({ mode: "onChange" });
@@ -76,6 +74,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
       endTime: `${data.endDate} ${data.endTime}`,
       description: "",
     };
+    saveDataFromFormToLS(dataActive, dataEvent);
     console.log(JSON.stringify(dataEvent));
     setIsModalOpen(false);
     resetForm();

@@ -13,6 +13,7 @@ import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 import girlSleep from "../../../assets/png/girl.png";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
+import ChartSleep from "../../common/Charts/ChartSleep/ChartSleep";
 
 const SleepScreen: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -67,6 +68,7 @@ const SleepScreen: React.FC = () => {
             closeModalDefault={() => setIsModalOpen(false)}
           />
         )}
+        <ChartSleep />
       </div>
     </>
   );

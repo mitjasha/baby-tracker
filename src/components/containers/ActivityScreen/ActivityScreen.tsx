@@ -10,6 +10,7 @@ import girlDefault from "../../../assets/png/activity/girl-default.png";
 import { currentDay, currentTime } from "../../helpers/changeNum";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
 import ModalAddActivityConst from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivityConst";
+import saveDataFromFormToLS from "../../helpers/saveDataFromFormLocalStorage";
 
 interface ISleepData {
   [key: string]: string;
@@ -49,6 +50,7 @@ const ActivityScreen: React.FC = () => {
       description: data.feeling[0].split(",")[1], // data.feeling = ["англ, русск"]
     };
     console.log(JSON.stringify(dataEvent));
+    saveDataFromFormToLS(dataActive, dataEvent);
     setIsModalOpen(!isModalOpen);
     reset();
   };
