@@ -1,17 +1,25 @@
+.timelineContainer {
+  margin: 0 auto;
+  width: 100%;
+}
+
 .timeLabel span {
   font-weight: 600;
   padding: 5px 10px;
   display: inline-block;
-  background-color: #e74c3c;
+  background-color: #df7e8a;
   color: #fff;
   border-radius: 2px;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 100;
+  width: 100%;
 }
 
 .timelineElement {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 8px 0px;
 }
 
 .timelineItem {
@@ -19,11 +27,11 @@
   justify-content: space-between;
   align-items: center;
   width: 300px;
-  height: 40px;
+  min-height: 40px;
   /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   background: #fff; */
-  color: #444;
+  color: #000;
   /* margin-right: 15px; */
   position: relative;
   /* margin-left: 50px; */
@@ -33,23 +41,15 @@
   display: flex;
 }
 
-.timelineHeader {
-  margin: 0;
-  color: #555;
-  border-bottom: 1px solid #f4f4f4;
-  /* line-height: 1.1; */
-}
-
 .timelineHeader,
 .time {
   font-size: 14px;
+  font-weight: 100;
   padding: 6px 10px;
 }
 
 .time {
-  font-size: 12px;
-  color: #999;
-  float: right;
+  font-size: 18px;
 }
 
 .timelineDuration {
@@ -59,6 +59,17 @@
 }
 
 .img {
+  width: 30px;
+  height: 30px;
+  left: 5px;
+  top: 5px;
+  position: absolute;
+}
+
+.icon {
   width: 41px;
   height: 41px;
+  border-radius: 50%;
+  background-color: #9dcdff;
+  position: relative;
 }

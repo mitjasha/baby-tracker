@@ -1,5 +1,4 @@
 import React from "react";
-
 import classes from "./Timeline.module.css";
 import TimelineConst from "./TimelineConst";
 
@@ -15,36 +14,34 @@ const TimelineItem: React.FC<IItem> = ({
   id,
   event,
   startTime,
-  // description,
+  description,
   duration,
 }) => (
   <>
     <li className={classes.timelineElement}>
       <div className={classes.timelineItem} id={id}>
-        <img
-          className={classes.img}
-          src={
-            TimelineConst.filter((elem) => elem.text === event).map(
-              (elem) => elem.icon,
-            )[0]
-          }
-          alt=""
-        />
+        <div className={classes.icon}>
+          <img
+            className={classes.img}
+            src={
+              TimelineConst.filter((elem) => elem.text === event).map(
+                (elem) => elem.icon,
+              )[0]
+            }
+            alt=""
+          />
+        </div>
         <div>
           <div className={classes.eventContainer}>
-            <div className={classes.timelineHeader}>{event}</div>
-            {/* {event.toLocaleLowerCase() !== description.toLocaleLowerCase() && (
-              <div className={classes.timelineHeader}>{description}</div>
-            )} */}
+            <span className={classes.timelineHeader}>
+              {`${Math.floor(duration / 3600000) % 60}ч ${
+                Math.floor(duration / 60000) % 60
+              }мин - ${event}`}
+              <p>{`${description}`}</p>
+            </span>
           </div>
-
-          <div className={classes.timelineDuration}>{`${
-            Math.floor(duration / 3600000) % 60
-          }ч ${Math.floor(duration / 60000) % 60}мин ${Math.floor(
-            (duration / 1000) % 60,
-          )}сек`}</div>
         </div>
-        <span className="time">{startTime}</span>
+        <span className={classes.time}>{startTime}</span>
       </div>
     </li>
   </>

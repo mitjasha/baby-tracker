@@ -5,14 +5,17 @@ import { IEventResponse } from "../../../api/api.interface";
 
 function getFormattedData(items: IEventResponse[]) {
   const activities: { [date: string]: IItem[] } = {};
-
+  console.log(items);
   items.forEach(
     ({ id, event, startTime, endTime, description }, index: number) => {
       const startDate = Date.parse(startTime);
+      console.log(typeof startTime, startTime);
+      console.log(new Date(Date.parse(startTime)).getHours());
+
       const endDate = Date.parse(endTime);
       const duration = endDate - startDate;
       // const dateStr = new Date(startDate).toISOString().split("T")[0];
-      const dateStr: string = Intl.DateTimeFormat("en-gb", {
+      const dateStr: string = Intl.DateTimeFormat("ru-Ru", {
         year: "numeric",
         month: "2-digit",
         day: "2-digit",
@@ -25,7 +28,7 @@ function getFormattedData(items: IEventResponse[]) {
       list.push({
         id,
         event,
-        startTime: Intl.DateTimeFormat("en", {
+        startTime: Intl.DateTimeFormat("ru-Ru", {
           hour: "numeric",
           minute: "numeric",
         }).format(new Date(startDate)),
@@ -63,9 +66,9 @@ const Timeline: React.FC<ITimelineProps> = ({ events }) => {
   );
   const dates = Object.keys(activities);
   return (
-    <div className="timelineContainer">
+    <div className={classes.timelineContainer}>
       {dates.map((d) => (
-        <ul className="timeLine" key={d}>
+        <ul className={classes.timeLine} key={d}>
           <li className={classes.timeLabel}>
             <span>{d}</span>
           </li>

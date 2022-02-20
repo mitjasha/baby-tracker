@@ -1,5 +1,7 @@
 /* eslint-disable global-require */
 import React, { useEffect, useState } from "react";
+import cn from "classnames";
+import classes from "./MainScreen.module.css";
 import { IChild, IEventResponse } from "../../../api/api.interface";
 import childController from "../../../api/childController";
 import eventController from "../../../api/eventController";
@@ -8,7 +10,6 @@ import MainScreenButton from "../../common/Buttons/MainScreenButton/MainScreenBu
 import NewEventButton from "../../common/Buttons/NewEventButton/NewEventButton";
 import Timeline from "../../common/Timeline/Timeline";
 import Timer from "../../common/Timer/Timer";
-import "./MainScreen.css";
 
 const MainScreen: React.FC = () => {
   let childID: string = JSON.parse(
@@ -41,13 +42,13 @@ const MainScreen: React.FC = () => {
 
   return (
     <>
-      <div className="screen main-screen">
-        <div className="main-screen-up-container">
-          <div className="main-screen-info">
-            <h1 className="title">Baby Tracker</h1>
+      <div className={cn(classes.screen)}>
+        <div className={classes.upContainer}>
+          <div className={classes.info}>
+            <h1 className={classes.title}>Baby Tracker</h1>
           </div>
-          <div className="main-screen-timer-container">
-            <div className="timer-wrap">
+          <div className={classes.timerContainer}>
+            <div className={classes.timerWrap}>
               <Timer
                 withClick
                 click={() =>
@@ -64,12 +65,11 @@ const MainScreen: React.FC = () => {
               />
             </div>
           </div>
-        </div>
-        <div>
-          <div className="button-wrapper">
-            <div className="main-buttons-container">
-              <MainScreenButton className="main-screen-bnt-left">
-                <div className="main-screen-bnt-icon">
+
+          <div className={classes.buttonWrapper}>
+            <div className={classes.buttonsContainer}>
+              <MainScreenButton className={classes.bntLeft}>
+                <div className={classes.bntIcon}>
                   <img
                     src={
                       require("../../../assets/svg/sleeping-icon.svg").default
@@ -77,15 +77,15 @@ const MainScreen: React.FC = () => {
                     alt="sleeping"
                   />
                 </div>
-                <div className="main-screen-btn-text-left">
+                <div className={classes.btnTextLeft}>
                   <p>Добавить</p> <p>сон</p>
                 </div>
               </MainScreenButton>
-              <MainScreenButton className="main-screen-bnt-right">
-                <div className="main-screen-btn-text-right">
+              <MainScreenButton className={classes.bntRight}>
+                <div className={classes.btnTextRight}>
                   <p>Добавить</p> <p>кормление</p>
                 </div>
-                <div className="main-screen-bnt-icon">
+                <div className={classes.bntIcon}>
                   <img
                     src={require("../../../assets/svg/bottle-icon.svg").default}
                     alt="feeding"
@@ -94,11 +94,14 @@ const MainScreen: React.FC = () => {
               </MainScreenButton>
             </div>
           </div>
-
-          <div className="main-screen-timeline">
-            <Timeline events={events as IEventResponse[]}></Timeline>
+        </div>
+        <div className={classes.timilineContainer}>
+          <div className={classes.timeline}>
+            {events && (
+              <Timeline events={events as IEventResponse[]}></Timeline>
+            )}
           </div>
-          <div className="main-screen-add-activity">
+          <div className={classes.addActivity}>
             <NewEventButton />
           </div>
         </div>

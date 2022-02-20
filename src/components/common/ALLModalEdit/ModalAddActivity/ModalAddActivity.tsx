@@ -120,7 +120,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
               min="10"
               max="1000"
               step="10"
-              placeholder="Описание (компот, чай,"
+              placeholder="Описание (компот, чай)"
               registerValue={register("eatValue", {
                 required: true,
               })}
