@@ -57,6 +57,10 @@ const MainScreen: React.FC = () => {
       .find((elem) => elem.event === el)?.description;
   }
 
+  // function timerLoader(eventsList: IEventResponse[]){
+
+  // };
+
   return (
     <>
       <div className="screen main-screen">
@@ -79,17 +83,20 @@ const MainScreen: React.FC = () => {
             <div className="timer-wrap">
               <Timer
                 withClick
-                click={() =>
-                  eventController.addEvent(
-                    {
-                      event: "Сон",
-                      startTime: new Date(),
-                      endTime: new Date(),
-                      description: "СОН",
-                    },
-                    childID,
-                  )
-                }
+                eventType="Сон"
+                eventTypeDisplay={true}
+                child={child}
+                click={() => {
+                  // eventController.addEvent(
+                  //   {
+                  //     event: "Сон",
+                  //     startTime: new Date(),
+                  //     endTime: new Date(),
+                  //     description: "СОН",
+                  //   },
+                  //   childID,
+                  // );
+                }}
               />
             </div>
           </div>
