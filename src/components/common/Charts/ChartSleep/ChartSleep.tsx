@@ -12,10 +12,36 @@ import timeDuration from "../../../helpers/getTimeDuration";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title);
 
-const sleepObj = (localStorage.getItem("Сон") as string)
-  .split(", ")
-  .map((el: string) => JSON.parse(el));
-console.log(sleepObj);
+// const sleepObj = (localStorage.getItem("Сон") as string)
+//   .split(", ")
+//   .map((el: string) => JSON.parse(el));
+// console.log(sleepObj);const sleepObj = [
+const sleepObj = [
+  {
+    event: "Сон",
+    startTime: "2022-02-13 22:00",
+    endTime: "2022-02-14 08:27",
+    description: "",
+  },
+  {
+    event: "Сон",
+    startTime: "2022-02-14 12:00",
+    endTime: "2022-02-14 14:00",
+    description: "",
+  },
+  {
+    event: "Сон",
+    startTime: "2022-02-14 18:00",
+    endTime: "2022-02-14 19:00",
+    description: "",
+  },
+  {
+    event: "Сон",
+    startTime: "2022-02-14 21:00",
+    endTime: "2022-02-15 08:00",
+    description: "",
+  },
+];
 
 const newDataForSleepChart = sleepObj.map((el, ind) => {
   const sleepEvent = [];
