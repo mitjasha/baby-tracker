@@ -24,6 +24,12 @@ const MainScreen: React.FC = () => {
   const [child, childSet] = useState<IChild>({} as IChild);
   const [timerId, timerIdSet] = useState<string>("");
 
+  const getChild = async (): Promise<IChild[]> => {
+    const result = await userController.getUser();
+
+    return result.user.childs;
+  };
+
   useEffect(() => {
     const setData = async () => {
       if (!childID) {
