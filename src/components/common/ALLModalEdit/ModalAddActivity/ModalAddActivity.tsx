@@ -20,13 +20,9 @@ export interface IModalAddActivityForm {
 
 interface IModalAddActivity {
   whatActivity: string[];
-  closeModalDefault?: () => void;
 }
 
-const ModalAddActivity: React.FC<IModalAddActivity> = ({
-  whatActivity,
-  closeModalDefault,
-}) => {
+const ModalAddActivity: React.FC<IModalAddActivity> = ({ whatActivity }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
   const [dataActive, setDataActive] = useState<string[]>(whatActivity);
   const [icon, setIcon] = useState<string>("");
@@ -37,12 +33,13 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
 
   useEffect(() => {
     const newIcon = ModalAddActivityConst.filter(
-      (el) => el.text === dataActive[0],
+      (el) => el.id === dataActive[1],
     )
       .map((el) => el.icon)
       .join("");
     setDataActive(dataActive);
     setIcon(newIcon);
+    console.log(newIcon);
   });
 
   const { register, handleSubmit, reset, getValues } =
@@ -127,7 +124,6 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
         form: "form-active",
       }}
       onClose={closeModal}
-      onClick={closeModalDefault}
       textError={errMessage}
       classNameFooter={classes.error}
       withOverlay={feedingSleep.includes(dataActive[0])}
@@ -149,8 +145,6 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
               })}
               registerText={register("descreatiption")}
             >
-              {" "}
-              children=
               {drinkEat[dataActive[1]].VARIANT.map((el) => (
                 <option key={el}>{el}</option>
               ))}

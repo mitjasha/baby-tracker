@@ -28,6 +28,7 @@ const ActivityScreen: React.FC = () => {
   const [img, setImg] = useState<string>(girlDefault);
 
   const toggleModal = (arg: string[] | undefined) => {
+    console.log(arg);
     setIsModalOpen(!isModalOpen);
     if (arg) {
       const newIcon = ModalAddActivityConst.filter((el) => el.text === arg[0])
@@ -124,7 +125,7 @@ const ActivityScreen: React.FC = () => {
           {addData && <ModalAddActivity whatActivity={dataActive} />}
         </>
       )}
-      {dataActive[0] === "feeling" && (
+      {dataActive[1] === "feeling" && (
         <ModalWindow
           id={dataActive[1]}
           className={`${isModalOpen ? "open" : "close"}`}

@@ -76,12 +76,7 @@ const SleepScreen: React.FC = () => {
           onClick={toggleModal}
           text={""}
         />
-        {isModalOpen && (
-          <ModalAddActivity
-            whatActivity={["Сон"]}
-            closeModalDefault={() => setIsModalOpen(false)}
-          />
-        )}
+        {isModalOpen && <ModalAddActivity whatActivity={["Сон", "sleep"]} />}
         {/* <ChartSleep /> */}
       </div>
     </>

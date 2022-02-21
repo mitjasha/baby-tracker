@@ -11,8 +11,8 @@ const ActivityButtonContainer: FC<IActivityButtonContainer> = ({ onClick }) => (
   <div className={classes.container}>
     {ActivityButtonConst.map((el, ind) => (
       <ButtonChoseActivity
-        onClick={() => onClick(el.text)}
-        key={ind}
+        onClick={() => onClick([el.text, el.id])}
+        key={el.id + ind}
         text={el.text}
         imgUrl={el.icon}
       />

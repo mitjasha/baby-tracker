@@ -20,9 +20,9 @@ const FeedingScreen: React.FC = () => {
 
   const toggleModal = (arg: string[] | undefined) => {
     console.log(arg);
-    setIsModalOpen(!isModalOpen);
+    setIsModalOpen(true);
     if (arg) {
-      const newIcon = FeedingButtonConst.filter((el) => el.text === arg[1])
+      const newIcon = FeedingButtonConst.filter((el) => el.text === arg[0])
         .map((el) => el.icon)
         .join("");
       setDataActive(arg);
@@ -40,10 +40,6 @@ const FeedingScreen: React.FC = () => {
 
   const addNewData = () => {
     setAddData(!addData);
-  };
-
-  const modalFalse = () => {
-    setIsModalOpen(false);
   };
 
   return (
@@ -82,10 +78,7 @@ const FeedingScreen: React.FC = () => {
         </>
       )}
       {feeding.includes(dataActive[0]) && (
-        <ModalAddActivity
-          closeModalDefault={modalFalse}
-          whatActivity={dataActive}
-        />
+        <ModalAddActivity whatActivity={dataActive} />
       )}
       {events && <Timeline events={events as IEventResponse[]}></Timeline>}
     </div>

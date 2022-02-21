@@ -27,7 +27,7 @@ export const FeedingButtonConst: IFeedingButtonConst[] = [
   },
   {
     text: "Еда",
-    id: "food",
+    id: "eat",
     icon: cutlery,
   },
 ];

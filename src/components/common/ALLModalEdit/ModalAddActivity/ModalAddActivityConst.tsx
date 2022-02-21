@@ -70,7 +70,7 @@ const ModalAddActivityConst: IActivityScreenConst[] = [
 ];
 
 const drinkEat: IFood = {
-  Бутылочка: {
+  bootle: {
     MIN_VALUE: "10",
     MAX_VALUE: "1000",
     STEP: "10",
@@ -80,7 +80,7 @@ const drinkEat: IFood = {
     OZ: "мл",
     VARIANT: ["Смесь", "Грудное молоко", "Питьё"],
   },
-  Еда: {
+  eat: {
     MIN_VALUE: "10",
     MAX_VALUE: "500",
     STEP: "10",
@@ -93,6 +93,6 @@ const drinkEat: IFood = {
 };
 
 const feeding: string[] = ["Бутылочка", "Еда"];
-const feedingSleep: string[] = ["Бутылочка", "Сон", "Еда"];
+const feedingSleep: string[] = ["Бутылочка", "Сон", "Еда", "Настроение"];
 
 export { ModalAddActivityConst, feeding, feedingSleep, drinkEat };
