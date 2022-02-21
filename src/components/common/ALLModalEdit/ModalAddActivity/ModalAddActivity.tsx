@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-constant-condition */
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import classes from "./ModalAddActivity.module.css";
@@ -5,7 +7,8 @@ import ModalWindow from "../ModalWindow/ModalWindow";
 import InputTimeDate from "../../Inputs/InputTimeDate/InputTimeDate";
 import ModalAddActivityConst from "./ModalAddActivityConst";
 import InputEat from "../../Inputs/InputsEat/InputEat";
-import saveDataFromFormToLS from "../../../helpers/saveDataFromFormLocalStorage";
+// import saveDataFromFormToLS from "../../../helpers/saveDataFromFormLocalStorage";
+import eventController from "../../../../api/eventController";
 
 export interface IModalAddActivityForm {
   [key: string]: string;
@@ -24,6 +27,9 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
   const [dataActive, setDataActive] = useState<string>("");
   const [icon, setIcon] = useState<string>("");
   const [errorS, setErrors] = useState<boolean>(false);
+  const childID: string = JSON.parse(
+    localStorage.getItem("currentChild") as string,
+  );
 
   useEffect(() => {
     const newIcon = ModalAddActivityConst.filter((el) => el.text === dataActive)
@@ -69,18 +75,22 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
   };
 
   const onSubmit = (data: IModalAddActivityForm) => {
-    console.log(data.text);
+    console.log(dataActive);
+
     const dataEvent = {
-      event: dataActive,
-      startTime: `${data.startDate} ${data.startTime}`,
-      endTime: `${data.endDate} ${data.endTime}`,
+      event: dataActive === "Бутылочка" || "Еда" ? "Кормление" : dataActive,
+      startTime: new Date(`${data.startDate} ${data.startTime}`),
+      endTime: new Date(`${data.endDate} ${data.endTime}`),
       description:
-        data.descreatiption !== ""
-          ? `${data.eat}, ${data.descreatiption}, ${data.eatValue} мл`
+        dataActive !== "Бутылочка"
+          ? dataActive.split(" ")[0]
+          : data.description !== ""
+          ? `${data.eat}, ${data.description}, ${data.eatValue} мл`
           : `${data.eat}, ${data.eatValue} мл`,
     };
-    saveDataFromFormToLS(dataActive, dataEvent);
-    console.log(JSON.stringify(dataEvent));
+    // saveDataFromFormToLS(dataActive, dataEvent);
+
+    eventController.addEvent(dataEvent, childID);
     setIsModalOpen(false);
     resetForm();
   };
@@ -127,7 +137,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
               registerData={register("eat", {
                 required: true,
               })}
-              registerText={register("descreatiption")}
+              registerText={register("description")}
             />
           )}
           <InputTimeDate
