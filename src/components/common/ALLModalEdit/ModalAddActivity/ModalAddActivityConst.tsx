@@ -15,70 +15,82 @@ import {
 export interface IActivityScreenConst {
   text: string;
   icon: string;
+  id: string;
   img?: string;
   FeedingButtonConst?: IFeedingButtonConst;
 }
 
-export interface IdrinkConst {
-  [key: string]: string;
+export interface IFood {
+  [key: string]: IFoodType;
 }
 
-export interface IdrinlEat {
-  eat: IdrinkConst;
-  bootle: IdrinkConst;
+export interface IFoodType {
+  MIN_VALUE: string;
+  MAX_VALUE: string;
+  STEP: string;
+  PLACEHOLDER: string;
+  REGISTER_VALUE: string;
+  REGISTER_DATA: string;
+  OZ: string;
+  VARIANT: string[];
 }
 
 const ModalAddActivityConst: IActivityScreenConst[] = [
   {
     text: "Прогулка",
+    id: "walk",
     icon: cariaggeIcon,
     img: walk,
   },
   {
     text: "Активность",
+    id: "active",
     icon: gamesIcon,
     img: active,
   },
   {
     text: "Настроение",
+    id: "feeling",
     icon: feelingIcon,
     img: girlDefault,
   },
   {
     text: "Купание",
+    id: "bath",
     icon: bathIcon,
     img: bath,
   },
   {
     text: "Сон",
+    id: "sleep",
     icon: iconSleep,
     img: iconSleep,
   },
   ...FeedingButtonConst,
 ];
 
-const drinkEat = {
-  eat: {
+const drinkEat: IFood = {
+  Бутылочка: {
     MIN_VALUE: "10",
     MAX_VALUE: "1000",
     STEP: "10",
     PLACEHOLDER: "Описание (компот, чай)",
-    REGISTER_VALUE: "drinkValue",
-    REGISTER_DATA: "drink",
+    REGISTER_VALUE: "foodValue",
+    REGISTER_DATA: "food",
     OZ: "мл",
+    VARIANT: ["Смесь", "Грудное молоко", "Питьё"],
   },
-  bootle: {
+  Еда: {
     MIN_VALUE: "10",
     MAX_VALUE: "500",
     STEP: "10",
-    PLACEHOLDER: "Яблоко (творог)",
-    REGISTER_VALUE: "eatValue",
-    REGISTER_DATA: "eat",
+    PLACEHOLDER: "Описание (яблоко, творог)",
+    REGISTER_VALUE: "foodValue",
+    REGISTER_DATA: "food",
     OZ: "гр",
+    VARIANT: ["Молочка", "Фрукты", "Овощи", "Злаки", "Мясо"],
   },
 };
-
-console.log(`${drinkEat["eat"][MIN_VALUE]}`);
 
 const feeding: string[] = ["Бутылочка", "Еда"];
 const feedingSleep: string[] = ["Бутылочка", "Сон", "Еда"];

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import classes from "./InputEat.module.css";
 
@@ -10,6 +10,8 @@ interface IInputEat {
   max?: string;
   step?: string;
   placeholder: string;
+  children: ReactNode;
+  oz: string;
 }
 
 const InputEat: React.FC<IInputEat> = ({
@@ -20,15 +22,14 @@ const InputEat: React.FC<IInputEat> = ({
   max,
   step,
   placeholder,
+  children,
+  oz,
 }) => (
   <>
     <div className={classes.container}>
       <select className={classes.select} {...registerData}>
-        <option>Смесь</option>
-        <option>Грудное молоко</option>
-        <option>Питье</option>
+        {children}
       </select>
-
       <input
         className={classes.input}
         type="number"
@@ -37,7 +38,7 @@ const InputEat: React.FC<IInputEat> = ({
         step={step}
         {...registerValue}
       />
-      <span className={classes.title}>мл</span>
+      <span className={classes.title}>{oz}</span>
     </div>
     <input
       className={classes.text}

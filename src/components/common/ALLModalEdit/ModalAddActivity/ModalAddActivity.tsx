@@ -10,14 +10,13 @@ import {
   drinkEat,
 } from "./ModalAddActivityConst";
 import InputEat from "../../Inputs/InputsEat/InputEat";
-import saveDataFromFormToLS from "../../../helpers/saveDataFromFormLocalStorage";
 
 export interface IModalAddActivityForm {
   [key: string]: string;
 }
 
 interface IModalAddActivity {
-  whatActivity: string;
+  whatActivity: string[];
   closeModalDefault?: () => void;
 }
 
@@ -26,15 +25,17 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
   closeModalDefault,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
-  const [dataActive, setDataActive] = useState<string>(whatActivity);
+  const [dataActive, setDataActive] = useState<string[]>(whatActivity);
   const [icon, setIcon] = useState<string>("");
   const [errorS, setErrors] = useState<boolean>(false);
 
   useEffect(() => {
-    const newIcon = ModalAddActivityConst.filter((el) => el.text === dataActive)
+    const newIcon = ModalAddActivityConst.filter(
+      (el) => el.text === dataActive[0],
+    )
       .map((el) => el.icon)
       .join("");
-    setDataActive(whatActivity);
+    setDataActive(dataActive);
     setIcon(newIcon);
   });
 
@@ -74,17 +75,20 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
   };
 
   const onSubmit = (data: IModalAddActivityForm) => {
-    console.log(data.text);
+    console.log(data);
     const dataEvent = {
-      event: dataActive,
+      event: dataActive[0],
       startTime: `${data.startDate} ${data.startTime}`,
-      endTime: `${data.endDate} ${data.endTime}`,
+      endTime: feeding.includes(dataActive[0])
+        ? `${data.startDate} ${data.startDate}`
+        : `${data.endDate} ${data.endTime}`,
       description:
         data.descreatiption !== ""
-          ? `${data.eat}, ${data.descreatiption}, ${data.eatValue} мл`
-          : `${data.eat}, ${data.eatValue} мл`,
+          ? `${data.food}, ${data.descreatiption}, ${data.foodValue} ${
+              drinkEat[dataActive[0]].OZ
+            }`
+          : `${data.food}, ${data.foodValue} ${drinkEat[dataActive[0]].OZ}`,
     };
-    saveDataFromFormToLS(dataActive, dataEvent);
     console.log(JSON.stringify(dataEvent));
     setIsModalOpen(false);
     resetForm();
@@ -97,12 +101,12 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
 
   return (
     <ModalWindow
-      id={dataActive}
+      id={dataActive[1]}
       className={`${isModalOpen ? "open" : "close"}`}
       withFooter
       withIcon
       iconImg={icon}
-      titleModal={dataActive}
+      titleModal={dataActive[0]}
       primaryBtn={{
         text: "Назад",
         onClick: closeModal,
@@ -116,24 +120,31 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
       onClick={closeModalDefault}
       textError={errMessage}
       classNameFooter={classes.error}
-      withOverlay={feedingSleep.includes(dataActive)}
+      withOverlay={feedingSleep.includes(dataActive[0])}
     >
       <div>
         <form id="form-active" onSubmit={handleSubmit(onSubmit)}>
-          {feeding.includes(dataActive) && (
+          {feeding.includes(dataActive[0]) && (
             <InputEat
-              min={drinkEat["eat"]["MIN_VALUE"]}
-              max="1000"
-              step="10"
-              placeholder="Описание (компот, чай)"
-              registerValue={register("eatValue", {
+              min={drinkEat[dataActive[1]].MIN_VALUE}
+              max={drinkEat[dataActive[1]].MAX_VALUE}
+              step={drinkEat[dataActive[1]].STEP}
+              placeholder={drinkEat[dataActive[1]].PLACEHOLDER}
+              oz={drinkEat[dataActive[1]].OZ}
+              registerValue={register(drinkEat[dataActive[1]].REGISTER_VALUE, {
                 required: true,
               })}
-              registerData={register("eat", {
+              registerData={register(drinkEat[dataActive[1]].REGISTER_DATA, {
                 required: true,
               })}
               registerText={register("descreatiption")}
-            />
+            >
+              {" "}
+              children=
+              {drinkEat[dataActive[1]].VARIANT.map((el) => (
+                <option key={el}>{el}</option>
+              ))}
+            </InputEat>
           )}
           <InputTimeDate
             maxi={maxDate}
@@ -153,24 +164,26 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
               },
             })}
           />
-          <InputTimeDate
-            mini={minDate}
-            textName="Конец"
-            registerDate={register("endDate", {
-              required: true,
-              validate: (input) => {
-                setDateMax(input);
-                return errorS;
-              },
-            })}
-            registerTime={register("endTime", {
-              required: true,
-              validate: (input) => {
-                setTimeMax(input);
-                return errorS;
-              },
-            })}
-          />
+          {!feeding.includes(dataActive[0]) && (
+            <InputTimeDate
+              mini={minDate}
+              textName="Конец"
+              registerDate={register("endDate", {
+                required: true,
+                validate: (input) => {
+                  setDateMax(input);
+                  return errorS;
+                },
+              })}
+              registerTime={register("endTime", {
+                required: true,
+                validate: (input) => {
+                  setTimeMax(input);
+                  return errorS;
+                },
+              })}
+            />
+          )}
         </form>
       </div>
     </ModalWindow>

@@ -14,14 +14,15 @@ import Timeline from "../../common/Timeline/Timeline";
 const FeedingScreen: React.FC = () => {
   const events = getEventsChild("Кормление");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [dataActive, setDataActive] = useState<string>("");
+  const [dataActive, setDataActive] = useState<string[]>([""]);
   const [addData, setAddData] = useState<boolean>(false);
   const [icon, setIcon] = useState<string>("");
 
-  const toggleModal = (arg: string | undefined) => {
+  const toggleModal = (arg: string[] | undefined) => {
+    console.log(arg);
     setIsModalOpen(!isModalOpen);
     if (arg) {
-      const newIcon = FeedingButtonConst.filter((el) => el.text === arg)
+      const newIcon = FeedingButtonConst.filter((el) => el.text === arg[1])
         .map((el) => el.icon)
         .join("");
       setDataActive(arg);
@@ -55,12 +56,12 @@ const FeedingScreen: React.FC = () => {
         <>
           {isModalOpen && (
             <ModalWindow
-              id={dataActive}
+              id={dataActive[1]}
               className="open"
               withFooter={false}
               withIcon
               iconImg={icon}
-              titleModal={dataActive}
+              titleModal={dataActive[0]}
               primaryBtn={{
                 text: "+ Добавить",
                 onClick: addNewData,
@@ -80,7 +81,7 @@ const FeedingScreen: React.FC = () => {
           {addData && <ModalAddActivity whatActivity={dataActive} />}
         </>
       )}
-      {feeding.includes(dataActive) && (
+      {feeding.includes(dataActive[0]) && (
         <ModalAddActivity
           closeModalDefault={modalFalse}
           whatActivity={dataActive}

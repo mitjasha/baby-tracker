@@ -80,9 +80,11 @@ const ModalAddEat: React.FC<IModalAddEat> = ({
   //   resetForm();
   // };
   <>
-    {whatActivity === "Eда" && <ModalAddActivity whatActivity={whatActivity} />}
-    {whatActivity === "Бутылочка" && (
-      <ModalAddActivity whatActivity={whatActivity} />
+    {whatActivity[1] === "food" && (
+      <ModalAddActivity whatActivity={[whatActivity]} />
+    )}
+    {whatActivity[1] === "bootle" && (
+      <ModalAddActivity whatActivity={[whatActivity]} />
     )}
     NJghjgdhsg
   </>

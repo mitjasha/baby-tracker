@@ -13,7 +13,7 @@ const FeedingButtonContainer: FC<IFeedingButtonContainer> = ({ onClick }) => (
       <ButtonChoseActivity
         classNameBtn={classes.button}
         classNameIcon={classes.icon}
-        onClick={() => onClick(el.text)}
+        onClick={() => onClick([el.text, el.id])}
         key={ind}
         text={el.text}
         imgUrl={el.icon}

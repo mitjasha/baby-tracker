@@ -10,7 +10,6 @@ import girlDefault from "../../../assets/png/activity/girl-default.png";
 import { currentDay, currentTime } from "../../helpers/changeNum";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
 import { ModalAddActivityConst } from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivityConst";
-import saveDataFromFormToLS from "../../helpers/saveDataFromFormLocalStorage";
 import { IEventResponse } from "../../../api/api.interface";
 import getEventsChild from "../../helpers/getEvemtsChild";
 import Timeline from "../../common/Timeline/Timeline";
@@ -23,15 +22,15 @@ const ActivityScreen: React.FC = () => {
   const events = getEventsChild("Активность");
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [dataActive, setDataActive] = useState<string>("");
+  const [dataActive, setDataActive] = useState<string[]>([]);
   const [addData, setAddData] = useState<boolean>(false);
   const [icon, setIcon] = useState<string>("");
   const [img, setImg] = useState<string>(girlDefault);
 
-  const toggleModal = (arg: string | undefined) => {
+  const toggleModal = (arg: string[] | undefined) => {
     setIsModalOpen(!isModalOpen);
     if (arg) {
-      const newIcon = ModalAddActivityConst.filter((el) => el.text === arg)
+      const newIcon = ModalAddActivityConst.filter((el) => el.text === arg[0])
         .map((el) => el.icon)
         .join("");
       setDataActive(arg);
@@ -55,7 +54,6 @@ const ActivityScreen: React.FC = () => {
       description: data.feeling[0].split(",")[1], // data.feeling = ["англ, русск"]
     };
     console.log(JSON.stringify(dataEvent));
-    saveDataFromFormToLS(dataActive, dataEvent);
     setIsModalOpen(!isModalOpen);
     reset();
   };
@@ -74,7 +72,9 @@ const ActivityScreen: React.FC = () => {
   };
 
   const changeImg = () => {
-    const newImg = ModalAddActivityConst.filter((el) => el.text === dataActive)
+    const newImg = ModalAddActivityConst.filter(
+      (el) => el.text === dataActive[0],
+    )
       .map((el) => el.img)
       .join("");
     setImg(newImg);
@@ -89,21 +89,21 @@ const ActivityScreen: React.FC = () => {
             classNameValue={classes.timerValue}
             classWrap={classes.wrapper}
           />
-          <img className={classes.img} src={img} alt={dataActive} />
+          <img className={classes.img} src={img} alt={dataActive[1]} />
         </div>
         <ActivityButtonContainer onClick={toggleModal} />
       </section>
       {events && <Timeline events={events as IEventResponse[]}></Timeline>}
-      {dataActive !== "Настроение" && (
+      {dataActive[1] !== "feeling" && (
         <>
           {isModalOpen && (
             <ModalWindow
-              id={dataActive}
+              id={dataActive[1]}
               className={`${isModalOpen ? "open" : "close"}`}
               withFooter
               withIcon
               iconImg={icon}
-              titleModal={dataActive}
+              titleModal={dataActive[0]}
               primaryBtn={{
                 text: "+ Добавить",
                 onClick: addNewData,
@@ -124,14 +124,14 @@ const ActivityScreen: React.FC = () => {
           {addData && <ModalAddActivity whatActivity={dataActive} />}
         </>
       )}
-      {dataActive === "Настроение" && (
+      {dataActive[0] === "feeling" && (
         <ModalWindow
-          id={dataActive}
+          id={dataActive[1]}
           className={`${isModalOpen ? "open" : "close"}`}
           withFooter
           withIcon
           iconImg={icon}
-          titleModal={dataActive}
+          titleModal={dataActive[0]}
           primaryBtn={{
             text: "Сохранить",
             type: "submit",

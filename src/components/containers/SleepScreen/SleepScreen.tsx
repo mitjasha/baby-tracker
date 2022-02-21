@@ -39,7 +39,11 @@ const SleepScreen: React.FC = () => {
             ))}
             <img className={classes.babySleep} src={girlSleep} alt="baby" />
             <div className={classes.timer}>
-              <Timer withClick classNameValue={classes.timerValue} classWrap={classes.wrapper}/>
+              <Timer
+                withClick
+                classNameValue={classes.timerValue}
+                classWrap={classes.wrapper}
+              />
             </div>
           </div>
           <ProgressBar
@@ -74,7 +78,7 @@ const SleepScreen: React.FC = () => {
         />
         {isModalOpen && (
           <ModalAddActivity
-            whatActivity={"Сон"}
+            whatActivity={["Сон"]}
             closeModalDefault={() => setIsModalOpen(false)}
           />
         )}

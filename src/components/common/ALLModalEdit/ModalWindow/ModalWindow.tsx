@@ -28,7 +28,6 @@ interface IModalWindow {
   textError?: string;
   onClick?: () => undefined | void;
 }
-
 const ModalWindow: FC<IModalWindow> = ({
   children,
   titleModal,
@@ -43,66 +42,72 @@ const ModalWindow: FC<IModalWindow> = ({
   textError,
   withOverlay,
   onClick,
-}) => (
-  <>
-    <div className={cn("modal", `modal-${className}`)}>
-      <div className={cn("modalOpen")}>
-        <div className="modalWrapper">
-          <h3 className="title-modal">{titleModal}</h3>
-          <div className="content-modal">{children}</div>
-        </div>
-        {withIcon && (
-          <div className="modalIcon">
-            <img
-              className={cn("modal-icon-img", `icon-${titleModal}`)}
-              src={`${iconImg}`}
-            />
+}) => {
+  console.log(titleModal);
+  console.log(iconImg);
+  return (
+    <>
+      <div className={cn("modal", `modal-${className}`)}>
+        <div className={cn("modalOpen")}>
+          <div className="modalWrapper">
+            <h3 className="title-modal">{titleModal}</h3>
+            <div className="content-modal">{children}</div>
           </div>
-        )}
+          {withIcon && (
+            <div className="modalIcon">
+              <img
+                className={cn("modal-icon-img", `icon-${titleModal}`)}
+                src={`${iconImg}`}
+              />
+            </div>
+          )}
 
-        {withFooter && (
-          <div className={cn("modalFooter", classNameFooter)}>{textError}</div>
-        )}
-        <div className="buttons">
-          {primaryBtn && (
-            <button
-              className={cn("modal-button", primaryBtn.className)}
-              onClick={() => {
-                if (primaryBtn.onClick) primaryBtn.onClick();
-                if (onClick) onClick();
-              }}
-              type={primaryBtn.type}
-              form={primaryBtn.form}
-            >
-              {primaryBtn.text}
-            </button>
+          {withFooter && (
+            <div className={cn("modalFooter", classNameFooter)}>
+              {textError}
+            </div>
           )}
-          {secondaryBtn && (
-            <button
-              className={cn("modal-button", secondaryBtn.className)}
-              onClick={() => {
-                if (secondaryBtn.onClick) secondaryBtn.onClick();
-                // if (onClick) onClick();
-              }}
-              type={secondaryBtn.type}
-              form={secondaryBtn.form}
-            >
-              {secondaryBtn.text}
-            </button>
-          )}
+          <div className="buttons">
+            {primaryBtn && (
+              <button
+                className={cn("modal-button", primaryBtn.className)}
+                onClick={() => {
+                  if (primaryBtn.onClick) primaryBtn.onClick();
+                  if (onClick) onClick();
+                }}
+                type={primaryBtn.type}
+                form={primaryBtn.form}
+              >
+                {primaryBtn.text}
+              </button>
+            )}
+            {secondaryBtn && (
+              <button
+                className={cn("modal-button", secondaryBtn.className)}
+                onClick={() => {
+                  if (secondaryBtn.onClick) secondaryBtn.onClick();
+                  // if (onClick) onClick();
+                }}
+                type={secondaryBtn.type}
+                form={secondaryBtn.form}
+              >
+                {secondaryBtn.text}
+              </button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-    {withOverlay && (
-      <div
-        className={cn("overlay-sleep", `overlay-${className}`)}
-        onClick={() => {
-          onClose();
-          if (onClick) onClick();
-        }}
-      />
-    )}
-  </>
-);
+      {withOverlay && (
+        <div
+          className={cn("overlay-sleep", `overlay-${className}`)}
+          onClick={() => {
+            onClose();
+            if (onClick) onClick();
+          }}
+        />
+      )}
+    </>
+  );
+};
 
 export default ModalWindow;
