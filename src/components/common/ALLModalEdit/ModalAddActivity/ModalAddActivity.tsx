@@ -3,7 +3,12 @@ import { useForm } from "react-hook-form";
 import classes from "./ModalAddActivity.module.css";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import InputTimeDate from "../../Inputs/InputTimeDate/InputTimeDate";
-import ModalAddActivityConst from "./ModalAddActivityConst";
+import {
+  ModalAddActivityConst,
+  feeding,
+  feedingSleep,
+  drinkEat,
+} from "./ModalAddActivityConst";
 import InputEat from "../../Inputs/InputsEat/InputEat";
 import saveDataFromFormToLS from "../../../helpers/saveDataFromFormLocalStorage";
 
@@ -21,7 +26,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
   closeModalDefault,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
-  const [dataActive, setDataActive] = useState<string>("");
+  const [dataActive, setDataActive] = useState<string>(whatActivity);
   const [icon, setIcon] = useState<string>("");
   const [errorS, setErrors] = useState<boolean>(false);
 
@@ -111,13 +116,13 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
       onClick={closeModalDefault}
       textError={errMessage}
       classNameFooter={classes.error}
-      withOverlay={dataActive === "Сон" || dataActive === "Бутылочка"}
+      withOverlay={feedingSleep.includes(dataActive)}
     >
       <div>
         <form id="form-active" onSubmit={handleSubmit(onSubmit)}>
-          {dataActive === "Бутылочка" && (
+          {feeding.includes(dataActive) && (
             <InputEat
-              min="10"
+              min={drinkEat["eat"]["MIN_VALUE"]}
               max="1000"
               step="10"
               placeholder="Описание (компот, чай)"

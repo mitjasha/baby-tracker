@@ -9,7 +9,7 @@ import InputFeeling from "../../common/Inputs/InputFeeling/InputFeeling";
 import girlDefault from "../../../assets/png/activity/girl-default.png";
 import { currentDay, currentTime } from "../../helpers/changeNum";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
-import ModalAddActivityConst from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivityConst";
+import { ModalAddActivityConst } from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivityConst";
 import saveDataFromFormToLS from "../../helpers/saveDataFromFormLocalStorage";
 import { IEventResponse } from "../../../api/api.interface";
 import getEventsChild from "../../helpers/getEvemtsChild";

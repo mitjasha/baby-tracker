@@ -19,6 +19,15 @@ export interface IActivityScreenConst {
   FeedingButtonConst?: IFeedingButtonConst;
 }
 
+export interface IdrinkConst {
+  [key: string]: string;
+}
+
+export interface IdrinlEat {
+  eat: IdrinkConst;
+  bootle: IdrinkConst;
+}
+
 const ModalAddActivityConst: IActivityScreenConst[] = [
   {
     text: "Прогулка",
@@ -48,4 +57,30 @@ const ModalAddActivityConst: IActivityScreenConst[] = [
   ...FeedingButtonConst,
 ];
 
-export default ModalAddActivityConst;
+const drinkEat = {
+  eat: {
+    MIN_VALUE: "10",
+    MAX_VALUE: "1000",
+    STEP: "10",
+    PLACEHOLDER: "Описание (компот, чай)",
+    REGISTER_VALUE: "drinkValue",
+    REGISTER_DATA: "drink",
+    OZ: "мл",
+  },
+  bootle: {
+    MIN_VALUE: "10",
+    MAX_VALUE: "500",
+    STEP: "10",
+    PLACEHOLDER: "Яблоко (творог)",
+    REGISTER_VALUE: "eatValue",
+    REGISTER_DATA: "eat",
+    OZ: "гр",
+  },
+};
+
+console.log(`${drinkEat["eat"][MIN_VALUE]}`);
+
+const feeding: string[] = ["Бутылочка", "Еда"];
+const feedingSleep: string[] = ["Бутылочка", "Сон", "Еда"];
+
+export { ModalAddActivityConst, feeding, feedingSleep, drinkEat };

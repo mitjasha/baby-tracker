@@ -6,6 +6,7 @@ import { FeedingButtonConst } from "../../common/FeedingButtonContainer/FeedingB
 import ModalWindow from "../../common/ALLModalEdit/ModalWindow/ModalWindow";
 import Timer from "../../common/Timer/Timer";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
+import { feeding } from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivityConst";
 import { IEventResponse } from "../../../api/api.interface";
 import getEventsChild from "../../helpers/getEvemtsChild";
 import Timeline from "../../common/Timeline/Timeline";
@@ -79,7 +80,7 @@ const FeedingScreen: React.FC = () => {
           {addData && <ModalAddActivity whatActivity={dataActive} />}
         </>
       )}
-      {dataActive.includes("Бутылочка") && (
+      {feeding.includes(dataActive) && (
         <ModalAddActivity
           closeModalDefault={modalFalse}
           whatActivity={dataActive}
