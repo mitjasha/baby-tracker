@@ -47,15 +47,15 @@ const Timer: React.FC<ITimer> = ({
   const [timerId, timerIdSet] = useState<string | undefined>(
     timerStartTime as string,
   );
-  // const [startTimerValue, timerSet] = useState<IEventRequest>(
-  //   {} as IEventRequest,
-  // );
+  const [startTimerValue, timerSet] = useState<IEventRequest>(
+    {} as IEventRequest,
+  );
 
   useEffect(() => {
     timerIdSet(JSON.parse(localStorage.getItem("timerId") as string));
-    // if (localStorage.getItem("timerLoader")) {
-    //   // timerSet(JSON.parse(localStorage.getItem("timerLoader") as string));
-    // }
+    if (localStorage.getItem("timerLoader")) {
+      timerSet(JSON.parse(localStorage.getItem("timerLoader") as string));
+    }
 
     if (timerStartTime !== null) {
       setTimer({
@@ -64,8 +64,15 @@ const Timer: React.FC<ITimer> = ({
           1000,
         ),
       });
+    } else if (startTimerValue.startTime) {
+      setTimer({
+        stateTimer: window.setInterval(
+          () => stopwatchCurrent(Date.parse(String(startTimerValue.startTime))),
+          1000,
+        ),
+      });
     }
-  }, []);
+  }, [timerId]);
 
   useEffect(() => {}, [document.readyState]);
 
