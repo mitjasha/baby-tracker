@@ -13,9 +13,13 @@ import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 import girlSleep from "../../../assets/png/girl.png";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
-import ChartSleep from "../../common/Charts/ChartSleep/ChartSleep";
+import { IEventResponse } from "../../../api/api.interface";
+import getEventsChild from "../../helpers/getEvemtsChild";
+import Timeline from "../../common/Timeline/Timeline";
+// import ChartSleep from "../../common/Charts/ChartSleep/ChartSleep";
 
 const SleepScreen: React.FC = () => {
+  const events = getEventsChild("Сон");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const toggleModal = (): void => {
     console.log(isModalOpen);
@@ -35,7 +39,7 @@ const SleepScreen: React.FC = () => {
             ))}
             <img className={classes.babySleep} src={girlSleep} alt="baby" />
             <div className={classes.timer}>
-              <Timer withClick />
+              <Timer withClick classNameValue={classes.timerValue} classWrap={classes.wrapper}/>
             </div>
           </div>
           <ProgressBar
@@ -57,6 +61,12 @@ const SleepScreen: React.FC = () => {
             textValue="1 ч 30 м"
           />
         </div>
+
+        {events && (
+          <div className={classes.timeline}>
+            <Timeline events={events as IEventResponse[]} />
+          </div>
+        )}
         <NewSleepButton
           className={cn("btn-sleep")}
           onClick={toggleModal}
@@ -68,7 +78,7 @@ const SleepScreen: React.FC = () => {
             closeModalDefault={() => setIsModalOpen(false)}
           />
         )}
-        <ChartSleep />
+        {/* <ChartSleep /> */}
       </div>
     </>
   );

@@ -121,8 +121,7 @@ const MainScreen: React.FC = () => {
             )}
           </div>
         </div>
-      </div>
-      <div>
+
         <div className={classes.buttonWrapper}>
           <div className={classes.buttonsContainer}>
             <MainScreenButton eventName="Сон" className={classes.bntLeft}>
