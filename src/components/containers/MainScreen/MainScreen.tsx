@@ -97,7 +97,7 @@ const MainScreen: React.FC = () => {
           <div className={classes.title}>{getAge(String(child.birth))}</div>
           <div className={classes.description}>
             <div className={classes.weight}>
-              {`Масса тела: 
+              {`Вес: 
                   ${getDescription(events, "Вес")} кг`}
             </div>
             <div className={classes.height}>
@@ -132,8 +132,7 @@ const MainScreen: React.FC = () => {
             )}
           </div>
         </div>
-      </div>
-      <div>
+
         <div className={classes.buttonWrapper}>
           <div className={classes.buttonsContainer}>
             <MainScreenButton eventName="Сон" className={classes.bntLeft}>

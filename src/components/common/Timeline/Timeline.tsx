@@ -5,7 +5,6 @@ import { IEventResponse } from "../../../api/api.interface";
 
 function getFormattedData(items: IEventResponse[]) {
   const activities: { [date: string]: IItem[] } = {};
-  // console.log(items);
   items.forEach(
     ({ id, event, startTime, endTime, description }, index: number) => {
       const startDate = Date.parse(startTime);

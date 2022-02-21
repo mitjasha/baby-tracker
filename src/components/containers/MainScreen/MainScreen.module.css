@@ -8,30 +8,30 @@
 }
 
 .title {
-  height: 50px;
-  padding-top: 18px;
+  margin-top: 18px;
   font-family: Roboto;
   font-style: normal;
-  font-size: 24px;
-
-  color: black;
+  font-size: 28px;
+  color: #df7e8a;
 }
 .description {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 300px;
-  height: 26px;
+  width: 230px;
   font-family: Roboto;
   font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-
+  font-weight: 300;
+  font-size: 18px;
+  margin: 10px auto 0px;
   color: #000000;
 }
 
 .upContainer {
-  min-height: 40vh;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .timerContainer {
@@ -46,8 +46,7 @@
   background-color: #fecdcb;
   border-radius: 50%;
   position: relative;
-  top: 50px;
-  margin: 0 auto;
+  margin: 0px auto -60px;
 }
 
 .timerWrap {
@@ -113,11 +112,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 13vh;
+  height: 10vh;
   width: 100vw;
   background-color: #fff;
 }
 
 .timilineContainer {
-  height: 30vh;
+  height: calc(30vh - 50px);
+}
+
+.info {
+  margin: 0 auto;
 }

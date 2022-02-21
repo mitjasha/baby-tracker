@@ -122,7 +122,7 @@ const Timer: React.FC<ITimer> = ({
           )}
         ></div>
       </button>
-      <div className={cn(classes.valueName, classNameValue)}>{`${
+      <div className={cn(classes.valueName)}>{`${
         eventTypeDisplay ? eventType : ""
       }`}</div>
       <div className={cn(classes.value, classNameValue)}>

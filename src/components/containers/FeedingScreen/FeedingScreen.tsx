@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import classes from "./FeedingScreen.module.css";
 import FeedingButtonContainer from "../../common/FeedingButtonContainer/FeedingButtonContainer";
@@ -6,35 +6,12 @@ import { FeedingButtonConst } from "../../common/FeedingButtonContainer/FeedingB
 import ModalWindow from "../../common/ALLModalEdit/ModalWindow/ModalWindow";
 import Timer from "../../common/Timer/Timer";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
-import { IChild, IEventResponse } from "../../../api/api.interface";
-import childController from "../../../api/childController";
-import eventController from "../../../api/eventController";
-import userController from "../../../api/userController";
+import { IEventResponse } from "../../../api/api.interface";
+import getEventsChild from "../../helpers/getEvemtsChild";
 import Timeline from "../../common/Timeline/Timeline";
 
 const FeedingScreen: React.FC = () => {
-  let childID: string = JSON.parse(
-    localStorage.getItem("currentChild") as string,
-  );
-  const getChild = async (): Promise<IChild[]> => {
-    const result = await userController.getUser();
-    return result.user.childs;
-  };
-
-  const [events, eventsSet] = useState<IEventResponse[]>();
-  useEffect(() => {
-    const setData = async () => {
-      if (!childID) {
-        const childs = await getChild();
-        childID = childs[0].id;
-      }
-      const currentChild = await childController.getChildById(childID);
-      const eventsList = await eventController.getAllEvents(currentChild);
-      eventsSet(eventsList.filter((el) => el.event === "Кормление"));
-    };
-
-    setData();
-  }, []);
+  const events = getEventsChild("Кормление");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [dataActive, setDataActive] = useState<string>("");
   const [addData, setAddData] = useState<boolean>(false);

@@ -2,6 +2,7 @@
   background-color: #fff;
   position: relative;
   overflow: hidden;
+  height: calc(100vh - 80px);
 }
 
 .babyContainer {
@@ -72,4 +73,27 @@ progress::-webkit-progress-value {
 
 .dayIcon {
   background-image: url("../../../assets/svg/day-icon.svg");
+}
+
+.timeline {
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.timeline::-webkit-scrollbar {
+  width: 0;
+}
+
+.wrapper {
+  width: 70px;
+  height: 70px;
+  position: relative;
+}
+
+.timerValue {
+  color: black;
+  font-size: 14px;
+  position: absolute;
+  top: 22%;
+  left: -32%;
 }
