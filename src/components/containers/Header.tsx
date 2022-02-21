@@ -52,6 +52,9 @@ const Header: React.FC = () => {
     });
 
     window.location.reload();
+    localStorage.removeItem("timerLoader");
+    localStorage.removeItem("timerId");
+    localStorage.removeItem("timerStartTime");
   };
 
   return (
