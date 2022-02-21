@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-constant-condition */
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import classes from "./ModalAddActivity.module.css";
@@ -28,6 +30,9 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
   const [dataActive, setDataActive] = useState<string[]>(whatActivity);
   const [icon, setIcon] = useState<string>("");
   const [errorS, setErrors] = useState<boolean>(false);
+  const childID: string = JSON.parse(
+    localStorage.getItem("currentChild") as string,
+  );
 
   useEffect(() => {
     const newIcon = ModalAddActivityConst.filter(
@@ -75,21 +80,37 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
   };
 
   const onSubmit = (data: IModalAddActivityForm) => {
-    console.log(data);
+    // console.log(data);
+    // const dataEvent = {
+    //   event: dataActive[0],
+    //   startTime: `${data.startDate} ${data.startTime}`,
+    //   endTime: feeding.includes(dataActive[0])
+    //     ? `${data.startDate} ${data.startDate}`
+    //     : `${data.endDate} ${data.endTime}`,
+    //   description:
+    //     data.descreatiption !== ""
+    //       ? `${data.food}, ${data.descreatiption}, ${data.foodValue} ${
+    //           drinkEat[dataActive[0]].OZ
+    //         }`
+    //       : `${data.food}, ${data.foodValue} ${drinkEat[dataActive[0]].OZ}`,
+    // };
+    // console.log(JSON.stringify(dataEvent));
+    console.log(dataActive);
+
     const dataEvent = {
-      event: dataActive[0],
-      startTime: `${data.startDate} ${data.startTime}`,
-      endTime: feeding.includes(dataActive[0])
-        ? `${data.startDate} ${data.startDate}`
-        : `${data.endDate} ${data.endTime}`,
+      event: dataActive === "Бутылочка" || "Еда" ? "Кормление" : dataActive,
+      startTime: new Date(`${data.startDate} ${data.startTime}`),
+      endTime: new Date(`${data.endDate} ${data.endTime}`),
       description:
-        data.descreatiption !== ""
-          ? `${data.food}, ${data.descreatiption}, ${data.foodValue} ${
-              drinkEat[dataActive[0]].OZ
-            }`
-          : `${data.food}, ${data.foodValue} ${drinkEat[dataActive[0]].OZ}`,
+        dataActive !== "Бутылочка"
+          ? dataActive.split(" ")[0]
+          : data.description !== ""
+          ? `${data.eat}, ${data.description}, ${data.eatValue} мл`
+          : `${data.eat}, ${data.eatValue} мл`,
     };
-    console.log(JSON.stringify(dataEvent));
+    // saveDataFromFormToLS(dataActive, dataEvent);
+
+    eventController.addEvent(dataEvent, childID);
     setIsModalOpen(false);
     resetForm();
   };

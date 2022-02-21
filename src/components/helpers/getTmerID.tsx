@@ -4,7 +4,7 @@ import eventController from "../../api/eventController";
 
 const getTimerID = (
   currentChild: IChild,
-  timerIdSet: React.Dispatch<React.SetStateAction<string>>,
+  timerIdSet: React.Dispatch<React.SetStateAction<string | undefined>>,
 ): void => {
   const setData = async () => {
     const eventsList = await eventController.getAllEvents(currentChild);
@@ -13,6 +13,9 @@ const getTimerID = (
       ?.id as string;
 
     timerIdSet(id);
+    if (id) {
+      localStorage.setItem("timerId", JSON.stringify(id));
+    }
   };
 
   setData();
