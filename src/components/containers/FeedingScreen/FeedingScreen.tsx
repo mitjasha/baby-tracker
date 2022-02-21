@@ -19,7 +19,6 @@ const FeedingScreen: React.FC = () => {
   const [icon, setIcon] = useState<string>("");
 
   const toggleModal = (arg: string[] | undefined) => {
-    console.log(arg);
     setIsModalOpen(true);
     if (arg) {
       const newIcon = FeedingButtonConst.filter((el) => el.text === arg[0])

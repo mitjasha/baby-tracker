@@ -22,12 +22,10 @@ const SleepScreen: React.FC = () => {
   const events = getEventsChild("Сон");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const toggleModal = (): void => {
-    console.log(isModalOpen);
     if (isModalOpen) {
       setIsModalOpen(false);
     }
     setIsModalOpen(!isModalOpen);
-    console.log(isModalOpen);
   };
   return (
     <>
