@@ -27,9 +27,8 @@
 
 .value {
   position: absolute;
-  top: 47%;
-  left: 21%;
-  width: 120px;
+  top: 50%;
+  width: 100%;
   pointer-events: none;
   text-align: center;
   font-family: Roboto;
@@ -43,8 +42,7 @@
 .valueName {
   position: absolute;
   top: 33%;
-  left: 19%;
-  width: 126px;
+  width: 100%;
   pointer-events: none;
   text-align: center;
   font-family: Roboto;

@@ -46,7 +46,9 @@
 }
 
 .valueTimer {
-  font-size: 24px;
+  color: black !important;
+  font-size: 24px !important;
+  top: 36% !important;
 }
 
 .timerWrapper {
@@ -78,9 +80,7 @@
 }
 
 .timerValue {
-  color: black;
-  font-size: 14px;
-  position: absolute;
-  top: 22%;
-  left: -32%;
+  color: black !important;
+  font-size: 14px !important;
+  top: 22% !important;
 }
