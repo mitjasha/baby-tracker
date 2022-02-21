@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import eventController from "../../../../api/eventController";
 import InputBreast from "../../Inputs/InputBreast/InputBreast";
 import InputTimeDate from "../../Inputs/InputTimeDate/InputTimeDate";
 import { IModalAddActivityForm } from "../ModalAddActivity/ModalAddActivity";
@@ -33,6 +34,9 @@ const BaseModalWindowWrapper: React.FC<IBaseModalWrapperProps> = ({
   const [errorS, setErrors] = useState<boolean>(false);
   const { register, handleSubmit, reset, getValues } =
     useForm<IModalAddActivityForm>({ mode: "all" });
+  const childID: string = JSON.parse(
+    localStorage.getItem("currentChild") as string,
+  );
 
   const [minDate, setDateMin] = useState("");
   const [maxDate, setDateMax] = useState("");
@@ -69,13 +73,14 @@ const BaseModalWindowWrapper: React.FC<IBaseModalWrapperProps> = ({
   const onSubmit = (data: IModalAddActivityForm) => {
     const dataEvent = {
       event: eventName,
-      startTime: `${data.startDate} ${data.startTime}`,
-      endTime: `${data.endDate} ${data.endTime}`,
+      startTime: new Date(`${data.startDate} ${data.startTime}`),
+      endTime: new Date(`${data.endDate} ${data.endTime}`),
       description: data.description !== "" ? `${data.description}` : "",
     };
     // saveDataFromFormToLS(dataActive, dataEvent);
     console.log(JSON.stringify(dataEvent));
     // setIsModalOpen(false);
+    eventController.addEvent(dataEvent, childID);
     resetForm();
     onBackdropClick();
   };
