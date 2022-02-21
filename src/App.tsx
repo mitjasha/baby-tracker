@@ -11,6 +11,7 @@ import BabyDataScreen from "./components/containers/BabyDataScreen/BabyDataScree
 import Header from "./components/containers/Header";
 import Footer from "./components/containers/Footer";
 import RequireAuth from "./components/helpers/RequireAuth";
+import AboutScreen from "./components/containers/AboutScreen/AboutScreen";
 
 const routesWithoutHeader: string[] = ["/", "/registration", "/baby-data"];
 
@@ -31,7 +32,7 @@ const App: React.FC = () => {
           <Route path="/" element={<LoginScreen />} />
 
           <Route path="/registration" element={<RegScreen />} />
-
+          <Route path="/about" element={<AboutScreen />} />
           <Route
             path="/baby-data"
             element={

@@ -63,6 +63,7 @@ const MainScreen: React.FC = () => {
   }
 
   useEffect(() => {
+    const ac = new AbortController();
     const setData = async () => {
       if (!childID) {
         const childs = await getChild();
@@ -80,6 +81,7 @@ const MainScreen: React.FC = () => {
     };
 
     setData();
+    return () => ac.abort();
   }, []);
 
   useEffect(() => {
