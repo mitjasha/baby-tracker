@@ -6,8 +6,8 @@ interface IInputTimeDate {
   textName: string;
   registerDate: UseFormRegisterReturn;
   registerTime: UseFormRegisterReturn;
-  min?: string;
-  max?: string;
+  mini?: string;
+  maxi?: string;
   minTime?: string;
   maxTime?: string;
   valueTime?: string;
@@ -17,8 +17,8 @@ const InputTimeDate: React.FC<IInputTimeDate> = ({
   textName,
   registerDate,
   registerTime,
-  min,
-  max,
+  mini,
+  maxi,
   minTime,
   maxTime,
 }) => (
@@ -33,8 +33,8 @@ const InputTimeDate: React.FC<IInputTimeDate> = ({
         {...registerTime}
       />
       <input
-        min={min}
-        max={max}
+        min={mini}
+        max={maxi}
         className={classes.timeDate}
         type="date"
         {...registerDate}
