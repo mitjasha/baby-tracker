@@ -55,6 +55,10 @@ const MainScreen: React.FC = () => {
   }
 
   function timerLoader(eventsList: IEventResponse[], timerID: string) {
+    localStorage.setItem(
+      "timerLoader",
+      JSON.stringify(eventsList.find((elem) => elem.id === timerID)),
+    );
     return eventsList.find((elem) => elem.id === timerID);
   }
 
@@ -70,12 +74,19 @@ const MainScreen: React.FC = () => {
         ?.id as string;
 
       timerIdSet(id);
+
       childSet(currentChild as IChild);
       eventsSet(eventsList);
     };
 
     setData();
   }, []);
+
+  useEffect(() => {
+    if (timerId) {
+      localStorage.setItem("timerId", JSON.stringify(timerId));
+    }
+  }, [timerId]);
 
   return (
     <div className={cn(classes.screen)}>

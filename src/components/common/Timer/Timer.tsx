@@ -29,8 +29,6 @@ const Timer: React.FC<ITimer> = ({
   eventType,
   eventTypeDisplay,
   child,
-  startTimeValue,
-  startTimer,
   withClick,
   click,
 }) => {
@@ -45,21 +43,38 @@ const Timer: React.FC<ITimer> = ({
     setMin(Math.floor(currentTime / 60000) % 60);
     setSec(Math.floor((currentTime / 1000) % 60));
   };
-
-  const [timerId, timerIdSet] = useState<string>("");
+  const timerStartTime = localStorage.getItem("timerStartTime");
+  const [timerId, timerIdSet] = useState<string | undefined>(
+    timerStartTime as string,
+  );
+  const [startTimerValue, timerSet] = useState<IEventRequest>(
+    {} as IEventRequest,
+  );
 
   useEffect(() => {
-    if (startTimer === true) {
-      if (startTimeValue) {
-        setTimer({
-          stateTimer: window.setInterval(
-            () => stopwatchCurrent(Date.parse(startTimeValue)),
-            1000,
-          ),
-        });
-      }
+    timerIdSet(JSON.parse(localStorage.getItem("timerId") as string));
+    if (localStorage.getItem("timerLoader")) {
+      timerSet(JSON.parse(localStorage.getItem("timerLoader") as string));
     }
-  }, []);
+
+    if (timerStartTime !== null) {
+      setTimer({
+        stateTimer: window.setInterval(
+          () => stopwatchCurrent(Date.parse(timerStartTime)),
+          1000,
+        ),
+      });
+    } else if (startTimerValue.startTime) {
+      setTimer({
+        stateTimer: window.setInterval(
+          () => stopwatchCurrent(Date.parse(String(startTimerValue.startTime))),
+          1000,
+        ),
+      });
+    }
+  }, [timerId]);
+
+  useEffect(() => {}, [document.readyState]);
 
   return (
     <div className={classWrap} onClick={click}>
@@ -70,7 +85,6 @@ const Timer: React.FC<ITimer> = ({
             if (timer.stateTimer) {
               getTimerID(child as IChild, timerIdSet);
 
-              console.log(timerId);
               eventController.updateEvent({
                 id: timerId,
                 endTime: new Date(),
@@ -79,6 +93,9 @@ const Timer: React.FC<ITimer> = ({
               clearInterval(timer.stateTimer);
 
               setTimer({ stateTimer: undefined });
+              localStorage.removeItem("timerLoader");
+              localStorage.removeItem("timerId");
+              localStorage.removeItem("timerStartTime");
             } else {
               setTimer({
                 stateTimer: window.setInterval(
@@ -96,6 +113,10 @@ const Timer: React.FC<ITimer> = ({
                 child?.id as string,
               );
               getTimerID(child as IChild, timerIdSet);
+              localStorage.setItem(
+                "timerStartTime",
+                String(new Date(startTime)),
+              );
             }
           }
         }}
