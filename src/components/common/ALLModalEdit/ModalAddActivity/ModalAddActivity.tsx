@@ -12,6 +12,7 @@ import {
   drinkEat,
 } from "./ModalAddActivityConst";
 import InputEat from "../../Inputs/InputsEat/InputEat";
+import eventController from "../../../../api/eventController";
 
 export interface IModalAddActivityForm {
   [key: string]: string;
@@ -80,34 +81,22 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
   };
 
   const onSubmit = (data: IModalAddActivityForm) => {
-    // console.log(data);
-    // const dataEvent = {
-    //   event: dataActive[0],
-    //   startTime: `${data.startDate} ${data.startTime}`,
-    //   endTime: feeding.includes(dataActive[0])
-    //     ? `${data.startDate} ${data.startDate}`
-    //     : `${data.endDate} ${data.endTime}`,
-    //   description:
-    //     data.descreatiption !== ""
-    //       ? `${data.food}, ${data.descreatiption}, ${data.foodValue} ${
-    //           drinkEat[dataActive[0]].OZ
-    //         }`
-    //       : `${data.food}, ${data.foodValue} ${drinkEat[dataActive[0]].OZ}`,
-    // };
-    // console.log(JSON.stringify(dataEvent));
-    console.log(dataActive);
-
     const dataEvent = {
-      event: dataActive === "Бутылочка" || "Еда" ? "Кормление" : dataActive,
+      event: feeding.includes(dataActive[0]) ? "Кормление" : dataActive[0],
       startTime: new Date(`${data.startDate} ${data.startTime}`),
-      endTime: new Date(`${data.endDate} ${data.endTime}`),
+      endTime: feeding.includes(dataActive[0])
+        ? new Date(`${data.startDate} ${data.startDate}`)
+        : new Date(`${data.endDate} ${data.endTime}`),
       description:
-        dataActive !== "Бутылочка"
-          ? dataActive.split(" ")[0]
+        dataActive[1] !== "bootle"
+          ? dataActive[0].split(" ")[0]
           : data.description !== ""
-          ? `${data.eat}, ${data.description}, ${data.eatValue} мл`
-          : `${data.eat}, ${data.eatValue} мл`,
+          ? `${data.food}, ${data.descreatiption}, ${data.foodValue} ${
+              drinkEat[dataActive[0]].OZ
+            }`
+          : `${data.food}, ${data.foodValue} ${drinkEat[dataActive[0]].OZ}`,
     };
+
     // saveDataFromFormToLS(dataActive, dataEvent);
 
     eventController.addEvent(dataEvent, childID);
