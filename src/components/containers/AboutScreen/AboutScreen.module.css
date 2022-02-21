@@ -1,0 +1,28 @@
+.userOne {
+  width: 150px;
+  height: 150px;
+  background-image: url("../../../assets/jpg/Zhanna.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.userTwo {
+  width: 150px;
+  height: 150px;
+  background-image: url("../../../assets/jpg/Dima.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.userContainer {
+  display: flex;
+  padding-top: 100px;
+  width: 350px;
+  justify-content: space-between;
+}
+
+.userLink {
+  display: flex;
+  justify-content: left;
+  text-align: left;
+}
