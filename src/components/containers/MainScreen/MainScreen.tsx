@@ -115,6 +115,7 @@ const MainScreen: React.FC = () => {
                   eventTypeDisplay={true}
                   child={child}
                   click={() => {}}
+                  classNameValue={classes.value}
                 />
               </div>
             ) : (
