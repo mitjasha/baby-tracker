@@ -39,7 +39,6 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({ whatActivity }) => {
       .join("");
     setDataActive(dataActive);
     setIcon(newIcon);
-    console.log(newIcon);
   });
 
   const { register, handleSubmit, reset, getValues } =
@@ -82,20 +81,17 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({ whatActivity }) => {
       event: feeding.includes(dataActive[0]) ? "Кормление" : dataActive[0],
       startTime: new Date(`${data.startDate} ${data.startTime}`),
       endTime: feeding.includes(dataActive[0])
-        ? new Date(`${data.startDate} ${data.startDate}`)
+        ? new Date(`${data.startDate} ${data.startTime}`)
         : new Date(`${data.endDate} ${data.endTime}`),
       description:
-        dataActive[1] !== "bootle"
-          ? dataActive[0].split(" ")[0]
-          : data.description !== ""
+        data.description !== ""
           ? `${data.food}, ${data.descreatiption}, ${data.foodValue} ${
-              drinkEat[dataActive[0]].OZ
+              drinkEat[`${dataActive[1]}`].OZ
             }`
-          : `${data.food}, ${data.foodValue} ${drinkEat[dataActive[0]].OZ}`,
+          : `${data.food}, ${data.foodValue} `,
     };
 
     // saveDataFromFormToLS(dataActive, dataEvent);
-
     eventController.addEvent(dataEvent, childID);
     setIsModalOpen(false);
     resetForm();
