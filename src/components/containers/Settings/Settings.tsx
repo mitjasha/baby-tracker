@@ -12,6 +12,7 @@ const Settings: React.FC = () => (
         </Link>
         <Link to="/" className={classes.settingsBtn} id="settings-def">
           <span className="btn-text">Выход</span>
+          {localStorage.clear()}
         </Link>
       </div>
 
