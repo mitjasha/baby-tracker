@@ -30,7 +30,6 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({
       .map((el) => el.icon)
       .join("");
     setDataActive(whatActivity);
-
     setIcon(newIcon);
   });
 
