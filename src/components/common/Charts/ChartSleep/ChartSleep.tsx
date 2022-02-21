@@ -46,11 +46,13 @@ const sleepObj = [
   },
 ];
 
+console.log(sleepObj);
+
 const activities = getFormattedData(
   sleepObj.sort((a, b) => Date.parse(b.startTime) - Date.parse(a.startTime)),
 );
 
-console.log(activities);
+const allKeys = Object.keys(activities);
 
 const newDataForSleepChart = sleepObj.map((el, ind) => {
   const a = moment(el.startTime);
@@ -66,6 +68,8 @@ export const options = {
   scales: {
     x: {
       stacked: true,
+      min: 0,
+      max: 7,
     },
     y: {
       stacked: true,
@@ -82,7 +86,8 @@ console.log(
     0,
   ),
 );
-const labels = ["пн", "вт", "ср", "чт", "пт", "сб", "вс"];
+const labels = allKeys.map((el) => el.slice(0, 5)).reverse();
+
 const color = { night: "#4aa7f1", day: "#a7bc28", nan: "#fff0" };
 
 export const data = {

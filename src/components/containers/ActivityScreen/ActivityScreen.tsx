@@ -11,12 +11,17 @@ import { currentDay, currentTime } from "../../helpers/changeNum";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
 import ModalAddActivityConst from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivityConst";
 import saveDataFromFormToLS from "../../helpers/saveDataFromFormLocalStorage";
+import { IEventResponse } from "../../../api/api.interface";
+import getEventsChild from "../../helpers/getEvemtsChild";
+import Timeline from "../../common/Timeline/Timeline";
 
 interface ISleepData {
   [key: string]: string;
 }
 
 const ActivityScreen: React.FC = () => {
+  const events = getEventsChild("Активность");
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [dataActive, setDataActive] = useState<string>("");
   const [addData, setAddData] = useState<boolean>(false);
@@ -81,14 +86,14 @@ const ActivityScreen: React.FC = () => {
         <div className={cn(classes.imgTimer)}>
           <Timer
             withClick={false}
+            classNameValue={classes.timerValue}
             classWrap={classes.wrapper}
-            classNameTimer={classes.timer}
-            classNameValue={classes.valueTime}
           />
           <img className={classes.img} src={img} alt={dataActive} />
         </div>
         <ActivityButtonContainer onClick={toggleModal} />
       </section>
+      {events && <Timeline events={events as IEventResponse[]}></Timeline>}
       {dataActive !== "Настроение" && (
         <>
           {isModalOpen && (

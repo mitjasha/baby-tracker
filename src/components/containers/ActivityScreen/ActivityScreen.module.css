@@ -70,3 +70,17 @@
 .button {
   width: 240px;
 }
+
+.wrapper {
+  width: 70px;
+  height: 70px;
+  position: relative;
+}
+
+.timerValue {
+  color: black;
+  font-size: 14px;
+  position: absolute;
+  top: 22%;
+  left: -32%;
+}
