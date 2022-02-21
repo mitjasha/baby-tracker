@@ -8,30 +8,27 @@
 }
 
 .title {
-  height: 50px;
-  padding-top: 18px;
+  margin-top: 18px;
   font-family: Roboto;
   font-style: normal;
-  font-size: 24px;
-
-  color: black;
+  font-size: 28px;
+  color: #df7e8a;
 }
 .description {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 300px;
-  height: 26px;
+  width: 230px;
   font-family: Roboto;
   font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  margin: 0 auto;
+  font-weight: 300;
+  font-size: 18px;
+  margin: 10px auto 0px;
   color: #000000;
 }
 
 .upContainer {
-  height: 50vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -121,7 +118,7 @@
 }
 
 .timilineContainer {
-  height: calc(40vh - 50px);
+  height: calc(30vh - 50px);
 }
 
 .info {
