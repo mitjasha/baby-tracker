@@ -14,6 +14,7 @@ import { IEventResponse } from "../../../api/api.interface";
 import getEventsChild from "../../helpers/getEventsChild";
 import Timeline from "../../common/Timeline/Timeline";
 import { activityConstRu } from "../../helpers/getDescription";
+import eventController from "../../../api/eventController";
 
 interface ISleepData {
   [key: string]: string;
@@ -27,9 +28,12 @@ const ActivityScreen: React.FC = () => {
   const [addData, setAddData] = useState<boolean>(false);
   const [icon, setIcon] = useState<string>("");
   const [img, setImg] = useState<string>(girlDefault);
+  const childID: string = JSON.parse(
+    localStorage.getItem("currentChild") as string,
+  );
 
   const toggleModal = (arg: string[] | undefined) => {
-    console.log(arg);
+    // console.log(arg);
     setIsModalOpen(!isModalOpen);
     if (arg) {
       const newIcon = ModalAddActivityConst.filter((el) => el.text === arg[0])
@@ -51,11 +55,12 @@ const ActivityScreen: React.FC = () => {
     const time = `${currentDay} ${currentTime}`;
     const dataEvent = {
       event: dataActive[0],
-      startTime: time,
-      endTime: time,
+      startTime: new Date(time),
+      endTime: new Date(time),
       description: data.feeling[0].split(",")[1], // data.feeling = ["англ, русск"]
     };
     console.log(JSON.stringify(dataEvent));
+    eventController.addEvent(dataEvent, childID);
     setIsModalOpen(!isModalOpen);
     reset();
   };
