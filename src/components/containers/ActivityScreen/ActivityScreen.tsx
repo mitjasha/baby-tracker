@@ -95,7 +95,9 @@ const ActivityScreen: React.FC = () => {
         </div>
         <ActivityButtonContainer onClick={toggleModal} />
       </section>
-      {events && <Timeline events={events as IEventResponse[]}></Timeline>}
+      <div className={classes.timeline}>
+        {events && <Timeline events={events as IEventResponse[]}></Timeline>}
+      </div>
       {dataActive[1] !== "feeling" && (
         <>
           {isModalOpen && (

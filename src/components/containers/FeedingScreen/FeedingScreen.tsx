@@ -79,7 +79,9 @@ const FeedingScreen: React.FC = () => {
       {feeding.includes(dataActive[0]) && (
         <ModalAddActivity whatActivity={dataActive} />
       )}
+      <div className={classes.timeline}>
       {events && <Timeline events={events as IEventResponse[]}></Timeline>}
+      </div>
     </div>
   );
 };

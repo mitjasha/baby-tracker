@@ -3,7 +3,7 @@
   width: 100%;
 }
 
-.timeLabel span {
+.timelineContainer .timeLabel span {
   font-weight: 600;
   padding: 5px 10px;
   display: inline-block;
