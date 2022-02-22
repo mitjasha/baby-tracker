@@ -35,7 +35,7 @@
   width: 40px;
   height: 40px;
 
-  background: #fecdcb;
+  background: var(--pink-light);
   border-radius: 5px;
 }
 
@@ -60,11 +60,11 @@
   align-items: center;
   width: 30px;
   height: 30px;
-  border: 4px solid #fecdcb;
+  border: 4px solid var(--pink-light);
   border-radius: 50%;
   box-sizing: border-box;
   font-size: 24px;
-  color: #fecdcb;
+  color: var(--pink-light);
 }
 
 .modal-content {

@@ -4,7 +4,7 @@
 
 .sidebar-nav {
   width: 360px;
-  background-color: #add8e6;
+  background-color: var(--blue-light);
   position: fixed;
   margin: auto 0px;
   transition: 350ms;

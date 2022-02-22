@@ -50,7 +50,7 @@ progress::-webkit-progress-value {
 }
 
 .night::-webkit-progress-bar {
-  background-color: #bfe2fe;
+  background-color: var(--blue-light);
 }
 
 .night::-webkit-progress-value {

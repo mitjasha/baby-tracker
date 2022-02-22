@@ -7,7 +7,7 @@
 }
 
 .h3 {
-  color: #df7e8a;
+  color: var(--pink);
   font-size: 24px;
   font-weight: 300;
 }

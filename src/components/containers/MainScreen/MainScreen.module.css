@@ -1,6 +1,6 @@
 .screen {
   color: #fff;
-  background-color: #fecdcb;
+  background-color: var(--pink-light);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +12,7 @@
   font-family: Roboto;
   font-style: normal;
   font-size: 28px;
-  color: #df7e8a;
+  color: var(--pink);
 }
 .description {
   display: flex;
@@ -43,7 +43,7 @@
   height: 250px;
   position: relative;
   font-size: 35px;
-  background-color: #fecdcb;
+  background-color: var(--pink-light);
   border-radius: 50%;
   position: relative;
   margin: 0px auto -60px;

@@ -1,5 +1,5 @@
 .main-screen-button {
   display: flex;
   align-items: center;
-  background-color: #bfe2fe;
+  background-color: var(--blue-light);
 }

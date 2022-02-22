@@ -39,7 +39,7 @@
 .modalIcon {
   width: 115px;
   height: 115px;
-  background-color: #9dcdff;
+  background-color: var(--blue);
   border-radius: 50%;
   position: absolute;
   top: -57px;
@@ -57,7 +57,7 @@
 }
 
 .title-modal {
-  color: #df7e8a;
+  color: var(--pink);
   margin: 55px 0 15px;
   font-size: 36px;
   font-weight: 300;
@@ -72,8 +72,8 @@
 .modal-button {
   min-width: 150px;
   height: 40px;
-  background-color: #df7e8a;
-  color: #fecdcb;
+  background-color: var(--pink);
+  color: var(--pink-light);
   font-size: 20px;
   text-transform: uppercase;
   border-radius: 20px;
@@ -81,7 +81,7 @@
 }
 
 .modal-button:hover {
-  background-color: #9dcdff;
+  background-color: var(--blue);
 }
 
 .icon-Активность {

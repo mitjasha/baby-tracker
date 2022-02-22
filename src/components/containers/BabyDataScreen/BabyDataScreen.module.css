@@ -44,7 +44,7 @@
 .button {
   width: 268px;
   height: 54px;
-  background-color: #fecdcb;
+  background-color: var(--pink-light);
   border-radius: 40px;
   margin: 19px 0px;
   color: #fff;

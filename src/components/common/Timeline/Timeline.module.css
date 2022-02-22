@@ -7,7 +7,7 @@
   font-weight: 600;
   padding: 5px 10px;
   display: inline-block;
-  background-color: #df7e8a;
+  background-color: var(--pink);
   color: #fff;
   border-radius: 2px;
   font-size: 18px;
@@ -28,13 +28,8 @@
   align-items: center;
   width: 300px;
   min-height: 40px;
-  /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  background: #fff; */
   color: #000;
-  /* margin-right: 15px; */
   position: relative;
-  /* margin-left: 50px; */
 }
 
 .eventContainer {
@@ -54,7 +49,6 @@
 
 .timelineDuration {
   font-size: 10px;
-  /* line-height: 12px; */
   color: #a7b3b1;
 }
 
@@ -70,6 +64,6 @@
   width: 41px;
   height: 41px;
   border-radius: 50%;
-  background-color: #9dcdff;
+  background-color: var(--blue);
   position: relative;
 }

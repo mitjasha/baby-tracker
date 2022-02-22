@@ -9,10 +9,10 @@
 .header-nav {
   display: flex;
   justify-content: space-between;
-  background-color: #fecdcb;
+  background-color: var(--pink-light);
 }
 
 .header-nav-collapse {
-  background-color: #fecdcb;
+  background-color: var(--pink-light);
   height: 100vh;
 }
