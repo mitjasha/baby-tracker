@@ -11,15 +11,16 @@ import { currentDay, currentTime } from "../../helpers/changeNum";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
 import { ModalAddActivityConst } from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivityConst";
 import { IEventResponse } from "../../../api/api.interface";
-import getEventsChild from "../../helpers/getEvemtsChild";
+import getEventsChild from "../../helpers/getEventsChild";
 import Timeline from "../../common/Timeline/Timeline";
+import { activityConstRu } from "../../helpers/getDescription";
 
 interface ISleepData {
   [key: string]: string;
 }
 
 const ActivityScreen: React.FC = () => {
-  const events = getEventsChild("Активность");
+  const events = getEventsChild(activityConstRu);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [dataActive, setDataActive] = useState<string[]>([]);
@@ -49,7 +50,7 @@ const ActivityScreen: React.FC = () => {
   const onSubmitFeeling = (data: ISleepData) => {
     const time = `${currentDay} ${currentTime}`;
     const dataEvent = {
-      event: dataActive,
+      event: dataActive[0],
       startTime: time,
       endTime: time,
       description: data.feeling[0].split(",")[1], // data.feeling = ["англ, русск"]

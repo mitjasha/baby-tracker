@@ -14,7 +14,7 @@ import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 import girlSleep from "../../../assets/png/girl.png";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
 import { IEventResponse } from "../../../api/api.interface";
-import getEventsChild from "../../helpers/getEvemtsChild";
+import getEventsChild from "../../helpers/getEventsChild";
 import Timeline from "../../common/Timeline/Timeline";
 // import ChartSleep from "../../common/Charts/ChartSleep/ChartSleep";
 

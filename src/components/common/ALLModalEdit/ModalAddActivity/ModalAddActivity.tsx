@@ -11,8 +11,10 @@ import {
   feedingSleep,
   drinkEat,
 } from "./ModalAddActivityConst";
+import getDescription from "../../../helpers/getDescription";
 import InputEat from "../../Inputs/InputsEat/InputEat";
 import eventController from "../../../../api/eventController";
+import getEvent from "../../../helpers/getEvent";
 
 export interface IModalAddActivityForm {
   [key: string]: string;
@@ -77,20 +79,16 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({ whatActivity }) => {
   };
 
   const onSubmit = (data: IModalAddActivityForm) => {
+    console.log(data);
     const dataEvent = {
-      event: feeding.includes(dataActive[0]) ? "Кормление" : dataActive[0],
+      event: `${getEvent(dataActive)}`,
       startTime: new Date(`${data.startDate} ${data.startTime}`),
       endTime: feeding.includes(dataActive[0])
         ? new Date(`${data.startDate} ${data.startTime}`)
         : new Date(`${data.endDate} ${data.endTime}`),
-      description:
-        data.description !== ""
-          ? `${data.food}, ${data.descreatiption}, ${data.foodValue} ${
-              drinkEat[`${dataActive[1]}`].OZ
-            }`
-          : `${data.food}, ${data.foodValue} `,
+      description: `${getDescription(data, dataActive)}`,
     };
-
+    console.log(dataEvent);
     // saveDataFromFormToLS(dataActive, dataEvent);
     eventController.addEvent(dataEvent, childID);
     setIsModalOpen(false);
@@ -139,7 +137,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({ whatActivity }) => {
               registerData={register(drinkEat[dataActive[1]].REGISTER_DATA, {
                 required: true,
               })}
-              registerText={register("descreatiption")}
+              registerText={register("description")}
             >
               {drinkEat[dataActive[1]].VARIANT.map((el) => (
                 <option key={el}>{el}</option>

@@ -93,6 +93,14 @@ const drinkEat: IFood = {
 };
 
 const feeding: string[] = ["Бутылочка", "Еда"];
+const feedingСonstAll: string[] = ["Бутылочка", "Еда", "Левая грудь", "Правая грудь"];
+
 const feedingSleep: string[] = ["Бутылочка", "Сон", "Еда", "Настроение"];
 
-export { ModalAddActivityConst, feeding, feedingSleep, drinkEat };
+export {
+  ModalAddActivityConst,
+  feeding,
+  feedingSleep,
+  drinkEat,
+  feedingСonstAll,
+};
