@@ -12,6 +12,7 @@ import Header from "./components/containers/Header";
 import Footer from "./components/containers/Footer";
 import RequireAuth from "./components/helpers/RequireAuth";
 import AboutScreen from "./components/containers/AboutScreen/AboutScreen";
+import { userColor } from "./components/helpers/changeColor";
 
 const routesWithoutHeader: string[] = ["/", "/registration", "/baby-data"];
 
@@ -19,6 +20,9 @@ const App: React.FC = () => {
   const location = useLocation();
   const [isHeader, setHeader] = useState<boolean>(true);
   const [isFooter, setFooter] = useState<boolean>(false);
+
+  useEffect(() => userColor());
+
   useEffect(() => {
     setHeader(routesWithoutHeader.includes(location.pathname));
     setFooter(routesWithoutHeader.includes(location.pathname));

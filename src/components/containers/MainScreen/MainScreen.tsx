@@ -11,11 +11,8 @@ import MainScreenButton from "../../common/Buttons/MainScreenButton/MainScreenBu
 import NewEventButton from "../../common/Buttons/NewEventButton/NewEventButton";
 import Timeline from "../../common/Timeline/Timeline";
 import Timer from "../../common/Timer/Timer";
-import { userColor } from "../../helpers/changeColor";
 
 const MainScreen: React.FC = () => {
-  useEffect(() => userColor(), []);
-
   let childID: string = JSON.parse(
     localStorage.getItem("currentChild") as string,
   );
