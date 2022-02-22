@@ -29,7 +29,7 @@
 .button {
   width: 268px;
   height: 54px;
-  background-color: #fecdcb;
+  background-color: var(--pink-light);
   border-radius: 40px;
   margin: 33px 0px 125px;
   color: #fff;

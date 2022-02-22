@@ -2,7 +2,7 @@
   width: 41px;
   height: 41px;
   border-radius: 50%;
-  background-color: #9dcdff;
+  background-color: var(--blue);
   position: absolute;
   left: 0px;
 }
@@ -12,7 +12,7 @@
   width: 140px;
   height: 41px;
   border-radius: 20px;
-  background-color: #fecdcb;
+  background-color: var(--pink-light);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,5 +32,5 @@
   position: absolute;
 }
 .button:hover {
-  background-color: #9dcdff;
+  background-color: var(--blue);
 }

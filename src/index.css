@@ -1,3 +1,11 @@
+:root {
+  --pink-light: #fecdcb;
+  --blue-light: #bfe2fe;
+  --blue: #9dcdff;
+  --pink: #df7e8a;
+  --pink-dark: #8d1c1a;
+}
+
 @font-face {
   font-family: Roboto;
   src: url("./assets/font/Roboto-Light.ttf");
@@ -42,7 +50,7 @@ button:focus {
 }
 
 input:focus {
-  outline: 4px solid #9dcdff;
+  outline: 4px solid var(--blue);
 }
 
 footer,
@@ -63,7 +71,7 @@ body {
   text-align: center;
   font-family: Roboto;
   font-weight: 400;
-  background: #fecdcb;
+  background: var(--pink-light);
   height: 100%;
   overflow-x: hidden;
 }
@@ -78,7 +86,7 @@ body {
 main {
   flex: 1 1 auto;
   margin: 0 auto;
-  background-color: #fecdcb;
+  background-color: var(--pink-light);
   width: 360px;
 }
 
@@ -86,7 +94,7 @@ main {
 .footer {
   display: flex;
   justify-content: space-between;
-  background-color: lightblue;
+  background-color: var(--blue);
 }
 
 .header {

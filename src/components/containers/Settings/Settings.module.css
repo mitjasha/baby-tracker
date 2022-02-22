@@ -1,23 +1,103 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--pink);
+  margin: 0 auto;
+  height: 100%;
+  padding: 20px;
+  background-color: #fff;
+}
+
 .settingsBtn {
-  width: 240px;
+  width: 200px;
   height: 40px;
-  background: #df7e8a;
+  background: var(--pink);
   border-radius: 40px;
   cursor: pointer;
   text-transform: uppercase;
   display: inline-block;
   text-decoration: none;
+  padding: 10px 0px;
+  margin: 20px 0px;
 }
 
 .settingsBtn:hover {
-  background-color: #70b4e6;
+  background-color: var(--blue);
 }
 .settingsBtn:visited {
   border: 0px;
 }
 
+.btnFirst {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 160px;
+}
+
+.wrapperSettingBtn {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .settingsButtons {
   display: flex;
+  flex-direction: column;
+  width: 320px;
+  margin: 0 auto;
   align-items: center;
   justify-content: center;
+}
+
+.btn {
+  width: 150px;
+}
+
+.palitres {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.palitra {
+  width: 150px;
+  height: 30px;
+  margin: 10px 0px;
+  outline: 2px solid #e5e5e5;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.palitra1 {
+  background-image: url("../../../assets/svg/palitra1.svg");
+}
+
+.palitra2 {
+  background-image: url("../../../assets/svg/palitra2.svg");
+}
+
+.palitra3 {
+  background-image: url("../../../assets/svg/palitra3.svg");
+}
+
+.palitra:hover {
+  outline: 4px solid gray;
+}
+
+.palitra:focus {
+  outline: 4px solid gray;
+}
+
+.text {
+  color: #fff;
+  font-size: 18px;
+}
+
+.h3 {
+  font-weight: 100;
+  margin-bottom: 10px;
 }

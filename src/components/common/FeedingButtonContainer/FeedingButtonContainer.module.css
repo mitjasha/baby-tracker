@@ -8,14 +8,13 @@
 }
 
 .button {
-  background-color: #9dcdff;
+  background-color: var(--blue);
 }
 
 .button:hover {
-  background-color: #fecdcb;
+  background-color: var(--pink-light);
 }
 
 .icon {
-  background-color: #fecdcb;
+  background-color: var(--pink-light);
 }
-
