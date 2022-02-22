@@ -1,0 +1,23 @@
+.settingsBtn {
+  width: 240px;
+  height: 40px;
+  background: #df7e8a;
+  border-radius: 40px;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.settingsBtn:hover {
+  background-color: #70b4e6;
+}
+.settingsBtn:visited {
+  border: 0px;
+}
+
+.settingsButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

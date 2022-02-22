@@ -32,12 +32,14 @@ const BaseModalEventWrapper: React.FC<BaseModalWrapperProps> = ({
               <div className="button-text-container">
                 <div style={{ fontWeight: "bold" }}>Приём пищи</div>
                 <div>
-                  {moment(
-                    eventsEat?.sort(
-                      (a, b) =>
-                        Date.parse(b.startTime) - Date.parse(a.startTime),
-                    )[0].endTime,
-                  ).fromNow()}
+                  {eventsEat?.length && eventsEat?.length > 0
+                    ? moment(
+                        eventsEat?.sort(
+                          (a, b) =>
+                            Date.parse(b.startTime) - Date.parse(a.startTime),
+                        )[0].endTime,
+                      ).fromNow()
+                    : ""}
                 </div>
               </div>
               <div className="button-line"></div>
@@ -78,11 +80,14 @@ const BaseModalEventWrapper: React.FC<BaseModalWrapperProps> = ({
               ></div>
               <div className="button-text-container">
                 <div style={{ fontWeight: "bold" }}>Сон</div>
-                {moment(
-                  eventsSleep?.sort(
-                    (a, b) => Date.parse(b.startTime) - Date.parse(a.startTime),
-                  )[0].endTime,
-                ).fromNow()}
+                {eventsSleep?.length && eventsSleep?.length > 0
+                  ? moment(
+                      eventsSleep?.sort(
+                        (a, b) =>
+                          Date.parse(b.startTime) - Date.parse(a.startTime),
+                      )[0].endTime,
+                    ).fromNow()
+                  : ""}
               </div>
               <div className="button-line"></div>
               <div
@@ -101,11 +106,14 @@ const BaseModalEventWrapper: React.FC<BaseModalWrapperProps> = ({
               ></div>
               <div className="button-text-container">
                 <div style={{ fontWeight: "bold" }}>Прогулка</div>
-                {moment(
-                  eventsWalk?.sort(
-                    (a, b) => Date.parse(b.startTime) - Date.parse(a.startTime),
-                  )[0].endTime,
-                ).fromNow()}
+                {eventsWalk?.length && eventsWalk?.length > 0
+                  ? moment(
+                      eventsWalk?.sort(
+                        (a, b) =>
+                          Date.parse(b.startTime) - Date.parse(a.startTime),
+                      )[0].endTime,
+                    ).fromNow()
+                  : ""}
               </div>
               <div className="button-line"></div>
               <div
