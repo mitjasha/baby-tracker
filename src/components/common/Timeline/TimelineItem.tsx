@@ -6,7 +6,7 @@ export interface IItem {
   id: string;
   event: string;
   startTime: string;
-  duration: number;
+  duration: number | undefined;
   description: string;
   key: number;
 }
@@ -34,9 +34,12 @@ const TimelineItem: React.FC<IItem> = ({
         <div>
           <div className={classes.eventContainer}>
             <span className={classes.timelineHeader}>
-              {`${Math.floor(duration / 3600000) % 60}ч ${
-                Math.floor(duration / 60000) % 60
-              }мин - ${event}`}
+              {duration &&
+                `${Math.floor(duration / 3600000) % 60}ч ${
+                  Math.floor(duration / 60000) % 60
+                }мин - `}
+
+              {event !== "Кормление" && <span> {event}</span>}
               <p>{`${description}`}</p>
             </span>
           </div>

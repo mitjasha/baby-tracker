@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import "moment/locale/ru";
-import getEventsChild from "../../../helpers/getEvemtsChild";
+import getEventsChild from "../../../helpers/getEventsChild";
 import ModalMenuButton from "../../Buttons/ModalMenuButton/ModalMenuButton";
 import ModalEventMenu from "./ModalEventMenu";
 

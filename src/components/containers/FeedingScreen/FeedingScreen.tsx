@@ -8,7 +8,7 @@ import Timer from "../../common/Timer/Timer";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
 import { feeding } from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivityConst";
 import { IEventResponse } from "../../../api/api.interface";
-import getEventsChild from "../../helpers/getEvemtsChild";
+import getEventsChild from "../../helpers/getEventsChild";
 import Timeline from "../../common/Timeline/Timeline";
 
 const FeedingScreen: React.FC = () => {
@@ -79,7 +79,9 @@ const FeedingScreen: React.FC = () => {
       {feeding.includes(dataActive[0]) && (
         <ModalAddActivity whatActivity={dataActive} />
       )}
+      <div className={classes.timeline}>
       {events && <Timeline events={events as IEventResponse[]}></Timeline>}
+      </div>
     </div>
   );
 };

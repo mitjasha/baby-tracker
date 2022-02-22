@@ -4,7 +4,7 @@ import childController from "../../api/childController";
 import eventController from "../../api/eventController";
 import userController from "../../api/userController";
 
-const getEventsChild = (nameEvent: string) => {
+const getEventsChild = (nameEvent: string | string[]) => {
   let childID: string = JSON.parse(
     localStorage.getItem("currentChild") as string,
   );
@@ -14,6 +14,7 @@ const getEventsChild = (nameEvent: string) => {
   };
 
   const [events, eventsSet] = useState<IEventResponse[]>();
+
   useEffect(() => {
     const setData = async () => {
       if (!childID) {
@@ -22,7 +23,7 @@ const getEventsChild = (nameEvent: string) => {
       }
       const currentChild = await childController.getChildById(childID);
       const eventsList = await eventController.getAllEvents(currentChild);
-      eventsSet(eventsList.filter((el) => el.event === nameEvent));
+      eventsSet(eventsList.filter((el) => nameEvent.includes(el.event)));
     };
 
     setData();

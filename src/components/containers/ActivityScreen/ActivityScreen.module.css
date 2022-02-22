@@ -23,6 +23,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  height: calc(50vh - 50px);
   padding: 20px;
 }
 
@@ -83,4 +84,14 @@
   color: black !important;
   font-size: 14px !important;
   top: 22% !important;
+}
+
+.timeline {
+  height: 50vh;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.timeline::-webkit-scrollbar {
+  width: 0;
 }

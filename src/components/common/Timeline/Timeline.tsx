@@ -2,6 +2,10 @@ import React from "react";
 import TimelineItem, { IItem } from "./TimelineItem";
 import classes from "./Timeline.module.css";
 import { IEventResponse } from "../../../api/api.interface";
+import {
+  activityConstNoFeelingRu,
+  feedingBreastRu,
+} from "../../helpers/getDescription";
 
 function getFormattedData(items: IEventResponse[]) {
   const activities: { [date: string]: IItem[] } = {};
@@ -77,7 +81,12 @@ const Timeline: React.FC<ITimelineProps> = ({ events }) => {
                 id={id}
                 event={event}
                 startTime={startTime}
-                duration={duration}
+                duration={
+                  feedingBreastRu.includes(description) ||
+                  activityConstNoFeelingRu.includes(event)
+                    ? duration
+                    : undefined
+                }
                 description={description}
                 key={key}
               />
