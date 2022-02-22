@@ -26,7 +26,7 @@ const InputFeeling: React.FC<IInputFeeling> = ({
             classNameError={classNameError}
             key={ind}
             textBaby={genderChange(el.text, gender)}
-            img={el.img}
+            img={genderChange(el.img, gender)}
             id={el.id}
             onChange={() => {
               if (!chose) {
