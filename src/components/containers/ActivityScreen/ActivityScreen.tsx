@@ -7,13 +7,16 @@ import ModalWindow from "../../common/ALLModalEdit/ModalWindow/ModalWindow";
 import Timer from "../../common/Timer/Timer";
 import InputFeeling from "../../common/Inputs/InputFeeling/InputFeeling";
 import girlDefault from "../../../assets/png/activity/girl-default.png";
+import boyDefault from "../../../assets/png/activity/boy-default.png";
 import { currentDay, currentTime } from "../../helpers/changeNum";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
 import { ModalAddActivityConst } from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivityConst";
-import { IEventResponse } from "../../../api/api.interface";
+import { IChild, IEventResponse } from "../../../api/api.interface";
 import getEventsChild from "../../helpers/getEventsChild";
 import Timeline from "../../common/Timeline/Timeline";
 import { activityConstRu } from "../../helpers/getDescription";
+import eventController from "../../../api/eventController";
+import genderChange from "../../helpers/genderChange";
 
 interface ISleepData {
   [key: string]: string;
@@ -21,15 +24,22 @@ interface ISleepData {
 
 const ActivityScreen: React.FC = () => {
   const events = getEventsChild(activityConstRu);
-
+  const childID: string = JSON.parse(
+    localStorage.getItem("currentChild") as string,
+  );
+  const currentChildInfo: IChild = JSON.parse(
+    localStorage.getItem("currentChildInfo") as string,
+  );
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [dataActive, setDataActive] = useState<string[]>([]);
   const [addData, setAddData] = useState<boolean>(false);
   const [icon, setIcon] = useState<string>("");
-  const [img, setImg] = useState<string>(girlDefault);
+  const [img, setImg] = useState<string>(
+    genderChange([girlDefault, boyDefault], currentChildInfo.gender),
+  );
 
   const toggleModal = (arg: string[] | undefined) => {
-    console.log(arg);
+    // console.log(arg);
     setIsModalOpen(!isModalOpen);
     if (arg) {
       const newIcon = ModalAddActivityConst.filter((el) => el.text === arg[0])
@@ -51,11 +61,12 @@ const ActivityScreen: React.FC = () => {
     const time = `${currentDay} ${currentTime}`;
     const dataEvent = {
       event: dataActive[0],
-      startTime: time,
-      endTime: time,
+      startTime: new Date(time),
+      endTime: new Date(time),
       description: data.feeling[0].split(",")[1], // data.feeling = ["англ, русск"]
     };
     console.log(JSON.stringify(dataEvent));
+    eventController.addEvent(dataEvent, childID);
     setIsModalOpen(!isModalOpen);
     reset();
   };
@@ -73,12 +84,13 @@ const ActivityScreen: React.FC = () => {
     setAddData(!addData);
   };
 
-  const changeImg = () => {
+  const changeImg = (gender: string) => {
     const newImg = ModalAddActivityConst.filter(
       (el) => el.text === dataActive[0],
     )
-      .map((el) => el.img)
+      .map((el) => genderChange(el.img as string[], gender))
       .join("");
+
     setImg(newImg);
   };
 
@@ -117,7 +129,7 @@ const ActivityScreen: React.FC = () => {
               withOverlay
             >
               <Timer
-                click={changeImg}
+                click={() => changeImg(currentChildInfo.gender)}
                 withClick
                 classWrap={classes.timerWrapper}
                 classNameTimer={classes.timerModal}
@@ -149,6 +161,7 @@ const ActivityScreen: React.FC = () => {
               <InputFeeling
                 classNameError={errors?.feeling && classes.errorFeeling}
                 register={register("feeling", { required: true })}
+                gender={currentChildInfo.gender}
               />
             </form>
           </div>

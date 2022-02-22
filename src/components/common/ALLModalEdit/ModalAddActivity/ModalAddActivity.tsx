@@ -79,7 +79,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({ whatActivity }) => {
   };
 
   const onSubmit = (data: IModalAddActivityForm) => {
-    console.log(data);
+    // console.log(data);
     const dataEvent = {
       event: `${getEvent(dataActive)}`,
       startTime: new Date(`${data.startDate} ${data.startTime}`),
@@ -88,7 +88,7 @@ const ModalAddActivity: React.FC<IModalAddActivity> = ({ whatActivity }) => {
         : new Date(`${data.endDate} ${data.endTime}`),
       description: `${getDescription(data, dataActive)}`,
     };
-    console.log(dataEvent);
+    // console.log(dataEvent);
     // saveDataFromFormToLS(dataActive, dataEvent);
     eventController.addEvent(dataEvent, childID);
     setIsModalOpen(false);
