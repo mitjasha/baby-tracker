@@ -138,7 +138,10 @@ const MainScreen: React.FC = () => {
 
         <div className={classes.buttonWrapper}>
           <div className={classes.buttonsContainer}>
-            <MainScreenButton eventName="Сон" className={classes.bntLeft}>
+            <MainScreenButton
+              eventName={["Сон", "sleep"]}
+              className={classes.bntLeft}
+            >
               <div className={classes.bntIcon}>
                 <img
                   src={require("../../../assets/svg/sleeping-icon.svg").default}
@@ -150,7 +153,7 @@ const MainScreen: React.FC = () => {
               </div>
             </MainScreenButton>
             <MainScreenButton
-              eventName="Кормление"
+              eventName={["Кормление", "eat"]}
               className={classes.bntRight}
             >
               <div className={classes.btnTextRight}>

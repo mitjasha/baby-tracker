@@ -26,7 +26,7 @@ const BaseModalEventWrapper: React.FC<BaseModalWrapperProps> = ({
     <ModalEventMenu onBackdropClick={onBackdropClick}>
       <div className="desktop-modal-container modal-container">
         <div className="buttons-container">
-          <ModalMenuButton eventName="Кормление">
+          <ModalMenuButton eventName={["Кормление", "eat"]}>
             <div className="modal-content">
               <div className="button-icon"></div>
               <div className="button-text-container">
@@ -46,7 +46,7 @@ const BaseModalEventWrapper: React.FC<BaseModalWrapperProps> = ({
               <div className="button-plus-container">+</div>
             </div>
           </ModalMenuButton>
-          <ModalMenuButton eventName="Активность">
+          <ModalMenuButton eventName={["Активность", "activity"]}>
             <div className="modal-content">
               <div
                 style={{ background: "#4AA7F1" }}
@@ -72,7 +72,7 @@ const BaseModalEventWrapper: React.FC<BaseModalWrapperProps> = ({
               </div>
             </div>
           </ModalMenuButton>
-          <ModalMenuButton eventName="Сон">
+          <ModalMenuButton eventName={["Сон", "sleep"]}>
             <div className="modal-content">
               <div
                 style={{ background: "#C476BC" }}
@@ -98,7 +98,7 @@ const BaseModalEventWrapper: React.FC<BaseModalWrapperProps> = ({
               </div>
             </div>
           </ModalMenuButton>
-          <ModalMenuButton eventName="Прогулка">
+          <ModalMenuButton eventName={["Прогулка", "walk"]}>
             <div className="modal-content">
               <div
                 style={{ background: "#BEDC0E" }}

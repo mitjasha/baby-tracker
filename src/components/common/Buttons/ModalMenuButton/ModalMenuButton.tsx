@@ -4,7 +4,7 @@ import BaseModalWindowWrapper from "../../ALLModalEdit/ModalEventWindow/BaseModa
 import "./ModalMenuButton.css";
 
 interface IModalMenuButton {
-  eventName: string;
+  eventName: string[];
   children?: React.ReactNode;
   className?: string;
 }

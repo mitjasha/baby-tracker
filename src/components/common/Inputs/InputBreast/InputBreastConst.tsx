@@ -2,11 +2,13 @@ export interface IInputBreastConst {
   text: string;
 }
 
-export const InputBreastConst: IInputBreastConst[] = [
+const InputBreastConst: IInputBreastConst[] = [
   {
-    text: "Левая",
+    text: "Левая грудь",
   },
   {
-    text: "Правая",
+    text: "Правая грудь",
   },
 ];
+
+export default InputBreastConst;
