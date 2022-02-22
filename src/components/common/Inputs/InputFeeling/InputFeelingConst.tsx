@@ -6,39 +6,39 @@ import whinyGirl from "../../../../assets/png/feeling/girl/05.png";
 import playfulGirl from "../../../../assets/png/feeling/girl/06.png";
 
 export interface IfeelingConst {
-  text: string;
+  text: string[];
   img: string;
   id: string;
 }
 
 const feelingConst: IfeelingConst[] = [
   {
-    text: "Спокойная",
+    text: ["Спокойная", "Спокойный"],
     img: calmGirl,
     id: "calm",
   },
   {
-    text: "Весёлая",
+    text: ["Весёлая", "Весёлый"],
     img: funnyGirl,
     id: "funny",
   },
   {
-    text: "Грустная",
+    text: ["Грустная", "Грустный"],
     img: sadGirl,
     id: "sad",
   },
   {
-    text: "Капризная",
+    text: ["Капризная", "Капризный"],
     img: capriciousGirl,
     id: "capricious",
   },
   {
-    text: "Плаксивая",
+    text: ["Плаксивая", "Плаксивый"],
     img: whinyGirl,
     id: "whiny",
   },
   {
-    text: "Игривая",
+    text: ["Игривая", "Игривый"],
     img: playfulGirl,
     id: "playful",
   },

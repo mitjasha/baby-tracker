@@ -10,7 +10,7 @@ import girlDefault from "../../../assets/png/activity/girl-default.png";
 import { currentDay, currentTime } from "../../helpers/changeNum";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
 import { ModalAddActivityConst } from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivityConst";
-import { IEventResponse } from "../../../api/api.interface";
+import { IChild, IEventResponse } from "../../../api/api.interface";
 import getEventsChild from "../../helpers/getEventsChild";
 import Timeline from "../../common/Timeline/Timeline";
 import { activityConstRu } from "../../helpers/getDescription";
@@ -30,6 +30,9 @@ const ActivityScreen: React.FC = () => {
   const [img, setImg] = useState<string>(girlDefault);
   const childID: string = JSON.parse(
     localStorage.getItem("currentChild") as string,
+  );
+  const currentChildInfo: IChild = JSON.parse(
+    localStorage.getItem("currentChildInfo") as string,
   );
 
   const toggleModal = (arg: string[] | undefined) => {
@@ -154,6 +157,7 @@ const ActivityScreen: React.FC = () => {
               <InputFeeling
                 classNameError={errors?.feeling && classes.errorFeeling}
                 register={register("feeling", { required: true })}
+                gender={currentChildInfo.gender}
               />
             </form>
           </div>
