@@ -3,10 +3,14 @@ import feelingIcon from "../../../../assets/svg/feeling-icon.svg";
 import gamesIcon from "../../../../assets/svg/games-icon.svg";
 import bathIcon from "../../../../assets/svg/baby-bath-icon.svg";
 import iconSleep from "../../../../assets/svg/sleeping-icon.svg";
-import walk from "../../../../assets/png/activity/girl-walk.png";
-import active from "../../../../assets/png/activity/girl-play.png";
-import bath from "../../../../assets/png/activity/girl-bath.png";
+import girlWalk from "../../../../assets/png/activity/girl-walk.png";
+import boyWalk from "../../../../assets/png/activity/boy-walk.png";
+import girlActive from "../../../../assets/png/activity/girl-play.png";
+import boyActive from "../../../../assets/png/activity/boy-play.png";
+import girlBath from "../../../../assets/png/activity/girl-bath.png";
+import boyBath from "../../../../assets/png/activity/boy-bath.png";
 import girlDefault from "../../../../assets/png/activity/girl-default.png";
+import boyDefault from "../../../../assets/png/activity/boy-default.png";
 import {
   FeedingButtonConst,
   IFeedingButtonConst,
@@ -16,7 +20,7 @@ export interface IActivityScreenConst {
   text: string;
   icon: string;
   id: string;
-  img?: string;
+  img?: string | string[];
   FeedingButtonConst?: IFeedingButtonConst;
 }
 
@@ -40,25 +44,25 @@ const ModalAddActivityConst: IActivityScreenConst[] = [
     text: "Прогулка",
     id: "walk",
     icon: cariaggeIcon,
-    img: walk,
+    img: [girlWalk, boyWalk],
   },
   {
     text: "Активность",
     id: "active",
     icon: gamesIcon,
-    img: active,
+    img: [girlActive, boyActive],
   },
   {
     text: "Настроение",
     id: "feeling",
     icon: feelingIcon,
-    img: girlDefault,
+    img: [girlDefault, boyDefault],
   },
   {
     text: "Купание",
     id: "bath",
     icon: bathIcon,
-    img: bath,
+    img: [girlBath, boyBath],
   },
   {
     text: "Сон",
@@ -93,7 +97,12 @@ const drinkEat: IFood = {
 };
 
 const feeding: string[] = ["Бутылочка", "Еда"];
-const feedingСonstAll: string[] = ["Бутылочка", "Еда", "Левая грудь", "Правая грудь"];
+const feedingСonstAll: string[] = [
+  "Бутылочка",
+  "Еда",
+  "Левая грудь",
+  "Правая грудь",
+];
 
 const feedingSleep: string[] = ["Бутылочка", "Сон", "Еда", "Настроение"];
 

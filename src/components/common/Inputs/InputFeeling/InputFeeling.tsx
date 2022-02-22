@@ -25,17 +25,17 @@ const InputFeeling: React.FC<IInputFeeling> = ({
           <InputGender
             classNameError={classNameError}
             key={ind}
-            textBaby={genderChange(el, gender)}
+            textBaby={genderChange(el.text, gender)}
             img={el.img}
             id={el.id}
             onChange={() => {
               if (!chose) {
-                setChouse(genderChange(el, gender));
-              } else if (chose !== genderChange(el, gender)) {
-                setChouse(genderChange(el, gender));
+                setChouse(genderChange(el.text, gender));
+              } else if (chose !== genderChange(el.text, gender)) {
+                setChouse(genderChange(el.text, gender));
               } else setChouse("");
             }}
-            isChose={chose === genderChange(el, gender)}
+            isChose={chose === genderChange(el.text, gender)}
             register={register}
           />
         ))}
