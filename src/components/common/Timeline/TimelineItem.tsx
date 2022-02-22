@@ -38,7 +38,6 @@ const TimelineItem: React.FC<IItem> = ({
                 `${Math.floor(duration / 3600000) % 60}ч ${
                   Math.floor(duration / 60000) % 60
                 }мин - `}
-
               {event !== "Кормление" && <span> {event}</span>}
               <p>{`${description}`}</p>
             </span>

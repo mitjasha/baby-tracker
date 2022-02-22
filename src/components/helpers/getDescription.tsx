@@ -25,10 +25,13 @@ export const activityConstNoFeelingRu = [
   "Прогулка",
   "Купание",
   "Активность",
-  "Настроение",
+  "Сон",
 ];
 
-const getDescription = (data: IModalAddActivityForm, dataActive: string[]) => {
+const getDescription = (
+  data: IModalAddActivityForm,
+  dataActive: string[] | string,
+) => {
   console.log(dataActive);
   if (dataActive[1] === "bootle" || dataActive[1] === "eat")
     return `${data.food}, ${data.foodValue} ${drinkEat[dataActive[1]].OZ}`;

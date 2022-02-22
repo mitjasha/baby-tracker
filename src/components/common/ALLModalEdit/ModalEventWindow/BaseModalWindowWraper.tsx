@@ -7,7 +7,7 @@ import { IModalAddActivityForm } from "../ModalAddActivity/ModalAddActivity";
 import ModalEventWindow from "./ModalEventWindow";
 
 interface IBaseModalWrapperProps {
-  eventName: string;
+  eventName: string[];
   isModalVisible: boolean;
   onBackdropClick: () => void;
 }
@@ -71,11 +71,12 @@ const BaseModalWindowWrapper: React.FC<IBaseModalWrapperProps> = ({
   };
 
   const onSubmit = (data: IModalAddActivityForm) => {
+    console.log(data);
     const dataEvent = {
-      event: eventName,
+      event: eventName[0],
       startTime: new Date(`${data.startDate} ${data.startTime}`),
       endTime: new Date(`${data.endDate} ${data.endTime}`),
-      description: data.description !== "" ? `${data.description}` : "",
+      description: data.description ? data.description : "",
     };
     // saveDataFromFormToLS(dataActive, dataEvent);
     console.log(JSON.stringify(dataEvent));
@@ -87,9 +88,9 @@ const BaseModalWindowWrapper: React.FC<IBaseModalWrapperProps> = ({
   return (
     <ModalEventWindow onBackdropClick={onBackdropClick}>
       <div className="desktop-modal-window-container modal-window-container">
-        <div className="modal-window-content">{eventName}</div>
+        <div className="modal-window-content">{eventName[0]}</div>
         <form id="form-active" onSubmit={handleSubmit(onSubmit)}>
-          {eventName === "Кормление" && (
+          {eventName[0] === "Кормление" && (
             <InputBreast registerData={register("description")} />
           )}
           <InputTimeDate

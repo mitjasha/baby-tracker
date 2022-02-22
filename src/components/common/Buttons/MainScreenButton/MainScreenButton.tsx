@@ -4,7 +4,7 @@ import BaseModalWindowWrapper from "../../ALLModalEdit/ModalEventWindow/BaseModa
 import "./MainScreenButton.css";
 
 interface IMainScreenButton {
-  eventName: string;
+  eventName: string[];
   children?: React.ReactNode;
   className?: string;
 }
