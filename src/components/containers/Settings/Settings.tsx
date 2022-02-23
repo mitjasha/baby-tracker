@@ -58,12 +58,14 @@ const Settings: React.FC = () => {
             >
               <span className={classes.text}>Сбросить</span>
             </button>
-            <button
-              className={cn(classes.settingsBtn, classes.btn)}
-              onClick={() => saveSetting(whatPalitra)}
-            >
-              <span className={classes.text}>Сохранить</span>
-            </button>
+            <Link to="/main">
+              <button
+                className={cn(classes.settingsBtn, classes.btn)}
+                onClick={() => saveSetting(whatPalitra)}
+              >
+                <span className={classes.text}>Сохранить</span>
+              </button>
+            </Link>
           </div>
         </div>
         <Link to="/" className={classes.settingsBtn} id="settings-def">
