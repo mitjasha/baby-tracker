@@ -28,6 +28,9 @@ import genderChange from "../../helpers/genderChange";
 // import ChartSleep from "../../common/Charts/ChartSleep/ChartSleep";
 
 const SleepScreen: React.FC = () => {
+  const currentChildInfo: IChild = JSON.parse(
+    localStorage.getItem("currentChildInfo") as string,
+  );
   let events = getEventsChild("Сон");
   if (!events) {
     // eslint-disable-next-line no-param-reassign
@@ -41,9 +44,6 @@ const SleepScreen: React.FC = () => {
       },
     ];
   }
-  const currentChildInfo: IChild = JSON.parse(
-    localStorage.getItem("currentChildInfo") as string,
-  );
   const eventsSort = getEventsSort(events);
   const nightSleep = nightSleepDuration(eventsSort[`${currentDate}`]);
   const daySleep = daySleepDuration(eventsSort[`${currentDate}`]);

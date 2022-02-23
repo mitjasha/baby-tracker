@@ -5,7 +5,10 @@ const nightSleepDuration = (eventsSleep: IItem[]) => {
   const night: number[] = [];
   if (eventsSleep) {
     eventsSleep.forEach((el) => {
-      if (night && Number(el.startTime.slice(0, 2)) > 20)
+      if (
+        (night && Number(el.startTime.slice(0, 2)) >= 20) ||
+        (night && Number(el.startTime.slice(0, 2)) < 8)
+      )
         night.push(el.duration as number);
     });
     const nightDurat = night.reduce((acc, elem) => elem + acc, 0);
@@ -25,7 +28,7 @@ const daySleepDuration = (eventsSleep: IItem[]) => {
   if (eventsSleep) {
     eventsSleep.forEach((el) => {
       if (
-        Number(el.startTime.slice(0, 2)) > 10 &&
+        Number(el.startTime.slice(0, 2)) >= 8 &&
         Number(el.startTime.slice(0, 2)) < 20
       )
         day.push(el.duration as number);
