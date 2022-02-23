@@ -16,7 +16,7 @@ export const sleepingTime: IsleepingTime = {
 };
 
 export const progressBarValue: IndexInterface = {
-  DEFAULT_MAX: "100",
+  DEFAULT_MAX: "12",
   NIGHT_ICON_NAME: "nightIcon",
   DAY_ICON_NAME: "dayIcon",
 };

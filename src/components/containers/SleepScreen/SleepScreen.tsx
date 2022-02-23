@@ -16,10 +16,32 @@ import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAd
 import { IEventResponse } from "../../../api/api.interface";
 import getEventsChild from "../../helpers/getEventsChild";
 import Timeline from "../../common/Timeline/Timeline";
+import getEventsSort from "../../helpers/getEventSort";
+import { currentDate } from "../../helpers/changeNum";
+import {
+  nightSleepDuration,
+  daySleepDuration,
+} from "../../helpers/sleepDurration";
 // import ChartSleep from "../../common/Charts/ChartSleep/ChartSleep";
 
 const SleepScreen: React.FC = () => {
-  const events = getEventsChild("Сон");
+  let events = getEventsChild("Сон");
+  if (!events) {
+    // eslint-disable-next-line no-param-reassign
+    events = [
+      {
+        id: "",
+        event: "",
+        startTime: String(new Date()),
+        endTime: String(Date.now()),
+        description: "",
+      },
+    ];
+  }
+  const eventsSort = getEventsSort(events);
+  const nightSleep = nightSleepDuration(eventsSort[`${currentDate}`]);
+  const daySleep = daySleepDuration(eventsSort[`${currentDate}`]);
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const toggleModal = (): void => {
     if (isModalOpen) {
@@ -46,21 +68,21 @@ const SleepScreen: React.FC = () => {
           </div>
           <ProgressBar
             icon={classes.nightIcon}
-            value="60"
+            value={nightSleep[1]}
             max={progressBarValue.DEFAULT_MAX}
             classNameProgressBar={classes.night}
             classNameContainer={classes.progressBar}
             textName={sleepingTime.NIGHT_SLEEP}
-            textValue="8 ч 30 м"
+            textValue={nightSleep[0]}
           />
           <ProgressBar
             icon={classes.dayIcon}
-            value="30"
+            value={daySleep[1]}
             max={progressBarValue.DEFAULT_MAX}
             classNameProgressBar={classes.day}
             classNameContainer={classes.progressBar}
             textName={sleepingTime.DAY_SLEEP}
-            textValue="1 ч 30 м"
+            textValue={daySleep[0]}
           />
         </div>
 

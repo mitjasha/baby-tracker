@@ -8,5 +8,6 @@ const day = changeNum(date.getDate().toString());
 
 const currentTime = `${hour}:${minute}`;
 const currentDay = `${date.getFullYear()}-${month}-${day}`;
+const currentDate = `${day}.${month}.${date.getFullYear()}`;
 
-export { currentTime, currentDay };
+export { currentTime, currentDay, currentDate };
