@@ -24,6 +24,7 @@ import {
   nightSleepDuration,
   daySleepDuration,
 } from "../../helpers/sleepDurration";
+import genderChange from "../../helpers/genderChange";
 // import ChartSleep from "../../common/Charts/ChartSleep/ChartSleep";
 
 const SleepScreen: React.FC = () => {
@@ -40,10 +41,12 @@ const SleepScreen: React.FC = () => {
       },
     ];
   }
+  const currentChildInfo: IChild = JSON.parse(
+    localStorage.getItem("currentChildInfo") as string,
+  );
   const eventsSort = getEventsSort(events);
   const nightSleep = nightSleepDuration(eventsSort[`${currentDate}`]);
   const daySleep = daySleepDuration(eventsSort[`${currentDate}`]);
-const SleepScreen: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const toggleModal = (): void => {
     if (isModalOpen) {
