@@ -12,8 +12,10 @@ import {
 import NewSleepButton from "../../common/Buttons/NewSleepButton/NewSleepButton";
 import NotesOfSleep from "../../common/NotesOfSleep/NotesOfSleep";
 import girlSleep from "../../../assets/png/girl.png";
+
+import boySleep from "../../../assets/png/boy.png";
 import ModalAddActivity from "../../common/ALLModalEdit/ModalAddActivity/ModalAddActivity";
-import { IEventResponse } from "../../../api/api.interface";
+import { IChild, IEventResponse } from "../../../api/api.interface";
 import getEventsChild from "../../helpers/getEventsChild";
 import Timeline from "../../common/Timeline/Timeline";
 import getEventsSort from "../../helpers/getEventSort";
@@ -41,7 +43,7 @@ const SleepScreen: React.FC = () => {
   const eventsSort = getEventsSort(events);
   const nightSleep = nightSleepDuration(eventsSort[`${currentDate}`]);
   const daySleep = daySleepDuration(eventsSort[`${currentDate}`]);
-
+const SleepScreen: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const toggleModal = (): void => {
     if (isModalOpen) {
@@ -57,7 +59,14 @@ const SleepScreen: React.FC = () => {
             {notesSize.map((el: IndexInterfaceNumb) => (
               <NotesOfSleep num={el.size} key={el.size} />
             ))}
-            <img className={classes.babySleep} src={girlSleep} alt="baby" />
+            <img
+              className={classes.babySleep}
+              src={genderChange(
+                [girlSleep, boySleep] as string[],
+                currentChildInfo.gender,
+              )}
+              alt="baby"
+            />
             <div className={classes.timer}>
               <Timer
                 withClick

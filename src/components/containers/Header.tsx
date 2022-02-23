@@ -27,12 +27,14 @@ const Header: React.FC = () => {
           setValue(childs.filter((elem) => elem.id === childID)[0].name);
         } else {
           localStorage.setItem("currentChild", JSON.stringify(childs[0].id));
+          localStorage.setItem("currentChildInfo", JSON.stringify(childs[0]));
         }
       }
       if (value) {
         childs.forEach((childData) => {
           if (childData.name === value) {
             localStorage.setItem("currentChild", JSON.stringify(childData.id));
+            localStorage.setItem("currentChildInfo", JSON.stringify(childData));
           }
         });
       }
@@ -48,6 +50,7 @@ const Header: React.FC = () => {
     data.forEach((childData) => {
       if (childData.name === e.target.value) {
         localStorage.setItem("currentChild", JSON.stringify(childData.id));
+        localStorage.setItem("currentChildInfo", JSON.stringify(childData));
       }
     });
 
